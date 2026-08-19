@@ -1,0 +1,50 @@
+# Dependencies
+node_modules/
+**/node_modules/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Build output
+dist/
+build/
+.angular/
+bin/
+obj/
+*.dll
+*.pdb
+
+# CDK
+cdk.out/
+cdk.context.json
+.cdk.staging/
+
+# Secrets / local env — never commit
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Non-redistributable binaries (bring-your-own from Oracle)
+*.jar
+*.fmx
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Office docs / local runbooks
+*.docx
+*.pptx
+
+# Local pipeline test-run reports (regenerated; may contain local paths)
+pipeline/**/*_RESULTS.txt
+
+# NOTE: pipeline/**/generated output IS committed on purpose as example artifacts,
+# so readers can inspect the AI-generated code without running the Bedrock stages.

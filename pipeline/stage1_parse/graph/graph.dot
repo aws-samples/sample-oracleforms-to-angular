@@ -1,0 +1,37 @@
+digraph RIMS_GPC {
+  rankdir=LR;
+  node [style=filled,fontname="Helvetica"];
+  "table:CATEGORIES" [shape=cylinder,fillcolor="#85CDCA",label="CATEGORIES"];
+  "table:CUSTOMERS" [shape=cylinder,fillcolor="#85CDCA",label="CUSTOMERS"];
+  "table:EMPLOYEES" [shape=cylinder,fillcolor="#85CDCA",label="EMPLOYEES"];
+  "table:PRODUCTS" [shape=cylinder,fillcolor="#85CDCA",label="PRODUCTS"];
+  "table:ORDERS" [shape=cylinder,fillcolor="#85CDCA",label="ORDERS"];
+  "table:ORDER_ITEMS" [shape=cylinder,fillcolor="#85CDCA",label="ORDER_ITEMS"];
+  "table:PAYMENTS" [shape=cylinder,fillcolor="#85CDCA",label="PAYMENTS"];
+  "form:MAIN_MENU" [shape=component,fillcolor="#E8A87C",label="MAIN_MENU"];
+  "form:ORDERS" [shape=component,fillcolor="#E8A87C",label="ORDERS"];
+  "sequence:ORDER_SEQ" [shape=oval,fillcolor="#C38D9E",label="ORDER_SEQ"];
+  "form:CATEGORIES_FORM" [shape=component,fillcolor="#E8A87C",label="CATEGORIES_FORM"];
+  "form:CUSTOMERS_FORM" [shape=component,fillcolor="#E8A87C",label="CUSTOMERS_FORM"];
+  "form:EMPLOYEES_FORM" [shape=component,fillcolor="#E8A87C",label="EMPLOYEES_FORM"];
+  "form:PRODUCT_FORM" [shape=component,fillcolor="#E8A87C",label="PRODUCT_FORM"];
+  "table:PRODUCTS" -> "table:CATEGORIES" [color="#41436A",style=bold,label="FK\nCATEGORY_ID_FK"];
+  "table:ORDERS" -> "table:CUSTOMERS" [color="#41436A",style=bold,label="FK\nCUSTOMER_ID"];
+  "table:ORDERS" -> "table:EMPLOYEES" [color="#41436A",style=bold,label="FK\nEMPLOYEE_ID"];
+  "table:ORDER_ITEMS" -> "table:ORDERS" [color="#41436A",style=bold,label="FK\nORDER_ID_FK"];
+  "table:ORDER_ITEMS" -> "table:PRODUCTS" [color="#41436A",style=bold,label="FK\nPRODUCT_ID_FK"];
+  "table:PAYMENTS" -> "table:ORDERS" [color="#41436A",style=bold,label="FK\nORDER_ID_FK"];
+  "form:MAIN_MENU" -> "form:CATEGORIES_FORM" [color="#E27D60",label="NAVIGATES"];
+  "form:MAIN_MENU" -> "form:CUSTOMERS_FORM" [color="#E27D60",label="NAVIGATES"];
+  "form:MAIN_MENU" -> "form:EMPLOYEES_FORM" [color="#E27D60",label="NAVIGATES"];
+  "form:MAIN_MENU" -> "form:ORDERS" [color="#E27D60",label="NAVIGATES"];
+  "form:MAIN_MENU" -> "form:PRODUCT_FORM" [color="#E27D60",label="NAVIGATES"];
+  "form:ORDERS" -> "form:CATEGORIES_FORM" [color="#E27D60",label="NAVIGATES"];
+  "form:ORDERS" -> "form:CUSTOMERS_FORM" [color="#E27D60",label="NAVIGATES"];
+  "form:ORDERS" -> "table:ORDER_ITEMS" [color="#666",label="ACCESSES"];
+  "form:ORDERS" -> "table:PRODUCTS" [color="#666",label="ACCESSES"];
+  "form:ORDERS" -> "sequence:ORDER_SEQ" [color="#999",style=dashed,label="USES_SEQUENCE"];
+  "form:ORDERS" -> "sequence:ORDER_SEQ" [color="#999",style=dashed,label="USES_SEQUENCE"];
+  "form:PRODUCT_FORM" -> "form:CATEGORIES_FORM" [color="#E27D60",label="NAVIGATES"];
+  "form:PRODUCT_FORM" -> "table:CATEGORIES" [color="#666",label="ACCESSES"];
+}

@@ -1,0 +1,1207 @@
+{
+  "nodes": [
+    {
+      "id": "table:EBA_SALES_ACCESS_LEVELS",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_ACCOUNT_STANDING",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_ACT_COMPETITION",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_CLICKS",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_COMMENTS",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_COMPETITORS",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_COMPETITOR_THREATS",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_COUNTRIES",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_CURRENCIES",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_CUSTOMERS",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_CUSTOMER_CONTACTS",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_CUSTOMER_LOCATIONS",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_DEALS",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_DEAL_COMPETITION",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_DEAL_PRODUCTS",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_DEAL_STAGES",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_DEAL_STATUS_CODES",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_DEAL_TEAM",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_ERRORS",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_ERROR_LOOKUP",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_FILES",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_FIN_ASSESSMENTS",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_HISTORY",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_INDUSTRIES",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_LEADS",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_LEAD_SOURCES",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_LEAD_STATUS_CODES",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_LINKS",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_NOTIFICATIONS",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_PREFERENCES",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_PRODUCTS",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_RISK_ASSESSMENTS",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_SALESREPS",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_SALESREP_ROLES",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_SALES_PERIODS",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_STATES",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_STATUS_ASSESSMENTS",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_SVPS",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_TAGS",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_TAGS_SUM",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_TAGS_TYPE_SUM",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_TERRITORIES",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_TERRITORY_ACL",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_TERR_MAP",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_TZ_PREF",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_USERS",
+      "type": "table"
+    },
+    {
+      "id": "table:EBA_SALES_VERIFICATIONS",
+      "type": "table"
+    },
+    {
+      "id": "package:EBA_SALES_ACL_API (PACKAGE BODY)",
+      "type": "package"
+    },
+    {
+      "id": "package:EBA_SALES_ACL_API (PACKAGE)",
+      "type": "package"
+    },
+    {
+      "id": "package:EBA_SALES_DATA (PACKAGE)",
+      "type": "package"
+    },
+    {
+      "id": "package:EBA_SALES_FW (PACKAGE)",
+      "type": "package"
+    },
+    {
+      "id": "page:Opportunities",
+      "type": "page"
+    },
+    {
+      "id": "page:Accounts",
+      "type": "page"
+    },
+    {
+      "id": "page:Account Details",
+      "type": "page"
+    },
+    {
+      "id": "page:Products",
+      "type": "page"
+    },
+    {
+      "id": "page:Product Details",
+      "type": "page"
+    },
+    {
+      "id": "page:&REP_TITLE.s",
+      "type": "page"
+    },
+    {
+      "id": "page:&REP_TITLE. Details",
+      "type": "page"
+    },
+    {
+      "id": "page:Territories",
+      "type": "page"
+    },
+    {
+      "id": "page:Territory Details",
+      "type": "page"
+    },
+    {
+      "id": "page:Opportunity Stages",
+      "type": "page"
+    },
+    {
+      "id": "page:Opportunity Stage Details",
+      "type": "page"
+    },
+    {
+      "id": "page:Fiscal Quarters",
+      "type": "page"
+    },
+    {
+      "id": "page:Fiscal Quarter Details",
+      "type": "page"
+    },
+    {
+      "id": "page:Revenue by Quarter",
+      "type": "page"
+    },
+    {
+      "id": "page:Username Format",
+      "type": "page"
+    },
+    {
+      "id": "page:Opportunity Details",
+      "type": "page"
+    },
+    {
+      "id": "page:Countries",
+      "type": "page"
+    },
+    {
+      "id": "page:Country Details",
+      "type": "page"
+    },
+    {
+      "id": "page:Leads",
+      "type": "page"
+    },
+    {
+      "id": "page:Past Due Opportunities",
+      "type": "page"
+    },
+    {
+      "id": "page:New User Details",
+      "type": "page"
+    },
+    {
+      "id": "page:Comment Details",
+      "type": "page"
+    },
+    {
+      "id": "page:Contacts",
+      "type": "page"
+    },
+    {
+      "id": "page:Contact",
+      "type": "page"
+    },
+    {
+      "id": "page:Team Roles",
+      "type": "page"
+    },
+    {
+      "id": "page:Team Role Details",
+      "type": "page"
+    },
+    {
+      "id": "page:Competition Details",
+      "type": "page"
+    },
+    {
+      "id": "page:Product Families",
+      "type": "page"
+    },
+    {
+      "id": "page:Lead Details",
+      "type": "page"
+    },
+    {
+      "id": "page:Team Member Details",
+      "type": "page"
+    },
+    {
+      "id": "page:Opportunities by &REP_TITLE.",
+      "type": "page"
+    },
+    {
+      "id": "page:Location Details",
+      "type": "page"
+    },
+    {
+      "id": "page:Administration",
+      "type": "page"
+    },
+    {
+      "id": "page:Product Family",
+      "type": "page"
+    },
+    {
+      "id": "page:Application Preferences",
+      "type": "page"
+    },
+    {
+      "id": "page:Contract Terms",
+      "type": "page"
+    },
+    {
+      "id": "page:Lead Status Codes",
+      "type": "page"
+    },
+    {
+      "id": "page:Lead Status Code Details",
+      "type": "page"
+    },
+    {
+      "id": "page:Reports",
+      "type": "page"
+    },
+    {
+      "id": "page:Deal Terms",
+      "type": "page"
+    },
+    {
+      "id": "page:Deal Term",
+      "type": "page"
+    },
+    {
+      "id": "page:Opportunities by Territory",
+      "type": "page"
+    },
+    {
+      "id": "page:Time Zone Preference",
+      "type": "page"
+    },
+    {
+      "id": "page:Page Privileges",
+      "type": "page"
+    },
+    {
+      "id": "page:Rename Application",
+      "type": "page"
+    },
+    {
+      "id": "page:Revenue by &REP_TITLE.",
+      "type": "page"
+    },
+    {
+      "id": "page:Projected Close Dates",
+      "type": "page"
+    },
+    {
+      "id": "page:Tags",
+      "type": "page"
+    },
+    {
+      "id": "page:Competitor Analysis",
+      "type": "page"
+    },
+    {
+      "id": "page:Competitors",
+      "type": "page"
+    },
+    {
+      "id": "page:Competitor Details",
+      "type": "page"
+    },
+    {
+      "id": "page:Risk Assessments",
+      "type": "page"
+    },
+    {
+      "id": "page:Risk Assessment Details",
+      "type": "page"
+    },
+    {
+      "id": "page:Status Assessments",
+      "type": "page"
+    },
+    {
+      "id": "page:Status Assessment Details",
+      "type": "page"
+    },
+    {
+      "id": "page:Financial Assessments",
+      "type": "page"
+    },
+    {
+      "id": "page:Agreement Types",
+      "type": "page"
+    },
+    {
+      "id": "page:Competitor Threats",
+      "type": "page"
+    },
+    {
+      "id": "page:Competitor Threat Details",
+      "type": "page"
+    },
+    {
+      "id": "page:Product",
+      "type": "page"
+    },
+    {
+      "id": "page:Pipeline",
+      "type": "page"
+    },
+    {
+      "id": "page:Convert to Opportunity",
+      "type": "page"
+    },
+    {
+      "id": "page:Industries",
+      "type": "page"
+    },
+    {
+      "id": "page:Industry Details",
+      "type": "page"
+    },
+    {
+      "id": "page:SVPs",
+      "type": "page"
+    },
+    {
+      "id": "page:SVP Details",
+      "type": "page"
+    },
+    {
+      "id": "page:Lead Sources",
+      "type": "page"
+    },
+    {
+      "id": "page:Lead Source Details",
+      "type": "page"
+    },
+    {
+      "id": "page:Create Opportunity",
+      "type": "page"
+    },
+    {
+      "id": "page:Agreement Type",
+      "type": "page"
+    },
+    {
+      "id": "page:Contract Term",
+      "type": "page"
+    },
+    {
+      "id": "page:Notifications",
+      "type": "page"
+    },
+    {
+      "id": "page:Notification Details",
+      "type": "page"
+    },
+    {
+      "id": "page:Close Opportunity",
+      "type": "page"
+    },
+    {
+      "id": "page:Opportunity",
+      "type": "page"
+    },
+    {
+      "id": "page:Closed Opportunities",
+      "type": "page"
+    },
+    {
+      "id": "page:Closed Opportunity Details",
+      "type": "page"
+    },
+    {
+      "id": "page:States",
+      "type": "page"
+    },
+    {
+      "id": "page:Agreements",
+      "type": "page"
+    },
+    {
+      "id": "page:Competition",
+      "type": "page"
+    },
+    {
+      "id": "page:Team Members",
+      "type": "page"
+    },
+    {
+      "id": "page:Comments",
+      "type": "page"
+    },
+    {
+      "id": "page:Links",
+      "type": "page"
+    },
+    {
+      "id": "page:Page Views",
+      "type": "page"
+    },
+    {
+      "id": "page:Top Users",
+      "type": "page"
+    },
+    {
+      "id": "page:Attachments",
+      "type": "page"
+    },
+    {
+      "id": "page:Territory",
+      "type": "page"
+    },
+    {
+      "id": "page:Account",
+      "type": "page"
+    },
+    {
+      "id": "page:Financial Assessment Details",
+      "type": "page"
+    },
+    {
+      "id": "page:State Details",
+      "type": "page"
+    },
+    {
+      "id": "page:Agreement",
+      "type": "page"
+    },
+    {
+      "id": "page:Attachment Details",
+      "type": "page"
+    },
+    {
+      "id": "page:Login",
+      "type": "page"
+    },
+    {
+      "id": "page:Account Agreement",
+      "type": "page"
+    },
+    {
+      "id": "page:Support Amount Types",
+      "type": "page"
+    },
+    {
+      "id": "page:Territory Assignments",
+      "type": "page"
+    },
+    {
+      "id": "page:Contact Details",
+      "type": "page"
+    },
+    {
+      "id": "page:Account Locations",
+      "type": "page"
+    },
+    {
+      "id": "page:Territory ACL",
+      "type": "page"
+    },
+    {
+      "id": "page:Build Options",
+      "type": "page"
+    },
+    {
+      "id": "page:Currencies",
+      "type": "page"
+    },
+    {
+      "id": "page:Currency Details",
+      "type": "page"
+    },
+    {
+      "id": "page:Link Details",
+      "type": "page"
+    },
+    {
+      "id": "page:Manage Users",
+      "type": "page"
+    },
+    {
+      "id": "page:Search Results",
+      "type": "page"
+    },
+    {
+      "id": "page:Support Amount Type",
+      "type": "page"
+    },
+    {
+      "id": "page:Support Amounts",
+      "type": "page"
+    },
+    {
+      "id": "page:User Access Control  ",
+      "type": "page"
+    },
+    {
+      "id": "page:Support Amount",
+      "type": "page"
+    },
+    {
+      "id": "page:Potential Revenue by &REP_TITLE.",
+      "type": "page"
+    },
+    {
+      "id": "page:Territory Countries",
+      "type": "page"
+    },
+    {
+      "id": "page:Territory States",
+      "type": "page"
+    },
+    {
+      "id": "page:Help",
+      "type": "page"
+    },
+    {
+      "id": "page:Opportunities with No Assigned Products",
+      "type": "page"
+    },
+    {
+      "id": "page:Opportunities Past Due",
+      "type": "page"
+    },
+    {
+      "id": "page:Accounts with No Territory",
+      "type": "page"
+    },
+    {
+      "id": "page:Lead",
+      "type": "page"
+    },
+    {
+      "id": "page:Opportunities by Competitor",
+      "type": "page"
+    },
+    {
+      "id": "page:Opportunities by Product",
+      "type": "page"
+    },
+    {
+      "id": "page:Data Load Source",
+      "type": "page"
+    },
+    {
+      "id": "page:Data / Table Mapping",
+      "type": "page"
+    },
+    {
+      "id": "page:Usage Metrics",
+      "type": "page"
+    },
+    {
+      "id": "page:Activity Calendar",
+      "type": "page"
+    },
+    {
+      "id": "page:Data Validation",
+      "type": "page"
+    },
+    {
+      "id": "page:Application Appearance",
+      "type": "page"
+    },
+    {
+      "id": "page:Manage Sample Data",
+      "type": "page"
+    },
+    {
+      "id": "page:Data Load Results",
+      "type": "page"
+    },
+    {
+      "id": "page:Lines of Business",
+      "type": "page"
+    },
+    {
+      "id": "page:Validation Details",
+      "type": "page"
+    },
+    {
+      "id": "page:Previous Validations",
+      "type": "page"
+    },
+    {
+      "id": "page:Preferences",
+      "type": "page"
+    },
+    {
+      "id": "page:Search Opportunities",
+      "type": "page"
+    },
+    {
+      "id": "page:Line of Business",
+      "type": "page"
+    },
+    {
+      "id": "page:Access Control Configuration",
+      "type": "page"
+    },
+    {
+      "id": "page:Add Multiple Users",
+      "type": "page"
+    },
+    {
+      "id": "page:Application Error Log",
+      "type": "page"
+    },
+    {
+      "id": "page:Getting Started",
+      "type": "page"
+    },
+    {
+      "id": "page:Page Help Dialog",
+      "type": "page"
+    }
+  ],
+  "edges": [
+    {
+      "from": "page:Account Details",
+      "to": "table:EBA_SALES_CUSTOMERS",
+      "type": "ACCESSES",
+      "via": "Fetch Row from eba_sales_CUSTOMERS"
+    },
+    {
+      "from": "page:Product Details",
+      "to": "table:EBA_SALES_PRODUCTS",
+      "type": "ACCESSES",
+      "via": "Fetch Row from eba_sales_PRODUCTS"
+    },
+    {
+      "from": "page:&REP_TITLE. Details",
+      "to": "table:EBA_SALES_SALESREPS",
+      "type": "ACCESSES",
+      "via": "Fetch Row from eba_sales_SALESREPS"
+    },
+    {
+      "from": "page:Territory Details",
+      "to": "table:EBA_SALES_TERRITORIES",
+      "type": "ACCESSES",
+      "via": "Fetch Row from eba_sales_TERRITORIES"
+    },
+    {
+      "from": "page:Opportunity Stage Details",
+      "to": "table:EBA_SALES_DEAL_STATUS_CODES",
+      "type": "ACCESSES",
+      "via": "Fetch Row from EBA_SALES_DEAL_STATUS_CODES"
+    },
+    {
+      "from": "page:Fiscal Quarter Details",
+      "to": "table:EBA_SALES_SALES_PERIODS",
+      "type": "ACCESSES",
+      "via": "Fetch Row from eba_sales_SALES_PERIODS"
+    },
+    {
+      "from": "page:Revenue by Quarter",
+      "to": "table:EBA_SALES_SALES_PERIODS",
+      "type": "ACCESSES",
+      "via": "Set Initial Begin and End"
+    },
+    {
+      "from": "page:Username Format",
+      "to": "package:EBA_SALES_ACL_API (PACKAGE BODY)",
+      "type": "CALLS",
+      "via": "Set Username Format Preference"
+    },
+    {
+      "from": "page:Username Format",
+      "to": "package:EBA_SALES_ACL_API (PACKAGE)",
+      "type": "CALLS",
+      "via": "Set Username Format Preference"
+    },
+    {
+      "from": "page:Opportunity Details",
+      "to": "table:EBA_SALES_DEALS",
+      "type": "ACCESSES",
+      "via": "Fetch Row from EBA_SALES_DEALS"
+    },
+    {
+      "from": "page:Country Details",
+      "to": "table:EBA_SALES_COUNTRIES",
+      "type": "ACCESSES",
+      "via": "Fetch Row from eba_sales_COUNTRIES"
+    },
+    {
+      "from": "page:Comment Details",
+      "to": "table:EBA_SALES_COMMENTS",
+      "type": "ACCESSES",
+      "via": "Fetch Row from EBA_SALES_COMMENTS"
+    },
+    {
+      "from": "page:Contact",
+      "to": "table:EBA_SALES_CLICKS",
+      "type": "ACCESSES",
+      "via": "Init page"
+    },
+    {
+      "from": "page:Team Role Details",
+      "to": "table:EBA_SALES_SALESREP_ROLES",
+      "type": "ACCESSES",
+      "via": "Fetch Row from eba_sales_SALESREP_ROLES"
+    },
+    {
+      "from": "page:Competition Details",
+      "to": "table:EBA_SALES_DEAL_COMPETITION",
+      "type": "ACCESSES",
+      "via": "Fetch Row from EBA_SALES_DEAL_COMPETITION"
+    },
+    {
+      "from": "page:Lead Details",
+      "to": "table:EBA_SALES_LEADS",
+      "type": "ACCESSES",
+      "via": "Fetch Row from EBA_SALES_LEADS"
+    },
+    {
+      "from": "page:Team Member Details",
+      "to": "table:EBA_SALES_DEAL_TEAM",
+      "type": "ACCESSES",
+      "via": "Fetch Row from EBA_SALES_DEAL_TEAM"
+    },
+    {
+      "from": "page:Location Details",
+      "to": "table:EBA_SALES_CUSTOMER_LOCATIONS",
+      "type": "ACCESSES",
+      "via": "Fetch Row from eba_sales_CUSTOMER_LOCATIONS"
+    },
+    {
+      "from": "page:Administration",
+      "to": "table:EBA_SALES_USERS",
+      "type": "ACCESSES",
+      "via": "ENABLE_ACCESS_CONTROL"
+    },
+    {
+      "from": "page:Administration",
+      "to": "package:EBA_SALES_ACL_API (PACKAGE BODY)",
+      "type": "CALLS",
+      "via": "ENABLE_ACCESS_CONTROL"
+    },
+    {
+      "from": "page:Administration",
+      "to": "package:EBA_SALES_ACL_API (PACKAGE)",
+      "type": "CALLS",
+      "via": "ENABLE_ACCESS_CONTROL"
+    },
+    {
+      "from": "page:Application Preferences",
+      "to": "package:EBA_SALES_FW (PACKAGE)",
+      "type": "CALLS",
+      "via": "Save Preference Values"
+    },
+    {
+      "from": "page:Lead Status Code Details",
+      "to": "table:EBA_SALES_LEAD_STATUS_CODES",
+      "type": "ACCESSES",
+      "via": "Fetch Row from EBA_SALES_LEAD_STATUS_CODES"
+    },
+    {
+      "from": "page:Time Zone Preference",
+      "to": "table:EBA_SALES_TZ_PREF",
+      "type": "ACCESSES",
+      "via": "set timezone"
+    },
+    {
+      "from": "page:Rename Application",
+      "to": "table:EBA_SALES_PREFERENCES",
+      "type": "ACCESSES",
+      "via": "Set Application Title"
+    },
+    {
+      "from": "page:Competitor Details",
+      "to": "table:EBA_SALES_COMPETITORS",
+      "type": "ACCESSES",
+      "via": "Fetch Row from EBA_SALES_COMPETITORS"
+    },
+    {
+      "from": "page:Risk Assessment Details",
+      "to": "table:EBA_SALES_RISK_ASSESSMENTS",
+      "type": "ACCESSES",
+      "via": "Fetch Row from EBA_SALES_RISK_ASSESSMENTS"
+    },
+    {
+      "from": "page:Status Assessment Details",
+      "to": "table:EBA_SALES_STATUS_ASSESSMENTS",
+      "type": "ACCESSES",
+      "via": "Fetch Row from EBA_SALES_STATUS_ASSESSMENTS"
+    },
+    {
+      "from": "page:Competitor Threat Details",
+      "to": "table:EBA_SALES_COMPETITOR_THREATS",
+      "type": "ACCESSES",
+      "via": "Fetch Row from EBA_SALES_COMPETITOR_THREATS"
+    },
+    {
+      "from": "page:Product",
+      "to": "table:EBA_SALES_CLICKS",
+      "type": "ACCESSES",
+      "via": "Init page"
+    },
+    {
+      "from": "page:Convert to Opportunity",
+      "to": "table:EBA_SALES_DEALS",
+      "type": "ACCESSES",
+      "via": "convert lead to opportunity"
+    },
+    {
+      "from": "page:Convert to Opportunity",
+      "to": "table:EBA_SALES_LEADS",
+      "type": "ACCESSES",
+      "via": "convert lead to opportunity"
+    },
+    {
+      "from": "page:Industry Details",
+      "to": "table:EBA_SALES_INDUSTRIES",
+      "type": "ACCESSES",
+      "via": "Fetch Row from EBA_SALES_INDUSTRIES"
+    },
+    {
+      "from": "page:SVP Details",
+      "to": "table:EBA_SALES_SVPS",
+      "type": "ACCESSES",
+      "via": "Fetch Row from EBA_SALES_SVPS"
+    },
+    {
+      "from": "page:Lead Source Details",
+      "to": "table:EBA_SALES_LEAD_SOURCES",
+      "type": "ACCESSES",
+      "via": "Fetch Row from EBA_SALES_LEAD_SOURCES"
+    },
+    {
+      "from": "page:Create Opportunity",
+      "to": "table:EBA_SALES_CUSTOMERS",
+      "type": "ACCESSES",
+      "via": "create opportunity"
+    },
+    {
+      "from": "page:Create Opportunity",
+      "to": "table:EBA_SALES_DEALS",
+      "type": "ACCESSES",
+      "via": "create opportunity"
+    },
+    {
+      "from": "page:Create Opportunity",
+      "to": "table:EBA_SALES_DEAL_COMPETITION",
+      "type": "ACCESSES",
+      "via": "create opportunity"
+    },
+    {
+      "from": "page:Create Opportunity",
+      "to": "table:EBA_SALES_DEAL_PRODUCTS",
+      "type": "ACCESSES",
+      "via": "create opportunity"
+    },
+    {
+      "from": "page:Create Opportunity",
+      "to": "table:EBA_SALES_DEAL_TEAM",
+      "type": "ACCESSES",
+      "via": "create opportunity"
+    },
+    {
+      "from": "page:Notification Details",
+      "to": "table:EBA_SALES_NOTIFICATIONS",
+      "type": "ACCESSES",
+      "via": "Fetch Row from EBA_SALES_NOTIFICATIONS"
+    },
+    {
+      "from": "page:Close Opportunity",
+      "to": "table:EBA_SALES_DEALS",
+      "type": "ACCESSES",
+      "via": "close as lost"
+    },
+    {
+      "from": "page:Close Opportunity",
+      "to": "table:EBA_SALES_DEAL_STATUS_CODES",
+      "type": "ACCESSES",
+      "via": "close as lost"
+    },
+    {
+      "from": "page:Opportunity",
+      "to": "table:EBA_SALES_CLICKS",
+      "type": "ACCESSES",
+      "via": "Init page"
+    },
+    {
+      "from": "page:Closed Opportunity Details",
+      "to": "table:EBA_SALES_DEALS",
+      "type": "ACCESSES",
+      "via": "Fetch Row from EBA_SALES_DEALS"
+    },
+    {
+      "from": "page:Territory",
+      "to": "table:EBA_SALES_CLICKS",
+      "type": "ACCESSES",
+      "via": "Init Page"
+    },
+    {
+      "from": "page:Account",
+      "to": "table:EBA_SALES_CLICKS",
+      "type": "ACCESSES",
+      "via": "Init page"
+    },
+    {
+      "from": "page:Financial Assessment Details",
+      "to": "table:EBA_SALES_FIN_ASSESSMENTS",
+      "type": "ACCESSES",
+      "via": "Fetch Row from EBA_SALES_FIN_ASSESSMENTS"
+    },
+    {
+      "from": "page:State Details",
+      "to": "table:EBA_SALES_STATES",
+      "type": "ACCESSES",
+      "via": "Fetch Row from EBA_SALES_STATES"
+    },
+    {
+      "from": "page:Attachment Details",
+      "to": "table:EBA_SALES_FILES",
+      "type": "ACCESSES",
+      "via": "Fetch Row from EBA_SALES_FILES"
+    },
+    {
+      "from": "page:Contact Details",
+      "to": "table:EBA_SALES_CUSTOMER_CONTACTS",
+      "type": "ACCESSES",
+      "via": "Fetch Row from eba_sales_CUSTOMER_CONTACTS"
+    },
+    {
+      "from": "page:Product Details",
+      "to": "table:EBA_SALES_DEAL_PRODUCTS",
+      "type": "ACCESSES",
+      "via": "Automatic Row Processing of EBA_SALES_DEAL_PRODUCTS"
+    },
+    {
+      "from": "page:Territory ACL",
+      "to": "table:EBA_SALES_TERRITORY_ACL",
+      "type": "ACCESSES",
+      "via": "Fetch Row from EBA_SALES_TERRITORY_ACL"
+    },
+    {
+      "from": "page:Currency Details",
+      "to": "table:EBA_SALES_CURRENCIES",
+      "type": "ACCESSES",
+      "via": "Fetch Row from EBA_SALES_CURRENCIES"
+    },
+    {
+      "from": "page:Link Details",
+      "to": "table:EBA_SALES_LINKS",
+      "type": "ACCESSES",
+      "via": "Fetch Row from EBA_SALES_LINKS"
+    },
+    {
+      "from": "page:User Access Control  ",
+      "to": "table:EBA_SALES_USERS",
+      "type": "ACCESSES",
+      "via": "Fetch Row from EBA_SALES_USERS"
+    },
+    {
+      "from": "page:Country Details",
+      "to": "table:EBA_SALES_TERR_MAP",
+      "type": "ACCESSES",
+      "via": "add country"
+    },
+    {
+      "from": "page:State Details",
+      "to": "table:EBA_SALES_TERR_MAP",
+      "type": "ACCESSES",
+      "via": "Add state"
+    },
+    {
+      "from": "page:Lead",
+      "to": "table:EBA_SALES_CLICKS",
+      "type": "ACCESSES",
+      "via": "Init page"
+    },
+    {
+      "from": "page:Manage Sample Data",
+      "to": "package:EBA_SALES_DATA (PACKAGE)",
+      "type": "CALLS",
+      "via": "reset data"
+    },
+    {
+      "from": "page:Competition Details",
+      "to": "table:EBA_SALES_ACT_COMPETITION",
+      "type": "ACCESSES",
+      "via": "Fetch Row from EBA_SALES_ACT_COMPETITION"
+    },
+    {
+      "from": "page:Validation Details",
+      "to": "table:EBA_SALES_VERIFICATIONS",
+      "type": "ACCESSES",
+      "via": "Create validation"
+    },
+    {
+      "from": "page:Access Control Configuration",
+      "to": "table:EBA_SALES_USERS",
+      "type": "ACCESSES",
+      "via": "ACCESS CONTROL ENABLED"
+    },
+    {
+      "from": "page:Access Control Configuration",
+      "to": "package:EBA_SALES_ACL_API (PACKAGE BODY)",
+      "type": "CALLS",
+      "via": "ACCESS CONTROL ENABLED"
+    },
+    {
+      "from": "page:Access Control Configuration",
+      "to": "package:EBA_SALES_ACL_API (PACKAGE)",
+      "type": "CALLS",
+      "via": "ACCESS CONTROL ENABLED"
+    },
+    {
+      "from": "page:Add Multiple Users",
+      "to": "table:EBA_SALES_USERS",
+      "type": "ACCESSES",
+      "via": "Create Collections"
+    },
+    {
+      "from": "page:Add Multiple Users",
+      "to": "package:EBA_SALES_ACL_API (PACKAGE BODY)",
+      "type": "CALLS",
+      "via": "Create Collections"
+    },
+    {
+      "from": "page:Add Multiple Users",
+      "to": "package:EBA_SALES_ACL_API (PACKAGE)",
+      "type": "CALLS",
+      "via": "Create Collections"
+    },
+    {
+      "from": "page:Getting Started",
+      "to": "package:EBA_SALES_FW (PACKAGE)",
+      "type": "CALLS",
+      "via": "Set Username Format based on current user's username"
+    },
+    {
+      "from": "page:Getting Started",
+      "to": "table:EBA_SALES_USERS",
+      "type": "ACCESSES",
+      "via": "Process Page Data"
+    },
+    {
+      "from": "page:Getting Started",
+      "to": "package:EBA_SALES_DATA (PACKAGE)",
+      "type": "CALLS",
+      "via": "Process Page Data"
+    },
+    {
+      "from": "page:New User Details",
+      "to": "table:EBA_SALES_USERS",
+      "type": "ACCESSES",
+      "via": "cannot update yourself"
+    },
+    {
+      "from": "page:Lead Source Details",
+      "to": "table:EBA_SALES_LEADS",
+      "type": "ACCESSES",
+      "via": "Lead Source not used"
+    }
+  ],
+  "summary": {
+    "pages": 138,
+    "tables": 47,
+    "packages": 4,
+    "access_edges": 61,
+    "call_edges": 12
+  }
+}

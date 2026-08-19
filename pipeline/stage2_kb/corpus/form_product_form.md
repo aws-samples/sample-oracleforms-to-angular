@@ -1,0 +1,141 @@
+# Form: product_form
+
+Source: `product_form.fmb` (Oracle Forms, object store `ROS.60050`). This form bundles UI, business logic (triggers), and data access.
+
+- Blocks: BLOCK7, INTRNL, PRODUCTS
+- Tables accessed: CATEGORIES
+- Navigates to: CATEGORIES_FORM
+- Triggers with logic: 18
+
+## Triggers and PL/SQL logic
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-NEW-FORM-INSTANCE on Form
+_builtins=['EXECUTE_QUERY']_
+```plsql
+BEGIN
+EXECUTE_QUERY;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on PRODUCTS.DELETE_BTN
+_builtins=['COMMIT_FORM']_
+```plsql
+BEGIN
+DELETE_RECORD;
+COMMIT_FORM;
+END;
+```
+
+### WHEN-NEW-FORM-INSTANCE on Form
+_builtins=['EXECUTE_QUERY']_
+```plsql
+BEGIN
+EXECUTE_QUERY;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+FIRST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+FIRST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on BLOCK7.ITEM12
+_builtins=['CALL_FORM']_
+```plsql
+BEGIN
+/CALL_FORM('D:\dp_project\categories_form.fmx');
+END;
+```

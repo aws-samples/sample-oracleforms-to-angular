@@ -1,0 +1,7 @@
+# Shared runtime deps for the pipeline Lambdas.
+# boto3 is present in the Lambda base image but pinned here for local parity.
+boto3>=1.34.0
+# Thin-mode Oracle client — no Instant Client needed. Pinned to the 2.x line:
+# an unbounded >=2.2.0 pulled a 3.x on rebuild whose thin-mode host resolution
+# raises OSError [Errno 16] Device or resource busy inside the Lambda sandbox.
+oracledb>=2.2.0,<3.0.0

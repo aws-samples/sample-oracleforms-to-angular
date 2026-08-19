@@ -1,0 +1,137 @@
+# Form: employees_form
+
+Source: `employees_form.fmb` (Oracle Forms, object store `ROS.60050`). This form bundles UI, business logic (triggers), and data access.
+
+- Blocks: INTRNL
+- Tables accessed: n/a
+- Navigates to: n/a
+- Triggers with logic: 18
+
+## Triggers and PL/SQL logic
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-NEW-FORM-INSTANCE on Form
+_builtins=['EXECUTE_QUERY']_
+```plsql
+BEGIN
+EXECUTE_QUERY;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+FIRST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```

@@ -1,0 +1,256 @@
+{
+  "nodes": [
+    {
+      "id": "table:CATEGORIES",
+      "type": "table",
+      "columns": [
+        "CATEGORY_ID",
+        "CATEGORY_NAME",
+        "DESCRIPTIONS"
+      ]
+    },
+    {
+      "id": "table:CUSTOMERS",
+      "type": "table",
+      "columns": [
+        "CUSTOMER_ID",
+        "NAME",
+        "PHONE",
+        "REGISTER_DATA"
+      ]
+    },
+    {
+      "id": "table:EMPLOYEES",
+      "type": "table",
+      "columns": [
+        "EMPLOYEE_ID",
+        "NAME",
+        "PHONE",
+        "ROLE",
+        "SALARY"
+      ]
+    },
+    {
+      "id": "table:PRODUCTS",
+      "type": "table",
+      "columns": [
+        "PRODUCT_ID",
+        "NAME",
+        "PRICE",
+        "CATEGORY_ID_FK",
+        "COST",
+        "AVAILABLE"
+      ]
+    },
+    {
+      "id": "table:ORDERS",
+      "type": "table",
+      "columns": [
+        "ORDER_ID",
+        "ORDER_DATA",
+        "CUSTOMER_ID",
+        "EMPLOYEE_ID",
+        "TOTAL_AMOUNT",
+        "TABLE_NUMBER",
+        "ORDER_TYPE",
+        "DISCOUNT",
+        "FINAL_AMOUNT",
+        "STATUES"
+      ]
+    },
+    {
+      "id": "table:ORDER_ITEMS",
+      "type": "table",
+      "columns": [
+        "ITEM_ID",
+        "ORDER_ID_FK",
+        "PRODUCT_ID_FK",
+        "QUANTITY",
+        "UNIT_PRICE",
+        "TOTAL_PRICE"
+      ]
+    },
+    {
+      "id": "table:PAYMENTS",
+      "type": "table",
+      "columns": [
+        "PAYMENT_ID",
+        "ORDER_ID_FK",
+        "PAYMENT_METHOD",
+        "AMOUNT_PAYED",
+        "PAYMENT_DATE"
+      ]
+    },
+    {
+      "id": "form:MAIN_MENU",
+      "type": "form",
+      "triggers": 6,
+      "blocks": [
+        "BLOCK7"
+      ]
+    },
+    {
+      "id": "form:ORDERS",
+      "type": "form",
+      "triggers": 17,
+      "blocks": [
+        "BLOCK7",
+        "INTRNL",
+        "ORDERS",
+        "ORDER_ITEMS"
+      ]
+    },
+    {
+      "id": "sequence:ORDER_SEQ",
+      "type": "sequence"
+    },
+    {
+      "id": "form:CATEGORIES_FORM",
+      "type": "form",
+      "triggers": 29,
+      "blocks": [
+        "CATEGORIES",
+        "INTRNL"
+      ]
+    },
+    {
+      "id": "form:CUSTOMERS_FORM",
+      "type": "form",
+      "triggers": 24,
+      "blocks": [
+        "INTRNL"
+      ]
+    },
+    {
+      "id": "form:EMPLOYEES_FORM",
+      "type": "form",
+      "triggers": 18,
+      "blocks": [
+        "INTRNL"
+      ]
+    },
+    {
+      "id": "form:PRODUCT_FORM",
+      "type": "form",
+      "triggers": 18,
+      "blocks": [
+        "BLOCK7",
+        "INTRNL",
+        "PRODUCTS"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "table:PRODUCTS",
+      "to": "table:CATEGORIES",
+      "type": "FK",
+      "via": "CATEGORY_ID_FK"
+    },
+    {
+      "from": "table:ORDERS",
+      "to": "table:CUSTOMERS",
+      "type": "FK",
+      "via": "CUSTOMER_ID"
+    },
+    {
+      "from": "table:ORDERS",
+      "to": "table:EMPLOYEES",
+      "type": "FK",
+      "via": "EMPLOYEE_ID"
+    },
+    {
+      "from": "table:ORDER_ITEMS",
+      "to": "table:ORDERS",
+      "type": "FK",
+      "via": "ORDER_ID_FK"
+    },
+    {
+      "from": "table:ORDER_ITEMS",
+      "to": "table:PRODUCTS",
+      "type": "FK",
+      "via": "PRODUCT_ID_FK"
+    },
+    {
+      "from": "table:PAYMENTS",
+      "to": "table:ORDERS",
+      "type": "FK",
+      "via": "ORDER_ID_FK"
+    },
+    {
+      "from": "form:MAIN_MENU",
+      "to": "form:CATEGORIES_FORM",
+      "type": "NAVIGATES"
+    },
+    {
+      "from": "form:MAIN_MENU",
+      "to": "form:CUSTOMERS_FORM",
+      "type": "NAVIGATES"
+    },
+    {
+      "from": "form:MAIN_MENU",
+      "to": "form:EMPLOYEES_FORM",
+      "type": "NAVIGATES"
+    },
+    {
+      "from": "form:MAIN_MENU",
+      "to": "form:ORDERS",
+      "type": "NAVIGATES"
+    },
+    {
+      "from": "form:MAIN_MENU",
+      "to": "form:PRODUCT_FORM",
+      "type": "NAVIGATES"
+    },
+    {
+      "from": "form:ORDERS",
+      "to": "form:CATEGORIES_FORM",
+      "type": "NAVIGATES"
+    },
+    {
+      "from": "form:ORDERS",
+      "to": "form:CUSTOMERS_FORM",
+      "type": "NAVIGATES"
+    },
+    {
+      "from": "form:ORDERS",
+      "to": "table:ORDER_ITEMS",
+      "type": "ACCESSES"
+    },
+    {
+      "from": "form:ORDERS",
+      "to": "table:PRODUCTS",
+      "type": "ACCESSES"
+    },
+    {
+      "from": "form:ORDERS",
+      "to": "sequence:ORDER_SEQ",
+      "type": "USES_SEQUENCE",
+      "trigger": "PRE-FORM"
+    },
+    {
+      "from": "form:ORDERS",
+      "to": "sequence:ORDER_SEQ",
+      "type": "USES_SEQUENCE",
+      "trigger": "PRE-INSERT"
+    },
+    {
+      "from": "form:PRODUCT_FORM",
+      "to": "form:CATEGORIES_FORM",
+      "type": "NAVIGATES"
+    },
+    {
+      "from": "form:PRODUCT_FORM",
+      "to": "table:CATEGORIES",
+      "type": "ACCESSES"
+    }
+  ],
+  "summary": {
+    "forms": 6,
+    "tables": 7,
+    "sequences": 1,
+    "fk_edges": 6,
+    "navigation_edges": 8,
+    "access_edges": 3
+  }
+}

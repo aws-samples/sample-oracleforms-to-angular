@@ -1,0 +1,99 @@
+Knowledge Base  (KB <YOUR_KB_ID>)  —  demo questions
+
+==============================================================================
+Q: Which forms open or navigate to the ORDERS form?
+------------------------------------------------------------------------------
+The MAIN_MENU form opens or navigates to the ORDERS form.
+
+Sources:
+  - dependency_map.md
+  - form_MAIN_MENU.md
+
+==============================================================================
+Q: What business rule governs the order line total price, and what is the exact formula?
+------------------------------------------------------------------------------
+The business rule that governs the order line total price is a computation of a derived/total field from other item values. The exact formula is:
+
+TOTAL_PRICE = QUANTITY × UNIT_PRICE
+
+This calculation uses the NVL function to treat null values as zero, ensuring that the multiplication always produces a numeric result even when either quantity or unit price is null.
+
+Sources:
+  - business_rules.md
+
+==============================================================================
+Q: What happens if someone tries to delete an order that still has order items?
+------------------------------------------------------------------------------
+If someone tries to delete an order that still has order items, the system
+will prevent the deletion. A validation check is triggered that queries for
+any matching detail records (order items) associated with that order. If any
+order items are found, the system displays an error message stating "Cannot
+delete master record when matching detail records exist." and raises a form
+trigger failure to block the deletion operation. This ensures referential
+integrity by preventing orphaned order items from being created.
+
+Sources:
+  - business_rules.md
+  - form_ORDERS.md
+
+==============================================================================
+Q: How is the primary key for a new order assigned?
+------------------------------------------------------------------------------
+The primary key for a new order is assigned automatically from a database
+sequence named ORDER_SEQ. Before inserting a new order record, the system
+retrieves the next value from this sequence and assigns it to the ORDER_ID
+field. This happens in the PRE-INSERT trigger, ensuring each new order
+receives a unique sequential identifier.
+
+Sources:
+  - business_rules.md
+
+==============================================================================
+Q: Which tables does the ORDERS form read or write, and how do they relate by foreign key?
+------------------------------------------------------------------------------
+The ORDERS form reads or writes two tables: ORDER_ITEMS and PRODUCTS.
+
+Regarding foreign key relationships involving these tables:
+
+ORDER_ITEMS has two foreign keys:
+- ORDER_ID_FK references the ORDERS table
+- PRODUCT_ID_FK references the PRODUCTS table
+
+PRODUCTS has one foreign key:
+- CATEGORY_ID_FK references the CATEGORIES table
+
+Additionally, the ORDERS table itself has foreign keys to:
+- CUSTOMERS table (through Customer_ID)
+- EMPLOYEES table (through Employee_ID)
+
+The PAYMENTS table also references ORDERS through its ORDER_ID_FK foreign key.
+
+Sources:
+  - dependency_map.md
+  - data_schema.md
+  - form_ORDERS.md
+
+==============================================================================
+Q: I'm new to this system — give me an onboarding overview of what each form does.
+------------------------------------------------------------------------------
+The system contains six forms with different purposes:
+
+**MAIN_MENU** - This is the central navigation hub that allows you to access all other forms in the system. It has buttons to open categories, employees, products, and orders forms, plus an exit option.
+
+**CATEGORIES_FORM** - Manages product categories. This form is accessed from the main menu and can also be opened from the orders and product forms.
+
+**CUSTOMERS_FORM** - Handles customer information management. It can be accessed from both the main menu and the orders form.
+
+**EMPLOYEES_FORM** - Manages employee records. This form is launched from the main menu.
+
+**PRODUCT_FORM** - Manages product information and has functionality to delete products. It accesses the categories table to link products with their categories, and provides navigation to the categories form.
+
+**ORDERS** - The most complex form that manages order processing. It handles both order headers and order line items (order details), accesses product information, and can navigate to both categories and customers forms. It uses a sequence (ORDER_SEQ) to generate order numbers automatically.
+
+Sources:
+  - dependency_map.md
+  - form_employees_form.md
+  - form_ORDERS.md
+  - form_product_form.md
+  - form_customers_form.md
+  - form_MAIN_MENU.md

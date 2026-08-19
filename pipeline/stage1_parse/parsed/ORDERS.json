@@ -1,0 +1,244 @@
+{
+  "module": "ORDERS",
+  "magic": "ROS.60050",
+  "triggers": [
+    {
+      "name": "ON-POPULATE-DETAILS",
+      "scope": "ORDERS",
+      "plsql": "Begin ORDER_ITEMS detail program section\nIF ( (:ORDERS.ORDER_ID is not null) ) THEN\nrel_id := Find_Relation('ORDERS.ORDERS_ORDER_ITEMS');\nQuery_Master_Details(rel_id, 'ORDER_ITEMS');\nEND IF;\nIF ( :System.cursor_item <> startitm ) THEN\nGo_Item(startitm);\nCheck_Package_Failure;\nEND IF;\nEND;",
+      "tables": [],
+      "items": [
+        "ORDERS.ORDER_ID"
+      ],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": [
+        "CHECK_PACKAGE_FAILURE",
+        "GO_ITEM"
+      ]
+    },
+    {
+      "name": "ON-CHECK-DELETE-MASTER",
+      "scope": "ORDERS",
+      "plsql": "Begin ORDER_ITEMS detail program section\nOPEN ORDER_ITEMS_cur;\nFETCH ORDER_ITEMS_cur INTO Dummy_Define;\nIF ( ORDER_ITEMS_cur%found ) THEN\nMessage('Cannot delete master record when matching detail records exist.');\nCLOSE ORDER_ITEMS_cur;\nRAISE Form_Trigger_Failure;\nEND IF;\nCLOSE ORDER_ITEMS_cur;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": [
+        "FORM_TRIGGER_FAILURE",
+        "MESSAGE",
+        "RAISE"
+      ]
+    },
+    {
+      "name": "PRE-FORM",
+      "scope": "Form",
+      "plsql": "BEGIN\nSELECT order_seq.NEXTVAL INTO :ORDERS.ORDER_ID FROM DUAL;\nEND;",
+      "tables": [
+        "DUAL"
+      ],
+      "items": [
+        "ORDERS.ORDER_ID"
+      ],
+      "sequences": [
+        "ORDER_SEQ"
+      ],
+      "calls_form": [],
+      "builtins": []
+    },
+    {
+      "name": "ON-CLEAR-DETAILS",
+      "scope": "Form",
+      "plsql": "BEGIN\nClear_All_Master_Details;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": []
+    },
+    {
+      "name": "PRE-INSERT",
+      "scope": "ORDERS",
+      "plsql": "BEGIN\nSELECT order_seq.NEXTVAL\nINTO   :ORDERS.ORDER_ID\nFROM   DUAL;\nEND;",
+      "tables": [
+        "DUAL"
+      ],
+      "items": [
+        "ORDERS.ORDER_ID"
+      ],
+      "sequences": [
+        "ORDER_SEQ"
+      ],
+      "calls_form": [],
+      "builtins": []
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "INTRNL.INTRNL",
+      "plsql": "BEGIN\nNEXT_RECORD;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": [
+        "NEXT_RECORD"
+      ]
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "INTRNL.INTRNL",
+      "plsql": "BEGIN\nPREVIOUS_RECORD;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": [
+        "PREVIOUS_RECORD"
+      ]
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "INTRNL.INTRNL",
+      "plsql": "BEGIN\nCREATE_RECORD;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": []
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "INTRNL.INTRNL",
+      "plsql": "BEGIN\nPREVIOUS_RECORD;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": [
+        "PREVIOUS_RECORD"
+      ]
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "INTRNL.INTRNL",
+      "plsql": "BEGIN\nDELETE_RECORD;\nCOMMIT_FORM;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": [
+        "COMMIT_FORM"
+      ]
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "INTRNL.INTRNL",
+      "plsql": "BEGIN\nPREVIOUS_RECORD;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": [
+        "PREVIOUS_RECORD"
+      ]
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "INTRNL.INTRNL",
+      "plsql": "BEGIN\nCOMMIT_FORM;\nIF FORM_SUCCESS THEN\nMESSAGE('\n!');\nMESSAGE(' '); --\nELSE\nMESSAGE('\n');\nEND IF;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": [
+        "COMMIT_FORM",
+        "FORM_SUCCESS",
+        "MESSAGE"
+      ]
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "INTRNL.INTRNL",
+      "plsql": "BEGIN\nEXIT_FORM(NO_VALIDATE);\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": []
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "INTRNL.INTRNL",
+      "plsql": "BEGIN\nFIRST_RECORD;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": []
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "INTRNL.INTRNL",
+      "plsql": "BEGIN\nLAST_RECORD;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": []
+    },
+    {
+      "name": "WHEN-VALIDATE-ITEM",
+      "scope": "ORDER_ITEMS.QUANTITY",
+      "plsql": "BEGIN\n:ORDER_ITEMS.TOTAL_PRICE := nvl(:ORDER_ITEMS.QUANTITY, 0) * nvl(:ORDER_ITEMS.UNIT_PRICE, 0);\nEND;",
+      "tables": [],
+      "items": [
+        "ORDER_ITEMS.QUANTITY",
+        "ORDER_ITEMS.TOTAL_PRICE",
+        "ORDER_ITEMS.UNIT_PRICE"
+      ],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": []
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "BLOCK7.ITEM12",
+      "plsql": "BEGIN\n/CALL_FORM('D:\\dp_project\\categories_form.fmx');\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [
+        "CATEGORIES_FORM.FMX"
+      ],
+      "builtins": [
+        "CALL_FORM"
+      ]
+    }
+  ],
+  "blocks": [
+    "BLOCK7",
+    "INTRNL",
+    "ORDERS",
+    "ORDER_ITEMS"
+  ],
+  "tables": [
+    "ORDER_ITEMS",
+    "PRODUCTS"
+  ],
+  "lovs": 0,
+  "relations": 35,
+  "navigation": [
+    "CATEGORIES_FORM",
+    "CUSTOMERS_FORM"
+  ],
+  "stats": {
+    "triggers_with_logic": 17,
+    "trigger_markers_total": 17,
+    "blocks": 4,
+    "tables_referenced": 2,
+    "navigation_edges": 2,
+    "lov_markers": 0,
+    "file_bytes": 147456
+  }
+}

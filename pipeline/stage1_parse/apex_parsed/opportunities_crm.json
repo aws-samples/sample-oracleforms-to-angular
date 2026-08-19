@@ -1,0 +1,2829 @@
+{
+  "module": "opportunities_crm",
+  "kind": "apex",
+  "pages": [
+    {
+      "id": "1",
+      "name": "Opportunities",
+      "alias": "OPPORTUNITIES"
+    },
+    {
+      "id": "2",
+      "name": "Accounts",
+      "alias": "ACCOUNTS"
+    },
+    {
+      "id": "3",
+      "name": "Account Details",
+      "alias": "ACCOUNT-DETAILS"
+    },
+    {
+      "id": "4",
+      "name": "Products",
+      "alias": "PRODUCTS3"
+    },
+    {
+      "id": "5",
+      "name": "Product Details",
+      "alias": "PRODUCT-DETAILS2"
+    },
+    {
+      "id": "6",
+      "name": "&REP_TITLE.s",
+      "alias": "SALES-REPS"
+    },
+    {
+      "id": "7",
+      "name": "&REP_TITLE. Details",
+      "alias": "SALES-REP-DETAILS"
+    },
+    {
+      "id": "8",
+      "name": "Territories",
+      "alias": "TERRITORIES2"
+    },
+    {
+      "id": "9",
+      "name": "Territory Details",
+      "alias": "TERRITORY-DETAILS"
+    },
+    {
+      "id": "10",
+      "name": "Opportunity Stages",
+      "alias": "OPPORTUNITY-STAGES"
+    },
+    {
+      "id": "11",
+      "name": "Opportunity Stage Details",
+      "alias": "OPPORTUNITY-STAGE-DETAILS"
+    },
+    {
+      "id": "12",
+      "name": "Fiscal Quarters",
+      "alias": "FISCAL-QUARTERS"
+    },
+    {
+      "id": "13",
+      "name": "Fiscal Quarter Details",
+      "alias": "FISCAL-QUARTER-DETAILS"
+    },
+    {
+      "id": "14",
+      "name": "Revenue by Quarter",
+      "alias": "REVENUE-BY-QUARTER"
+    },
+    {
+      "id": "15",
+      "name": "Username Format",
+      "alias": "USERNAME-FORMAT"
+    },
+    {
+      "id": "16",
+      "name": "Opportunity Details",
+      "alias": "OPPORTUNITY-DETAILS"
+    },
+    {
+      "id": "17",
+      "name": "Countries",
+      "alias": "COUNTRIES"
+    },
+    {
+      "id": "18",
+      "name": "Country Details",
+      "alias": "COUNTRY-DETAILS2"
+    },
+    {
+      "id": "19",
+      "name": "Leads",
+      "alias": "LEADS"
+    },
+    {
+      "id": "20",
+      "name": "Past Due Opportunities",
+      "alias": "PAST-DUE-OPPORTUNITIES"
+    },
+    {
+      "id": "21",
+      "name": "New User Details",
+      "alias": "NEW-USER-DETAILS"
+    },
+    {
+      "id": "22",
+      "name": "Comment Details",
+      "alias": "COMMENT-DETAILS"
+    },
+    {
+      "id": "23",
+      "name": "Contacts",
+      "alias": "CONTACTS2"
+    },
+    {
+      "id": "24",
+      "name": "Contact",
+      "alias": "CONTACT"
+    },
+    {
+      "id": "25",
+      "name": "Team Roles",
+      "alias": "TEAM-ROLES"
+    },
+    {
+      "id": "26",
+      "name": "Team Role Details",
+      "alias": "TEAM-ROLE-DETAILS"
+    },
+    {
+      "id": "27",
+      "name": "Competition Details",
+      "alias": "COMPETITION-DETAILS2"
+    },
+    {
+      "id": "28",
+      "name": "Product Families",
+      "alias": "PRODUCT-FAMILIES"
+    },
+    {
+      "id": "29",
+      "name": "Lead Details",
+      "alias": "LEAD-DETAILS"
+    },
+    {
+      "id": "30",
+      "name": "Team Member Details",
+      "alias": "TEAM-MEMBER-DETAILS"
+    },
+    {
+      "id": "31",
+      "name": "Opportunities by &REP_TITLE.",
+      "alias": "OPPORTUNITIES-BY-REP-TITLE"
+    },
+    {
+      "id": "32",
+      "name": "Location Details",
+      "alias": "LOCATION-DETAILS"
+    },
+    {
+      "id": "33",
+      "name": "Administration",
+      "alias": "SETTINGS"
+    },
+    {
+      "id": "34",
+      "name": "Product Family",
+      "alias": "PRODUCT-FAMILY"
+    },
+    {
+      "id": "35",
+      "name": "Application Preferences",
+      "alias": "APPLICATION-PREFERENCES"
+    },
+    {
+      "id": "36",
+      "name": "Contract Terms",
+      "alias": "CONTRACT-TERMS"
+    },
+    {
+      "id": "37",
+      "name": "Lead Status Codes",
+      "alias": "LEAD-STATUS-CODES"
+    },
+    {
+      "id": "38",
+      "name": "Lead Status Code Details",
+      "alias": "LEAD-STATUS-CODE-DETAILS"
+    },
+    {
+      "id": "39",
+      "name": "Reports",
+      "alias": "REPORTS"
+    },
+    {
+      "id": "40",
+      "name": "Deal Terms",
+      "alias": "DEAL-TERMS"
+    },
+    {
+      "id": "41",
+      "name": "Deal Term",
+      "alias": "DEAL-TERM"
+    },
+    {
+      "id": "42",
+      "name": "Opportunities by Territory",
+      "alias": "OPPORTUNITIES-BY-TERRITORY"
+    },
+    {
+      "id": "43",
+      "name": "Time Zone Preference",
+      "alias": "TIME-ZONE-PREFERENCE"
+    },
+    {
+      "id": "44",
+      "name": "Page Privileges",
+      "alias": "PAGE-PRIVILEGES"
+    },
+    {
+      "id": "45",
+      "name": "Rename Application",
+      "alias": "RENAME-APPLICATION"
+    },
+    {
+      "id": "46",
+      "name": "Revenue by &REP_TITLE.",
+      "alias": "REVENUE-BY-REP-TITLE"
+    },
+    {
+      "id": "47",
+      "name": "Projected Close Dates",
+      "alias": "PROJECTED-CLOSE-DATES"
+    },
+    {
+      "id": "48",
+      "name": "Tags",
+      "alias": "TAGS"
+    },
+    {
+      "id": "49",
+      "name": "Competitor Analysis",
+      "alias": "COMPETITOR-ANALYSIS"
+    },
+    {
+      "id": "50",
+      "name": "Territories",
+      "alias": "TERRITORIES"
+    },
+    {
+      "id": "51",
+      "name": "Competitors",
+      "alias": "COMPETITORS"
+    },
+    {
+      "id": "52",
+      "name": "Competitor Details",
+      "alias": "COMPETITOR-DETAILS"
+    },
+    {
+      "id": "53",
+      "name": "Risk Assessments",
+      "alias": "RISK-ASSESSMENTS"
+    },
+    {
+      "id": "54",
+      "name": "Risk Assessment Details",
+      "alias": "RISK-ASSESSMENT-DETAILS"
+    },
+    {
+      "id": "55",
+      "name": "Status Assessments",
+      "alias": "STATUS-ASSESSMENTS"
+    },
+    {
+      "id": "56",
+      "name": "Status Assessment Details",
+      "alias": "STATUS-ASSESSMENT-DETAILS"
+    },
+    {
+      "id": "57",
+      "name": "Financial Assessments",
+      "alias": "FINANCIAL-ASSESSMENTS"
+    },
+    {
+      "id": "58",
+      "name": "Agreement Types",
+      "alias": "AGREEMENT-TYPES"
+    },
+    {
+      "id": "59",
+      "name": "Competitor Threats",
+      "alias": "COMPETITOR-THREATS"
+    },
+    {
+      "id": "60",
+      "name": "Competitor Threat Details",
+      "alias": "COMPETITOR-THREAT-DETAILS"
+    },
+    {
+      "id": "61",
+      "name": "Product",
+      "alias": "PRODUCT"
+    },
+    {
+      "id": "62",
+      "name": "Pipeline",
+      "alias": "PIPELINE"
+    },
+    {
+      "id": "63",
+      "name": "Convert to Opportunity",
+      "alias": "CONVERT-TO-OPPORTUNITY"
+    },
+    {
+      "id": "64",
+      "name": "Industries",
+      "alias": "INDUSTRIES"
+    },
+    {
+      "id": "65",
+      "name": "Industry Details",
+      "alias": "INDUSTRY-DETAILS"
+    },
+    {
+      "id": "66",
+      "name": "SVPs",
+      "alias": "SVPS"
+    },
+    {
+      "id": "67",
+      "name": "SVP Details",
+      "alias": "SVP-DETAILS"
+    },
+    {
+      "id": "68",
+      "name": "Products",
+      "alias": "PRODUCTS"
+    },
+    {
+      "id": "69",
+      "name": "Lead Sources",
+      "alias": "LEAD-SOURCES"
+    },
+    {
+      "id": "70",
+      "name": "Lead Source Details",
+      "alias": "LEAD-SOURCE-DETAILS"
+    },
+    {
+      "id": "71",
+      "name": "Create Opportunity",
+      "alias": "CREATE-OPPORTUNITY"
+    },
+    {
+      "id": "75",
+      "name": "Agreement Type",
+      "alias": "AGREEMENT-TYPE"
+    },
+    {
+      "id": "76",
+      "name": "Contract Term",
+      "alias": "CONTRACT-TERM"
+    },
+    {
+      "id": "77",
+      "name": "Notifications",
+      "alias": "NOTIFICATIONS"
+    },
+    {
+      "id": "78",
+      "name": "Notification Details",
+      "alias": "NOTIFICATION-DETAILS"
+    },
+    {
+      "id": "79",
+      "name": "Close Opportunity",
+      "alias": "CLOSE-OPPORTUNITY"
+    },
+    {
+      "id": "80",
+      "name": "Opportunity",
+      "alias": "OPPORTUNITY"
+    },
+    {
+      "id": "81",
+      "name": "Closed Opportunities",
+      "alias": "CLOSED-OPPORTUNITIES"
+    },
+    {
+      "id": "82",
+      "name": "Closed Opportunity Details",
+      "alias": "CLOSED-OPPORTUNITY-DETAILS"
+    },
+    {
+      "id": "83",
+      "name": "States",
+      "alias": "STATES"
+    },
+    {
+      "id": "84",
+      "name": "Agreements",
+      "alias": "AGREEMENTS"
+    },
+    {
+      "id": "85",
+      "name": "Products",
+      "alias": "PRODUCTS2"
+    },
+    {
+      "id": "86",
+      "name": "Competition",
+      "alias": "COMPETITION"
+    },
+    {
+      "id": "87",
+      "name": "Team Members",
+      "alias": "TEAM-MEMBERS"
+    },
+    {
+      "id": "88",
+      "name": "Comments",
+      "alias": "COMMENTS"
+    },
+    {
+      "id": "89",
+      "name": "Links",
+      "alias": "LINKS"
+    },
+    {
+      "id": "90",
+      "name": "Page Views",
+      "alias": "PAGE-VIEWS"
+    },
+    {
+      "id": "91",
+      "name": "Top Users",
+      "alias": "TOP-USERS"
+    },
+    {
+      "id": "92",
+      "name": "Attachments",
+      "alias": "ATTACHMENTS"
+    },
+    {
+      "id": "93",
+      "name": "Territory",
+      "alias": "TERRITORY"
+    },
+    {
+      "id": "94",
+      "name": "Account",
+      "alias": "ACCOUNT"
+    },
+    {
+      "id": "95",
+      "name": "Financial Assessment Details",
+      "alias": "FINANCIAL-ASSESSMENT-DETAILS"
+    },
+    {
+      "id": "96",
+      "name": "State Details",
+      "alias": "STATE-DETAILS"
+    },
+    {
+      "id": "97",
+      "name": "Agreement",
+      "alias": "AGREEMENT"
+    },
+    {
+      "id": "98",
+      "name": "Competition",
+      "alias": "COMPETITION2"
+    },
+    {
+      "id": "99",
+      "name": "Attachment Details",
+      "alias": "ATTACHMENT-DETAILS"
+    },
+    {
+      "id": "100",
+      "name": "Opportunities",
+      "alias": "HOME"
+    },
+    {
+      "id": "101",
+      "name": "Login",
+      "alias": "LOGIN"
+    },
+    {
+      "id": "102",
+      "name": "Account Agreement",
+      "alias": "ACCOUNT-AGREEMENT"
+    },
+    {
+      "id": "103",
+      "name": "Support Amount Types",
+      "alias": "SUPPORT-AMOUNT-TYPES"
+    },
+    {
+      "id": "104",
+      "name": "Territory Assignments",
+      "alias": "TERRITORY-ASSIGNMENTS"
+    },
+    {
+      "id": "105",
+      "name": "Contacts",
+      "alias": "CONTACTS"
+    },
+    {
+      "id": "106",
+      "name": "Contact Details",
+      "alias": "CONTACT-DETAILS"
+    },
+    {
+      "id": "107",
+      "name": "Account Locations",
+      "alias": "ACCOUNT-LOCATIONS"
+    },
+    {
+      "id": "108",
+      "name": "Product Details",
+      "alias": "PRODUCT-DETAILS"
+    },
+    {
+      "id": "109",
+      "name": "Territory ACL",
+      "alias": "TERRITORY-ACL"
+    },
+    {
+      "id": "110",
+      "name": "Build Options",
+      "alias": "BUILD-OPTIONS"
+    },
+    {
+      "id": "111",
+      "name": "Currencies",
+      "alias": "CURRENCIES"
+    },
+    {
+      "id": "112",
+      "name": "Currency Details",
+      "alias": "CURRENCY-DETAILS"
+    },
+    {
+      "id": "114",
+      "name": "Link Details",
+      "alias": "LINK-DETAILS"
+    },
+    {
+      "id": "115",
+      "name": "Manage Users",
+      "alias": "MANAGE-USERS"
+    },
+    {
+      "id": "116",
+      "name": "Search Results",
+      "alias": "SEARCH-RESULTS"
+    },
+    {
+      "id": "117",
+      "name": "Support Amount Type",
+      "alias": "SUPPORT-AMOUNT-TYPE"
+    },
+    {
+      "id": "118",
+      "name": "Support Amounts",
+      "alias": "SUPPORT-AMOUNTS"
+    },
+    {
+      "id": "119",
+      "name": "User Access Control  ",
+      "alias": "USER-ACCESS-CONTROL"
+    },
+    {
+      "id": "120",
+      "name": "Support Amount",
+      "alias": "SUPPORT-AMOUNT"
+    },
+    {
+      "id": "121",
+      "name": "Potential Revenue by &REP_TITLE.",
+      "alias": "POTENTIAL-REVENUE-BY-REP-TITLE"
+    },
+    {
+      "id": "122",
+      "name": "Support Amount",
+      "alias": "SUPPORT-AMOUNT2"
+    },
+    {
+      "id": "123",
+      "name": "Territory Countries",
+      "alias": "TERRITORY-COUNTRIES"
+    },
+    {
+      "id": "124",
+      "name": "Country Details",
+      "alias": "COUNTRY-DETAILS"
+    },
+    {
+      "id": "125",
+      "name": "Territory States",
+      "alias": "TERRITORY-STATES"
+    },
+    {
+      "id": "126",
+      "name": "State Details",
+      "alias": "STATE-DETAILS2"
+    },
+    {
+      "id": "127",
+      "name": "Support Amounts",
+      "alias": "SUPPORT-AMOUNTS2"
+    },
+    {
+      "id": "128",
+      "name": "Help",
+      "alias": "HELP"
+    },
+    {
+      "id": "129",
+      "name": "Opportunities with No Assigned Products",
+      "alias": "OPPORTUNITIES-WITH-NO-ASSIGNED-PRODUCTS"
+    },
+    {
+      "id": "130",
+      "name": "Agreements",
+      "alias": "AGREEMENTS2"
+    },
+    {
+      "id": "131",
+      "name": "Opportunities Past Due",
+      "alias": "OPPORTUNITIES-PAST-DUE"
+    },
+    {
+      "id": "132",
+      "name": "Accounts with No Territory",
+      "alias": "ACCOUNTS-WITH-NO-TERRITORY"
+    },
+    {
+      "id": "133",
+      "name": "Lead",
+      "alias": "LEAD"
+    },
+    {
+      "id": "134",
+      "name": "Opportunities by Competitor",
+      "alias": "OPPORTUNITIES-BY-COMPETITOR"
+    },
+    {
+      "id": "135",
+      "name": "Opportunities by Product",
+      "alias": "OPPORTUNITIES-BY-PRODUCT"
+    },
+    {
+      "id": "136",
+      "name": "Data Load Source",
+      "alias": "DATA-LOAD-SOURCE"
+    },
+    {
+      "id": "137",
+      "name": "Data / Table Mapping",
+      "alias": "DATA-TABLE-MAPPING"
+    },
+    {
+      "id": "138",
+      "name": "Usage Metrics",
+      "alias": "USAGE-METRICS"
+    },
+    {
+      "id": "139",
+      "name": "Activity Calendar",
+      "alias": "ACTIVITY-CALENDAR"
+    },
+    {
+      "id": "140",
+      "name": "Data Validation",
+      "alias": "DATA-VALIDATION"
+    },
+    {
+      "id": "141",
+      "name": "Application Appearance",
+      "alias": "APPLICATION-APPEARANCE"
+    },
+    {
+      "id": "142",
+      "name": "Manage Sample Data",
+      "alias": "MANAGE-SAMPLE-DATA"
+    },
+    {
+      "id": "143",
+      "name": "Data Load Results",
+      "alias": "DATA-LOAD-RESULTS"
+    },
+    {
+      "id": "144",
+      "name": "Lines of Business",
+      "alias": "LINES-OF-BUSINESS"
+    },
+    {
+      "id": "145",
+      "name": "Competition Details",
+      "alias": "COMPETITION-DETAILS"
+    },
+    {
+      "id": "146",
+      "name": "Validation Details",
+      "alias": "VALIDATION-DETAILS"
+    },
+    {
+      "id": "147",
+      "name": "Previous Validations",
+      "alias": "PREVIOUS-VALIDATIONS"
+    },
+    {
+      "id": "148",
+      "name": "Preferences",
+      "alias": "PREFERENCES"
+    },
+    {
+      "id": "149",
+      "name": "Search Opportunities",
+      "alias": "SEARCH-OPPORTUNITY-TRACKER"
+    },
+    {
+      "id": "150",
+      "name": "Line of Business",
+      "alias": "LINE-OF-BUSINESS"
+    },
+    {
+      "id": "151",
+      "name": "Access Control Configuration",
+      "alias": "ACCESS-CONTROL-CONFIGURATION2"
+    },
+    {
+      "id": "153",
+      "name": "Add Multiple Users",
+      "alias": "ADD-MULTIPLE-USERS"
+    },
+    {
+      "id": "154",
+      "name": "Add Multiple Users",
+      "alias": "ADD-MULTIPLE-USERS2"
+    },
+    {
+      "id": "175",
+      "name": "Application Error Log",
+      "alias": "APPLICATION-ERROR-LOG"
+    },
+    {
+      "id": "210",
+      "name": "Data Load Source",
+      "alias": "DATA-LOAD-SOURCE2"
+    },
+    {
+      "id": "211",
+      "name": "Data / Table Mapping",
+      "alias": "DATA-TABLE-MAPPING2"
+    },
+    {
+      "id": "212",
+      "name": "Data Validation",
+      "alias": "DATA-VALIDATION2"
+    },
+    {
+      "id": "213",
+      "name": "Data Load Results",
+      "alias": "DATA-LOAD-RESULTS2"
+    },
+    {
+      "id": "1000",
+      "name": "Getting Started",
+      "alias": "GETTING-STARTED"
+    },
+    {
+      "id": "1001",
+      "name": "Page Help Dialog",
+      "alias": "PAGE-HELP-DIALOG"
+    }
+  ],
+  "processes": [
+    {
+      "name": "Fetch Row from eba_sales_CUSTOMERS",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "Account Details",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_CUSTOMERS",
+      "tables": [
+        "EBA_SALES_CUSTOMERS"
+      ]
+    },
+    {
+      "name": "Process Row of eba_sales_CUSTOMERS",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "Account Details",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_CUSTOMERS",
+      "tables": [
+        "EBA_SALES_CUSTOMERS"
+      ]
+    },
+    {
+      "name": "Fetch Row from eba_sales_PRODUCTS",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "Product Details",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_PRODUCTS",
+      "tables": [
+        "EBA_SALES_PRODUCTS"
+      ]
+    },
+    {
+      "name": "Process Row of eba_sales_PRODUCTS",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "Product Details",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_PRODUCTS",
+      "tables": [
+        "EBA_SALES_PRODUCTS"
+      ]
+    },
+    {
+      "name": "Fetch Row from eba_sales_SALESREPS",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "&REP_TITLE. Details",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_SALESREPS",
+      "tables": [
+        "EBA_SALES_SALESREPS"
+      ]
+    },
+    {
+      "name": "Process Row of eba_sales_SALESREPS",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "&REP_TITLE. Details",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_SALESREPS",
+      "tables": [
+        "EBA_SALES_SALESREPS"
+      ]
+    },
+    {
+      "name": "Fetch Row from eba_sales_TERRITORIES",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "Territory Details",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_TERRITORIES",
+      "tables": [
+        "EBA_SALES_TERRITORIES"
+      ]
+    },
+    {
+      "name": "Process Row of eba_sales_TERRITORIES",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "Territory Details",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_TERRITORIES",
+      "tables": [
+        "EBA_SALES_TERRITORIES"
+      ]
+    },
+    {
+      "name": "Fetch Row from EBA_SALES_DEAL_STATUS_CODES",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "Opportunity Stage Details",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_DEAL_STATUS_CODES",
+      "tables": [
+        "EBA_SALES_DEAL_STATUS_CODES"
+      ]
+    },
+    {
+      "name": "Process Row of EBA_SALES_DEAL_STATUS_CODES",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "Opportunity Stage Details",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_DEAL_STATUS_CODES",
+      "tables": [
+        "EBA_SALES_DEAL_STATUS_CODES"
+      ]
+    },
+    {
+      "name": "Fetch Row from eba_sales_SALES_PERIODS",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "Fiscal Quarter Details",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_SALES_PERIODS",
+      "tables": [
+        "EBA_SALES_SALES_PERIODS"
+      ]
+    },
+    {
+      "name": "Process Row of eba_sales_SALES_PERIODS",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "Fiscal Quarter Details",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_SALES_PERIODS",
+      "tables": [
+        "EBA_SALES_SALES_PERIODS"
+      ]
+    },
+    {
+      "name": "Set Initial Begin and End",
+      "type": "NATIVE_PLSQL",
+      "point": "BEFORE_HEADER",
+      "page": "Revenue by Quarter",
+      "plsql": "begin\n  for c1 in (\n  select first_day\n    from eba_sales_sales_periods\n   where sysdate-270 between first_day and last_day\n  )\n  loop\n     :P14_BEGIN_QTR := to_char(c1.first_day,'YYYYMMDD');\n  end loop;\n\n  for c2 in (\n  select last_day\n    from eba_sales_sales_periods\n   where sysdate between first_day and last_day\n  )\n  loop\n     :P14_END_QTR := to_char(c2.last_day,'YYYYMMDD');\n  end loop;\nend;",
+      "tables": [
+        "EBA_SALES_SALES_PERIODS"
+      ]
+    },
+    {
+      "name": "Set Username Format Preference",
+      "type": "NATIVE_PLSQL",
+      "point": "AFTER_SUBMIT",
+      "page": "Username Format",
+      "plsql": "eba_sales_acl_api.set_preference_value (\n    p_preference_name  => 'USERNAME_FORMAT',\n    p_preference_value => :P15_USERNAME_FORMAT);",
+      "tables": []
+    },
+    {
+      "name": "Fetch Row from EBA_SALES_DEALS",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "Opportunity Details",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_DEALS",
+      "tables": [
+        "EBA_SALES_DEALS"
+      ]
+    },
+    {
+      "name": "Process Row of EBA_SALES_DEALS",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "Opportunity Details",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_DEALS",
+      "tables": [
+        "EBA_SALES_DEALS"
+      ]
+    },
+    {
+      "name": "Fetch Row from eba_sales_COUNTRIES",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "Country Details",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_COUNTRIES",
+      "tables": [
+        "EBA_SALES_COUNTRIES"
+      ]
+    },
+    {
+      "name": "Process Row of eba_sales_COUNTRIES",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "Country Details",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_COUNTRIES",
+      "tables": [
+        "EBA_SALES_COUNTRIES"
+      ]
+    },
+    {
+      "name": "Add User to Collection",
+      "type": "NATIVE_PLSQL",
+      "point": "AFTER_SUBMIT",
+      "page": "New User Details",
+      "plsql": "apex_collection.add_member(\n    p_collection_name => 'NEW_USERS',\n    p_c001            => lower(:P21_USERNAME),\n    p_n001            => :P21_ACCESS_LEVEL_ID);",
+      "tables": []
+    },
+    {
+      "name": "Update User in Collection",
+      "type": "NATIVE_PLSQL",
+      "point": "AFTER_SUBMIT",
+      "page": "New User Details",
+      "plsql": "apex_collection.update_member(\n    p_collection_name => 'NEW_USERS',\n    p_c001            => lower(:P21_USERNAME),\n    p_n001            => :P21_ACCESS_LEVEL_ID,\n    p_seq             => :P21_SEQUENCE);",
+      "tables": []
+    },
+    {
+      "name": "Remove User from Collection",
+      "type": "NATIVE_PLSQL",
+      "point": "AFTER_SUBMIT",
+      "page": "New User Details",
+      "plsql": "apex_collection.delete_member(p_collection_name => 'NEW_USERS', p_seq => :P21_SEQUENCE);",
+      "tables": []
+    },
+    {
+      "name": "Fetch Row from EBA_SALES_COMMENTS",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "Comment Details",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_COMMENTS",
+      "tables": [
+        "EBA_SALES_COMMENTS"
+      ]
+    },
+    {
+      "name": "Process Row of EBA_SALES_COMMENTS",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "Comment Details",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_COMMENTS",
+      "tables": [
+        "EBA_SALES_COMMENTS"
+      ]
+    },
+    {
+      "name": "Proxy P22_ENTITY_ID on create",
+      "type": "NATIVE_PLSQL",
+      "point": "ON_SUBMIT_BEFORE_COMPUTATION",
+      "page": "Comment Details",
+      "plsql": "apex_util.set_session_state('P22_' || :P22_ENTITY_TYPE || '_ID', :P22_ENTITY_ID);",
+      "tables": []
+    },
+    {
+      "name": "Init page",
+      "type": "NATIVE_PLSQL",
+      "point": "AFTER_HEADER",
+      "page": "Contact",
+      "plsql": "insert into eba_sales_clicks (\n  entity_type,\n  contact_id,\n    app_username\n) values (\n  'CONTACT',\n  :P24_ID,\n    lower(:APP_USER)\n);\n\ndelete from eba_sales_clicks \nwhere view_timestamp < (sysdate - 90) \n  and contact_id = :P24_ID;",
+      "tables": [
+        "EBA_SALES_CLICKS"
+      ]
+    },
+    {
+      "name": "Fetch Row from eba_sales_SALESREP_ROLES",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "Team Role Details",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_SALESREP_ROLES",
+      "tables": [
+        "EBA_SALES_SALESREP_ROLES"
+      ]
+    },
+    {
+      "name": "Process Row of eba_sales_SALESREP_ROLES",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "Team Role Details",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_SALESREP_ROLES",
+      "tables": [
+        "EBA_SALES_SALESREP_ROLES"
+      ]
+    },
+    {
+      "name": "Fetch Row from EBA_SALES_DEAL_COMPETITION",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "Competition Details",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_DEAL_COMPETITION",
+      "tables": [
+        "EBA_SALES_DEAL_COMPETITION"
+      ]
+    },
+    {
+      "name": "Process Row of EBA_SALES_DEAL_COMPETITION",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "Competition Details",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_DEAL_COMPETITION",
+      "tables": [
+        "EBA_SALES_DEAL_COMPETITION"
+      ]
+    },
+    {
+      "name": "Fetch Row from EBA_SALES_LEADS",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "Lead Details",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_LEADS",
+      "tables": [
+        "EBA_SALES_LEADS"
+      ]
+    },
+    {
+      "name": "Process Row of EBA_SALES_LEADS",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "Lead Details",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_LEADS",
+      "tables": [
+        "EBA_SALES_LEADS"
+      ]
+    },
+    {
+      "name": "Fetch Row from EBA_SALES_DEAL_TEAM",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "Team Member Details",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_DEAL_TEAM",
+      "tables": [
+        "EBA_SALES_DEAL_TEAM"
+      ]
+    },
+    {
+      "name": "Process Row of EBA_SALES_DEAL_TEAM",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "Team Member Details",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_DEAL_TEAM",
+      "tables": [
+        "EBA_SALES_DEAL_TEAM"
+      ]
+    },
+    {
+      "name": "Fetch Row from eba_sales_CUSTOMER_LOCATIONS",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "Location Details",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_CUSTOMER_LOCATIONS",
+      "tables": [
+        "EBA_SALES_CUSTOMER_LOCATIONS"
+      ]
+    },
+    {
+      "name": "Process Row of eba_sales_CUSTOMER_LOCATIONS",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "Location Details",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_CUSTOMER_LOCATIONS",
+      "tables": [
+        "EBA_SALES_CUSTOMER_LOCATIONS"
+      ]
+    },
+    {
+      "name": "ENABLE_ACCESS_CONTROL",
+      "type": "NATIVE_PLSQL",
+      "point": "AFTER_SUBMIT",
+      "page": "Administration",
+      "plsql": "-- Set AC flag\neba_sales_acl_api.set_preference_value('ACCESS_CONTROL_ENABLED','Y');\n-- Seed user table with current user as an administrator or set the current user as administrator\ndeclare\n   l_user_exists boolean := false;\n   l_access_level_id number := null;\nbegin\n   for c1 in (select access_level_id\n              from eba_sales_users\n              where username = :APP_USER)\n   loop\n     l_user_exists := true;\n     l_access_level_id := c1.access_level_id;\n   end loop;\n\n   if not l_user_exists then\n       insert into eba_sales_users(username, access_level_id) values (:APP_USER, 3);   \n   else\n       if nvl(l_access_level_id,0) != 3 then\n          update eba_sales_users\n          set access_level_id = 3\n          where username = :APP_USER;\n       end if;\n   end if;\nend;",
+      "tables": [
+        "EBA_SALES_USERS"
+      ]
+    },
+    {
+      "name": "Fetch Row from EBA_SALES_PRODUCT_FAMILIES",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "Product Family",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_PRODUCT_FAMILIES",
+      "tables": [
+        "EBA_SALES_PRODUCT_FAMILIES"
+      ]
+    },
+    {
+      "name": "Process Row of EBA_SALES_PRODUCT_FAMILIES",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "Product Family",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_PRODUCT_FAMILIES",
+      "tables": [
+        "EBA_SALES_PRODUCT_FAMILIES"
+      ]
+    },
+    {
+      "name": "Save Preference Values",
+      "type": "NATIVE_PLSQL",
+      "point": "AFTER_SUBMIT",
+      "page": "Application Preferences",
+      "plsql": "eba_sales_fw.set_preference_value('REP_TITLE', :P35_REP_TITLE);\n\n:REP_TITLE := apex_escape.html(eba_sales_fw.get_preference_value('REP_TITLE'));\n\neba_sales_fw.set_preference_value('REP_TITLE_RAW', :P35_REP_TITLE);\n\n:REP_TITLE_RAW := eba_sales_fw.get_preference_value('REP_TITLE_RAW');\n\neba_sales_fw.set_preference_value('SALES_LDR_TITLE', :P35_SALES_LDR_TITLE);\n\n:SALES_LDR_TITLE := apex_escape.html(eba_sales_fw.get_preference_value('SALES_LDR_TITLE'));",
+      "tables": []
+    },
+    {
+      "name": "Fetch Row from EBA_SALES_LEAD_STATUS_CODES",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "Lead Status Code Details",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_LEAD_STATUS_CODES",
+      "tables": [
+        "EBA_SALES_LEAD_STATUS_CODES"
+      ]
+    },
+    {
+      "name": "Process Row of EBA_SALES_LEAD_STATUS_CODES",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "Lead Status Code Details",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_LEAD_STATUS_CODES",
+      "tables": [
+        "EBA_SALES_LEAD_STATUS_CODES"
+      ]
+    },
+    {
+      "name": "Fetch Row from EBA_SALES_DEAL_TERMS",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "Deal Term",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_DEAL_TERMS",
+      "tables": [
+        "EBA_SALES_DEAL_TERMS"
+      ]
+    },
+    {
+      "name": "Process Row of EBA_SALES_DEAL_TERMS",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "Deal Term",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_DEAL_TERMS",
+      "tables": [
+        "EBA_SALES_DEAL_TERMS"
+      ]
+    },
+    {
+      "name": "set timezone",
+      "type": "NATIVE_PLSQL",
+      "point": "AFTER_SUBMIT",
+      "page": "Time Zone Preference",
+      "plsql": "declare\n   c integer := 0;\nbegin\n   for c1 in (select id, timezone_preference \n              from eba_sales_tz_pref \n              where userid = :APP_USER) loop\n      update eba_sales_tz_pref\n      set timezone_preference = nvl(:P43_TIMEZONE,'UTC')\n      where id = c1.id;\n      c := c + 1;\n   end loop;\n   if c = 0 then\n      insert into eba_sales_tz_pref (userid, timezone_preference)\n      values (:APP_USER,:P43_TIMEZONE);\n   end if;\n   APEX_UTIL.SET_SESSION_TIME_ZONE (  \n          P_TIME_ZONE => :P43_TIMEZONE); \n   commit;\nend;",
+      "tables": [
+        "EBA_SALES_TZ_PREF"
+      ]
+    },
+    {
+      "name": "Set Application Title",
+      "type": "NATIVE_PLSQL",
+      "point": "AFTER_SUBMIT",
+      "page": "Rename Application",
+      "plsql": ":APPLICATION_TITLE := :P45_APPLICATION_TITLE;\n\nmerge into eba_sales_preferences dst\nusing ( select 'APPLICATION_TITLE' preference_name, :P45_APPLICATION_TITLE preference_value from dual ) src\non ( dst.preference_name = src.preference_name )\nwhen matched then\n    update set dst.preference_value = src.preference_value\nwhen not matched then\n    insert ( preference_name, preference_value )\n    values ( src.preference_name, src.preference_value );\n\nmerge into eba_sales_preferences dst\nusing ( select 'APPLICATION_SUBTITLE' preference_name, :P45_APPLICATION_SUBTITLE preference_value from dual ) src\non ( dst.preference_name = src.preference_name )\nwhen matched then\n    update set dst.preference_value = src.preference_value\nwhen not matched then\n    insert ( preference_name, preference_value )\n    values ( src.preference_name, src.preference_value );\n",
+      "tables": [
+        "DUAL",
+        "EBA_SALES_PREFERENCES",
+        "SET"
+      ]
+    },
+    {
+      "name": "Fetch Row from EBA_SALES_COMPETITORS",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "Competitor Details",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_COMPETITORS",
+      "tables": [
+        "EBA_SALES_COMPETITORS"
+      ]
+    },
+    {
+      "name": "Process Row of EBA_SALES_COMPETITORS",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "Competitor Details",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_COMPETITORS",
+      "tables": [
+        "EBA_SALES_COMPETITORS"
+      ]
+    },
+    {
+      "name": "Fetch Row from EBA_SALES_RISK_ASSESSMENTS",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "Risk Assessment Details",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_RISK_ASSESSMENTS",
+      "tables": [
+        "EBA_SALES_RISK_ASSESSMENTS"
+      ]
+    },
+    {
+      "name": "Process Row of EBA_SALES_RISK_ASSESSMENTS",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "Risk Assessment Details",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_RISK_ASSESSMENTS",
+      "tables": [
+        "EBA_SALES_RISK_ASSESSMENTS"
+      ]
+    },
+    {
+      "name": "Fetch Row from EBA_SALES_STATUS_ASSESSMENTS",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "Status Assessment Details",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_STATUS_ASSESSMENTS",
+      "tables": [
+        "EBA_SALES_STATUS_ASSESSMENTS"
+      ]
+    },
+    {
+      "name": "Process Row of EBA_SALES_STATUS_ASSESSMENTS",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "Status Assessment Details",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_STATUS_ASSESSMENTS",
+      "tables": [
+        "EBA_SALES_STATUS_ASSESSMENTS"
+      ]
+    },
+    {
+      "name": "Fetch Row from EBA_SALES_COMPETITOR_THREATS",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "Competitor Threat Details",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_COMPETITOR_THREATS",
+      "tables": [
+        "EBA_SALES_COMPETITOR_THREATS"
+      ]
+    },
+    {
+      "name": "Process Row of EBA_SALES_COMPETITOR_THREATS",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "Competitor Threat Details",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_COMPETITOR_THREATS",
+      "tables": [
+        "EBA_SALES_COMPETITOR_THREATS"
+      ]
+    },
+    {
+      "name": "Init page",
+      "type": "NATIVE_PLSQL",
+      "point": "AFTER_HEADER",
+      "page": "Product",
+      "plsql": "insert into eba_sales_clicks (\n  entity_type,\n  product_id,\n    app_username\n) values (\n  'PRODUCT',\n  :P61_ID,\n    lower(:APP_USER)\n);\n\ndelete from eba_sales_clicks \nwhere view_timestamp < (sysdate - 90) \n  and product_id = :P61_ID;",
+      "tables": [
+        "EBA_SALES_CLICKS"
+      ]
+    },
+    {
+      "name": "convert lead to opportunity",
+      "type": "NATIVE_PLSQL",
+      "point": "AFTER_SUBMIT",
+      "page": "Convert to Opportunity",
+      "plsql": "declare\n\n  l_id             number;\n  l_sales_lead_rec eba_sales_leads%rowtype;\n  l_message        varchar2(4000);\n\nbegin\n\n  insert into eba_sales_deals (\n    deal_name,\n    customer_id,\n    salesrep_id_01,\n    deal_amount,\n    deal_close_date,\n    deal_status_code_id\n  ) values (\n    :P63_OPPORTUNITY,\n    :P63_ACCOUNT,\n    :P63_SALES_REP,\n    :P63_AMOUNT,\n    to_date(:P63_CLOSE_DATE,'DD-MON-YYYY'),\n    :P63_STATUS\n  )\n  returning id \n  into l_id;\n\n  update eba_sales_leads \n  set opportunity_id = l_id, \n    lead_status_id = 5 \n  where id = :P63_LEAD_ID;\n/*\n  select *\n  into l_sales_lead_rec\n  from eba_sales_leads \n  where id = :P63_LEAD_ID;\n\n  l_message := 'converted from lead ' || l_sales_lead_rec.row_key;\n\n  insert into eba_sales_deal_notes(\n    deal_id,\n    note\n  ) values (\n    l_id,\n    l_message\n  );\n */\nend;",
+      "tables": [
+        "EBA_SALES_DEALS",
+        "EBA_SALES_DEAL_NOTES",
+        "EBA_SALES_LEADS",
+        "LEAD",
+        "L_ID",
+        "L_SALES_LEAD_REC"
+      ]
+    },
+    {
+      "name": "Fetch Row from EBA_SALES_INDUSTRIES",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "Industry Details",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_INDUSTRIES",
+      "tables": [
+        "EBA_SALES_INDUSTRIES"
+      ]
+    },
+    {
+      "name": "Process Row of EBA_SALES_INDUSTRIES",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "Industry Details",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_INDUSTRIES",
+      "tables": [
+        "EBA_SALES_INDUSTRIES"
+      ]
+    },
+    {
+      "name": "Fetch Row from EBA_SALES_SVPS",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "SVP Details",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_SVPS",
+      "tables": [
+        "EBA_SALES_SVPS"
+      ]
+    },
+    {
+      "name": "Process Row of EBA_SALES_SVPS",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "SVP Details",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_SVPS",
+      "tables": [
+        "EBA_SALES_SVPS"
+      ]
+    },
+    {
+      "name": "Fetch Row from EBA_SALES_LEAD_SOURCES",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "Lead Source Details",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_LEAD_SOURCES",
+      "tables": [
+        "EBA_SALES_LEAD_SOURCES"
+      ]
+    },
+    {
+      "name": "Process Row of EBA_SALES_LEAD_SOURCES",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "Lead Source Details",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_LEAD_SOURCES",
+      "tables": [
+        "EBA_SALES_LEAD_SOURCES"
+      ]
+    },
+    {
+      "name": "create opportunity",
+      "type": "NATIVE_PLSQL",
+      "point": "AFTER_SUBMIT",
+      "page": "Create Opportunity",
+      "plsql": "declare\n    l_account_id   number;\n    l_opp_id       number;\n    \n    la_product     apex_application_global.vc_arr2;\n    la_team        apex_application_global.vc_arr2;\n    la_competition apex_application_global.vc_arr2;\nbegin\n    if :P71_NEW_OR_EXISTING = 'NEW' then\n        insert into eba_sales_customers (\n        customer_name,\n        customer_territory_id,\n        customer_web_site,\n        customer_duns,\n        customer_sic,\n        customer_stock_symb,\n        customer_is_key_account_yn,\n        default_rep_id,\n        customer_description,\n        tags              \n        )\n        values (\n        :P71_CUSTOMER_NAME,\n        :P71_TERRITORY_ID,\n        :P71_CUSTOMER_WEB_SITE,\n        :P71_CUSTOMER_DUNS,\n        :P71_CUSTOMER_SIC,\n        :P71_CUSTOMER_STOCK_SYMB,\n        :P71_CUSTOMER_IS_KEY_ACCOUNT_YN,\n        :P71_DEFAULT_REP_ID,\n        :P71_CUSTOMER_DESCRIPTION,\n        :P71_TAGS\n        ) returning id into l_account_id;\n    else\n        l_account_id := :P71_ACCOUNT;\n    end if;\n    \n    insert into EBA_SALES_DEALS (\n    DEAL_NAME,\n    CUSTOMER_ID,\n    SALESREP_ID_01,\n    DEAL_AMOUNT,\n    DEAL_CLOSE_DATE,\n    DEAL_STATUS_CODE_ID,\n    SPONSOR_CONTACT_ID,\n    VP_ID,\n    DEAL_SUMMARY,\n    TAGS,\n    SVP_ID\n    )\n    values (\n    :P71_OPPORTUNITY_NAME,\n    l_account_id,\n    :P71_SALESREP,\n    :P71_AMOUNT,\n    :P71_CLOSE_DATE,\n    :P71_STATUS,\n    :P71_SPONSOR_CONTACT_ID,\n    :P71_SVP,\n    :P71_DEAL_SUMMARY,\n    :P71_OPP_TAGS,\n    :P71_SVP\n    )\n    returning id into l_opp_id;\n    \n    :P71_OPP_ID := l_opp_id; -- used to branch later\n    \n-- The code below is remarked out because this functionality was removed from the wizard\n-- Allan 21-NOV-2016\n/*\n    -- add products\n    if :P73_PRODUCTS is not null then\n        la_product := apex_util.string_to_table(:P73_PRODUCTS);\n        for i in 1..la_product.count\n        loop\n            insert into eba_sales_deal_products (deal_id, product_id) values (l_opp_id, la_product(i));\n        end loop;\n    end if;\n  \n    -- team\n    if :P72_TEAM is not null then\n        la_team := apex_util.string_to_table(:P72_TEAM);\n        for i in 1..la_team.count\n        loop\n            insert into eba_sales_deal_team (deal_id, REP_ID) values (l_opp_id, la_team(i));\n        end loop;\n    end if;\n\n    -- competition\n    if :P72_COMPETITION is not null then\n        la_competition := apex_util.string_to_table(:P72_COMPETITION);\n        for i in 1..la_competition.count\n        loop\n            insert into eba_sales_deal_competition (deal_id, competitor_id) values (l_opp_id, la_competition(i));\n        end loop;\n    end if;\n*/\nend;",
+      "tables": [
+        "EBA_SALES_CUSTOMERS",
+        "EBA_SALES_DEALS",
+        "EBA_SALES_DEAL_COMPETITION",
+        "EBA_SALES_DEAL_PRODUCTS",
+        "EBA_SALES_DEAL_TEAM",
+        "L_ACCOUNT_ID",
+        "L_OPP_ID",
+        "THE"
+      ]
+    },
+    {
+      "name": "Fetch Row from EBA_SALES_AGREEMENT_TYPES",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "Agreement Type",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_AGREEMENT_TYPES",
+      "tables": [
+        "EBA_SALES_AGREEMENT_TYPES"
+      ]
+    },
+    {
+      "name": "Process Row of EBA_SALES_AGREEMENT_TYPES",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "Agreement Type",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_AGREEMENT_TYPES",
+      "tables": [
+        "EBA_SALES_AGREEMENT_TYPES"
+      ]
+    },
+    {
+      "name": "Fetch Row from EBA_SALES_TERMS",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "Contract Term",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_TERMS",
+      "tables": [
+        "EBA_SALES_TERMS"
+      ]
+    },
+    {
+      "name": "Process Row of EBA_SALES_TERMS",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "Contract Term",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_TERMS",
+      "tables": [
+        "EBA_SALES_TERMS"
+      ]
+    },
+    {
+      "name": "Fetch Row from EBA_SALES_NOTIFICATIONS",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "Notification Details",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_NOTIFICATIONS",
+      "tables": [
+        "EBA_SALES_NOTIFICATIONS"
+      ]
+    },
+    {
+      "name": "Process Row of EBA_SALES_NOTIFICATIONS",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "Notification Details",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_NOTIFICATIONS",
+      "tables": [
+        "EBA_SALES_NOTIFICATIONS"
+      ]
+    },
+    {
+      "name": "close as lost",
+      "type": "NATIVE_PLSQL",
+      "point": "AFTER_SUBMIT",
+      "page": "Close Opportunity",
+      "plsql": "for c1 in (\nselect id\nfrom EBA_SALES_DEAL_STATUS_CODES\nwhere CORRESPONDING_PROB_PCT = 0) loop\n\nupdate EBA_SALES_DEALS \nset DEAL_STATUS_CODE_ID = c1.id, DEAL_PROBABILITY = 0\nwhere id = :P79_ID;\n\nend loop;\ncommit;",
+      "tables": [
+        "EBA_SALES_DEALS",
+        "EBA_SALES_DEAL_STATUS_CODES"
+      ]
+    },
+    {
+      "name": "close as won",
+      "type": "NATIVE_PLSQL",
+      "point": "AFTER_SUBMIT",
+      "page": "Close Opportunity",
+      "plsql": "for c1 in (\nselect id\nfrom EBA_SALES_DEAL_STATUS_CODES\nwhere CORRESPONDING_PROB_PCT = 100) loop\n\nupdate EBA_SALES_DEALS \nset DEAL_STATUS_CODE_ID = c1.id ,\n    DEAL_CLOSE_DATE = least (sysdate, deal_close_date),\n    DEAL_PROBABILITY = 100\nwhere id = :P79_ID;\n\nend loop;\ncommit;",
+      "tables": [
+        "EBA_SALES_DEALS",
+        "EBA_SALES_DEAL_STATUS_CODES"
+      ]
+    },
+    {
+      "name": "Init page",
+      "type": "NATIVE_PLSQL",
+      "point": "BEFORE_HEADER",
+      "page": "Opportunity",
+      "plsql": "insert into eba_sales_clicks (\n    entity_type,\n    opp_id,\n    app_username  \n) values (\n    'OPPORTUNITY',\n    :P80_ID,\n    lower(:APP_USER)\n);\n\ndelete from eba_sales_clicks \nwhere view_timestamp < (sysdate - 90) \n  and opp_id = :P80_ID;\n",
+      "tables": [
+        "EBA_SALES_CLICKS"
+      ]
+    },
+    {
+      "name": "Fetch Row from EBA_SALES_DEALS",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "Closed Opportunity Details",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_DEALS",
+      "tables": [
+        "EBA_SALES_DEALS"
+      ]
+    },
+    {
+      "name": "Process Row of EBA_SALES_DEALS",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "Closed Opportunity Details",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_DEALS",
+      "tables": [
+        "EBA_SALES_DEALS"
+      ]
+    },
+    {
+      "name": "Init Page",
+      "type": "NATIVE_PLSQL",
+      "point": "AFTER_HEADER",
+      "page": "Territory",
+      "plsql": "insert into eba_sales_clicks (\n  entity_type,\n  territory_id,\n    app_username\n) values (\n  'TERRITORY',\n  :P93_ID,\n    lower(:APP_USER)\n);\n\ndelete from eba_sales_clicks \nwhere view_timestamp < (sysdate - 90) \n  and territory_id = :P93_ID;",
+      "tables": [
+        "EBA_SALES_CLICKS"
+      ]
+    },
+    {
+      "name": "Init page",
+      "type": "NATIVE_PLSQL",
+      "point": "BEFORE_HEADER",
+      "page": "Account",
+      "plsql": "insert into eba_sales_clicks (\n  entity_type,\n  cust_id,\n    app_username\n) values (\n  'ACCOUNT',\n  :P94_ID,\n    lower(:APP_USER)\n);\n\ndelete from eba_sales_clicks \nwhere view_timestamp < (sysdate - 90) \n  and cust_id = :P94_ID;",
+      "tables": [
+        "EBA_SALES_CLICKS"
+      ]
+    },
+    {
+      "name": "Fetch Row from EBA_SALES_FIN_ASSESSMENTS",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "Financial Assessment Details",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_FIN_ASSESSMENTS",
+      "tables": [
+        "EBA_SALES_FIN_ASSESSMENTS"
+      ]
+    },
+    {
+      "name": "Process Row of EBA_SALES_FIN_ASSESSMENTS",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "Financial Assessment Details",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_FIN_ASSESSMENTS",
+      "tables": [
+        "EBA_SALES_FIN_ASSESSMENTS"
+      ]
+    },
+    {
+      "name": "Fetch Row from EBA_SALES_STATES",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "State Details",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_STATES",
+      "tables": [
+        "EBA_SALES_STATES"
+      ]
+    },
+    {
+      "name": "Process Row of EBA_SALES_STATES",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "State Details",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_STATES",
+      "tables": [
+        "EBA_SALES_STATES"
+      ]
+    },
+    {
+      "name": "Fetch Row from EBA_SALES_AGREEMENTS",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "Agreement",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_AGREEMENTS",
+      "tables": [
+        "EBA_SALES_AGREEMENTS"
+      ]
+    },
+    {
+      "name": "Process Row of EBA_SALES_AGREEMENTS",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "Agreement",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_AGREEMENTS",
+      "tables": [
+        "EBA_SALES_AGREEMENTS"
+      ]
+    },
+    {
+      "name": "Fetch Row from EBA_SALES_FILES",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "Attachment Details",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_FILES",
+      "tables": [
+        "EBA_SALES_FILES"
+      ]
+    },
+    {
+      "name": "Process Row of EBA_SALES_FILES",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "Attachment Details",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_FILES",
+      "tables": [
+        "EBA_SALES_FILES"
+      ]
+    },
+    {
+      "name": "Proxy P99_ENTITY_ID on create",
+      "type": "NATIVE_PLSQL",
+      "point": "ON_SUBMIT_BEFORE_COMPUTATION",
+      "page": "Attachment Details",
+      "plsql": "apex_util.set_session_state('P99_' || :P99_ENTITY_TYPE || '_ID', :P99_ENTITY_ID);",
+      "tables": []
+    },
+    {
+      "name": "Set Username Cookie",
+      "type": "NATIVE_PLSQL",
+      "point": "AFTER_SUBMIT",
+      "page": "Login",
+      "plsql": "apex_authentication.send_login_username_cookie (\n    p_username => lower(:P101_USERNAME) );",
+      "tables": []
+    },
+    {
+      "name": "Login",
+      "type": "NATIVE_PLSQL",
+      "point": "AFTER_SUBMIT",
+      "page": "Login",
+      "plsql": "apex_authentication.login(\n    p_username => :P101_USERNAME,\n    p_password => :P101_PASSWORD );",
+      "tables": []
+    },
+    {
+      "name": "Get Username Cookie",
+      "type": "NATIVE_PLSQL",
+      "point": "BEFORE_HEADER",
+      "page": "Login",
+      "plsql": ":P101_USERNAME := apex_authentication.get_login_username_cookie;",
+      "tables": []
+    },
+    {
+      "name": "Fetch Row from EBA_SALES_CUST_AGRMNT_MAP",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "Account Agreement",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_CUST_AGRMNT_MAP",
+      "tables": [
+        "EBA_SALES_CUST_AGRMNT_MAP"
+      ]
+    },
+    {
+      "name": "Process Row of EBA_SALES_CUST_AGRMNT_MAP",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "Account Agreement",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_CUST_AGRMNT_MAP",
+      "tables": [
+        "EBA_SALES_CUST_AGRMNT_MAP"
+      ]
+    },
+    {
+      "name": "Fetch Row from eba_sales_CUSTOMER_CONTACTS",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "Contact Details",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_CUSTOMER_CONTACTS",
+      "tables": [
+        "EBA_SALES_CUSTOMER_CONTACTS"
+      ]
+    },
+    {
+      "name": "Process Row of eba_sales_CUSTOMER_CONTACTS",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "Contact Details",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_CUSTOMER_CONTACTS",
+      "tables": [
+        "EBA_SALES_CUSTOMER_CONTACTS"
+      ]
+    },
+    {
+      "name": "Automatic Row Processing of EBA_SALES_DEAL_PRODUCTS",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "Product Details",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_DEAL_PRODUCTS",
+      "tables": [
+        "EBA_SALES_DEAL_PRODUCTS"
+      ]
+    },
+    {
+      "name": "Fetch Row from EBA_SALES_DEAL_PRODUCTS",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "BEFORE_HEADER",
+      "page": "Product Details",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_DEAL_PRODUCTS",
+      "tables": [
+        "EBA_SALES_DEAL_PRODUCTS"
+      ]
+    },
+    {
+      "name": "Fetch Row from EBA_SALES_TERRITORY_ACL",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "Territory ACL",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_TERRITORY_ACL",
+      "tables": [
+        "EBA_SALES_TERRITORY_ACL"
+      ]
+    },
+    {
+      "name": "Process Row of EBA_SALES_TERRITORY_ACL",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "Territory ACL",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_TERRITORY_ACL",
+      "tables": [
+        "EBA_SALES_TERRITORY_ACL"
+      ]
+    },
+    {
+      "name": "Update",
+      "type": "NATIVE_PLSQL",
+      "point": "AFTER_SUBMIT",
+      "page": "Build Options",
+      "plsql": "for i in 1..apex_application.g_f01.count loop\n    for c1 in ( select application_id, build_option_name, build_option_status\n                from apex_application_build_options\n                where apex_application.g_f01(i) = build_option_id\n                   and application_Id = :APP_ID) loop\n        if c1.build_option_status != apex_application.g_f03(i) then\n            apex_util.set_build_option_status(  p_application_id => :APP_ID,\n                                                p_id => apex_application.g_f01(i),\n                                                p_build_status => upper(apex_application.g_f03(i)) );\n        end if;\n        if c1.build_option_name = 'Opportunity Amount Set at Product Level' and upper(apex_application.g_f03(i)) = 'EXCLUDE' then\n            :AMT_HDR := 'Amount';\n        elsif c1.build_option_name = 'Opportunity Amount Set at Product Level' and upper(apex_application.g_f03(i)) = 'INCLUDE' then\n            :AMT_HDR := 'Annual Recurring Revenue';\n        end if;\n    end loop;\nend loop;",
+      "tables": [
+        "APEX_APPLICATION_BUILD_OPTIONS"
+      ]
+    },
+    {
+      "name": "Fetch Row from EBA_SALES_CURRENCIES",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "Currency Details",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_CURRENCIES",
+      "tables": [
+        "EBA_SALES_CURRENCIES"
+      ]
+    },
+    {
+      "name": "Process Row of EBA_SALES_CURRENCIES",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "Currency Details",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_CURRENCIES",
+      "tables": [
+        "EBA_SALES_CURRENCIES"
+      ]
+    },
+    {
+      "name": "Fetch Row from EBA_SALES_LINKS",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "Link Details",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_LINKS",
+      "tables": [
+        "EBA_SALES_LINKS"
+      ]
+    },
+    {
+      "name": "Process Row of EBA_SALES_LINKS",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "Link Details",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_LINKS",
+      "tables": [
+        "EBA_SALES_LINKS"
+      ]
+    },
+    {
+      "name": "Proxy P114_ENTITY_ID on create",
+      "type": "NATIVE_PLSQL",
+      "point": "ON_SUBMIT_BEFORE_COMPUTATION",
+      "page": "Link Details",
+      "plsql": "apex_util.set_session_state('P114_' || :P114_ENTITY_TYPE || '_ID', :P114_ENTITY_ID);",
+      "tables": []
+    },
+    {
+      "name": "Fetch Row from EBA_SALES_SUPRT_AMT_TYPES",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "Support Amount Type",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_SUPRT_AMT_TYPES",
+      "tables": [
+        "EBA_SALES_SUPRT_AMT_TYPES"
+      ]
+    },
+    {
+      "name": "Process Row of EBA_SALES_SUPRT_AMT_TYPES",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "Support Amount Type",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_SUPRT_AMT_TYPES",
+      "tables": [
+        "EBA_SALES_SUPRT_AMT_TYPES"
+      ]
+    },
+    {
+      "name": "Fetch Row from EBA_SALES_USERS",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "User Access Control  ",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_USERS",
+      "tables": [
+        "EBA_SALES_USERS"
+      ]
+    },
+    {
+      "name": "Process Row of EBA_SALES_USERS",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "User Access Control  ",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_USERS",
+      "tables": [
+        "EBA_SALES_USERS"
+      ]
+    },
+    {
+      "name": "Fetch Row from EBA_SALES_SUPPORT_AMTS",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "Support Amount",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_SUPPORT_AMTS",
+      "tables": [
+        "EBA_SALES_SUPPORT_AMTS"
+      ]
+    },
+    {
+      "name": "Process Row of EBA_SALES_SUPPORT_AMTS",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "Support Amount",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_SUPPORT_AMTS",
+      "tables": [
+        "EBA_SALES_SUPPORT_AMTS"
+      ]
+    },
+    {
+      "name": "Fetch Row from EBA_SALES_CUST_SPT_AMT_MAP",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "Support Amount",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_CUST_SPT_AMT_MAP",
+      "tables": [
+        "EBA_SALES_CUST_SPT_AMT_MAP"
+      ]
+    },
+    {
+      "name": "Process Row of EBA_SALES_CUST_SPT_AMT_MAP",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "Support Amount",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_CUST_SPT_AMT_MAP",
+      "tables": [
+        "EBA_SALES_CUST_SPT_AMT_MAP"
+      ]
+    },
+    {
+      "name": "add country",
+      "type": "NATIVE_PLSQL",
+      "point": "AFTER_SUBMIT",
+      "page": "Country Details",
+      "plsql": "insert into eba_sales_terr_map\n(territory_id, country_id)\nvalues\n(:P124_TERRITORY_ID, :P124_COUNTRY);",
+      "tables": [
+        "EBA_SALES_TERR_MAP"
+      ]
+    },
+    {
+      "name": "Add state",
+      "type": "NATIVE_PLSQL",
+      "point": "AFTER_SUBMIT",
+      "page": "State Details",
+      "plsql": "insert into eba_sales_terr_map\n(territory_id, state_id)\nvalues\n(:P126_TERRITORY_ID, :P126_STATE);",
+      "tables": [
+        "EBA_SALES_TERR_MAP"
+      ]
+    },
+    {
+      "name": "Init page",
+      "type": "NATIVE_PLSQL",
+      "point": "BEFORE_HEADER",
+      "page": "Lead",
+      "plsql": "insert into eba_sales_clicks (\n  entity_type,\n  lead_id,\n    app_username\n) values (\n  'LEAD',\n  :P133_ID,\n    lower(:APP_USER)\n);\n\ndelete from eba_sales_clicks \nwhere view_timestamp < (sysdate - 90) \n  and lead_id = :P133_ID;\n",
+      "tables": [
+        "EBA_SALES_CLICKS"
+      ]
+    },
+    {
+      "name": "Set Theme Style",
+      "type": "NATIVE_PLSQL",
+      "point": "AFTER_SUBMIT",
+      "page": "Application Appearance",
+      "plsql": "if :P141_DESKTOP_THEME_STYLE_ID is not null then\n    for c1 in (select theme_number\n               from apex_application_themes\n               where application_id = :app_id\n               and ui_type_name   = 'DESKTOP'\n               and is_current = 'Yes')\n    loop\n        apex_theme.set_current_style (\n            p_theme_number   => c1.theme_number,\n            p_id => :P141_DESKTOP_THEME_STYLE_ID\n            );\n    end loop;\nend if;",
+      "tables": [
+        "APEX_APPLICATION_THEMES"
+      ]
+    },
+    {
+      "name": "Enable / Disable End User Style",
+      "type": "NATIVE_PLSQL",
+      "point": "AFTER_SUBMIT",
+      "page": "Application Appearance",
+      "plsql": "declare\n  l_enabled boolean := case when :P141_END_USER_STYLE = 'Yes' then true else false end;\nbegin\n  for c1 in (\n    select ui.theme_number\n      from apex_application_themes t, apex_applications ui\n     where ui.application_id = t.application_id \n       and ui.theme_number   = t.theme_number \n       and t.application_id  = :app_id\n       and t.is_current      = 'Yes'\n  ) loop\n    if l_enabled then \n      apex_theme.enable_user_style ( p_application_id => :APP_ID, p_theme_number => c1.theme_number );\n    else\n      apex_theme.disable_user_style ( p_application_id => :APP_ID, p_theme_number => c1.theme_number );\n      apex_theme.clear_all_users_style(:APP_ID);\n    end if; \n  end loop;\nend; ",
+      "tables": [
+        "APEX_APPLICATION_THEMES"
+      ]
+    },
+    {
+      "name": "reset data",
+      "type": "NATIVE_PLSQL",
+      "point": "AFTER_SUBMIT",
+      "page": "Manage Sample Data",
+      "plsql": "eba_sales_data.remove_sample;\neba_sales_data.load_sample;",
+      "tables": []
+    },
+    {
+      "name": "remove sample data",
+      "type": "NATIVE_PLSQL",
+      "point": "AFTER_SUBMIT",
+      "page": "Manage Sample Data",
+      "plsql": "eba_sales_data.remove_sample;",
+      "tables": []
+    },
+    {
+      "name": "Load Sample Data",
+      "type": "NATIVE_PLSQL",
+      "point": "AFTER_SUBMIT",
+      "page": "Manage Sample Data",
+      "plsql": "eba_sales_data.load_sample;",
+      "tables": []
+    },
+    {
+      "name": "Fetch Row from EBA_SALES_ACT_COMPETITION",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "Competition Details",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_ACT_COMPETITION",
+      "tables": [
+        "EBA_SALES_ACT_COMPETITION"
+      ]
+    },
+    {
+      "name": "Process Row of EBA_SALES_DEAL_COMPETITION",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "Competition Details",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_ACT_COMPETITION",
+      "tables": [
+        "EBA_SALES_ACT_COMPETITION"
+      ]
+    },
+    {
+      "name": "Create validation",
+      "type": "NATIVE_PLSQL",
+      "point": "AFTER_SUBMIT",
+      "page": "Validation Details",
+      "plsql": "declare\n\n  l_verification_rec eba_sales_verifications%rowtype;\n\nbegin\n\n  l_verification_rec.verification_comment := :P146_VERIFICATION_COMMENT;\n  l_verification_rec.entity_type := :P146_ENTITY_TYPE;\n  l_verification_rec.verified_by := lower(:APP_USER);\n\n  case :P146_ENTITY_TYPE\n    when 'LEAD'\n    then\n      l_verification_rec.lead_id := :P146_ENTITY_ID;\n    when 'OPPORTUNITY'\n    then\n      l_verification_rec.opp_id := :P146_ENTITY_ID;\n    when 'ACCOUNT'\n    then\n      l_verification_rec.cust_id := :P146_ENTITY_ID;\n    when 'TERRITORY'\n    then\n      l_verification_rec.territory_id := :P146_ENTITY_ID;\n    when 'CONTACT'\n    then\n      l_verification_rec.contact_id := :P146_ENTITY_ID;\n    when 'PRODUCT'\n    then\n      l_verification_rec.product_id := :P146_ENTITY_ID;\n  end case;\n  \n  \n  insert into eba_sales_verifications values l_verification_rec;\n\nend;",
+      "tables": [
+        "EBA_SALES_VERIFICATIONS"
+      ]
+    },
+    {
+      "name": "Init page",
+      "type": "NATIVE_PLSQL",
+      "point": "BEFORE_HEADER",
+      "page": "Validation Details",
+      "plsql": ":P146_ENTITY_TYPE_LOWER := lower(:P146_ENTITY_TYPE);",
+      "tables": []
+    },
+    {
+      "name": "Fetch Row from EBA_SALES_PRODUCT_LOBS",
+      "type": "NATIVE_FORM_FETCH",
+      "point": "AFTER_HEADER",
+      "page": "Line of Business",
+      "plsql": "-- declarative NATIVE_FORM_FETCH on EBA_SALES_PRODUCT_LOBS",
+      "tables": [
+        "EBA_SALES_PRODUCT_LOBS"
+      ]
+    },
+    {
+      "name": "Process Row of EBA_SALES_PRODUCT_LOBS",
+      "type": "NATIVE_FORM_PROCESS",
+      "point": "AFTER_SUBMIT",
+      "page": "Line of Business",
+      "plsql": "-- declarative NATIVE_FORM_PROCESS on EBA_SALES_PRODUCT_LOBS",
+      "tables": [
+        "EBA_SALES_PRODUCT_LOBS"
+      ]
+    },
+    {
+      "name": "ACCESS CONTROL ENABLED",
+      "type": "NATIVE_PLSQL",
+      "point": "AFTER_SUBMIT",
+      "page": "Access Control Configuration",
+      "plsql": "begin\n    eba_sales_acl_api.set_preference_value (\n        p_preference_name  => 'ACCESS_CONTROL_ENABLED',\n        p_preference_value => :P151_AC_ENABLED);\n    eba_sales_acl_api.set_preference_value (\n        p_preference_name  => 'ACCESS_CONTROL_SCOPE',\n        p_preference_value => (case \n                                   when :P151_AC_ENABLED = 'Y' then :P151_ACCESS_CONTROL_SCOPE\n                                   else 'ACL_ONLY' \n                               end) );\n\n    -- Seed user table with current user as an administrator or set the current user as administrator\n    declare\n       l_count number;\n    begin\n        select count(*) \n            into l_count \n        from eba_sales_users\n        where username = :APP_USER;\n        if l_count = 0 then\n            insert into eba_sales_users(username, access_level_id) values (:APP_USER, 3);   \n        else\n            update eba_sales_users\n            set access_level_id = 3\n            where username = :APP_USER;\n        end if;\n    end;\nend;",
+      "tables": [
+        "EBA_SALES_USERS",
+        "L_COUNT"
+      ]
+    },
+    {
+      "name": "ACCESS CONTROL DISABLED",
+      "type": "NATIVE_PLSQL",
+      "point": "AFTER_SUBMIT",
+      "page": "Access Control Configuration",
+      "plsql": "begin\n    eba_sales_acl_api.set_preference_value (\n        p_preference_name  => 'ACCESS_CONTROL_ENABLED',\n        p_preference_value => :P151_AC_ENABLED);\n    eba_sales_acl_api.set_preference_value (\n        p_preference_name  => 'ACCESS_CONTROL_SCOPE',\n        p_preference_value => (case \n                                   when :P151_AC_ENABLED = 'Y' then :P151_ACCESS_CONTROL_SCOPE\n                                   else 'ACL_ONLY' \n                               end) );\nend;",
+      "tables": []
+    },
+    {
+      "name": "ACCESS CONTROL UNCHANGED",
+      "type": "NATIVE_PLSQL",
+      "point": "AFTER_SUBMIT",
+      "page": "Access Control Configuration",
+      "plsql": "begin\n    eba_sales_acl_api.set_preference_value (\n        p_preference_name  => 'ACCESS_CONTROL_ENABLED',\n        p_preference_value => :P151_AC_ENABLED);\n    eba_sales_acl_api.set_preference_value (\n        p_preference_name  => 'ACCESS_CONTROL_SCOPE',\n        p_preference_value => (case \n                                   when :P151_AC_ENABLED = 'Y' then :P151_ACCESS_CONTROL_SCOPE\n                                   else 'ACL_ONLY' \n                               end) );\nend;",
+      "tables": []
+    },
+    {
+      "name": "Set Username Format",
+      "type": "NATIVE_PLSQL",
+      "point": "AFTER_SUBMIT",
+      "page": "Access Control Configuration",
+      "plsql": "eba_sales_acl_api.set_preference_value (\n    p_preference_name  => 'USERNAME_FORMAT',\n    p_preference_value => case nvl(:P151_USERNAME_FORMAT,'N') \n                            when 'Y' then 'EMAIL'\n                            when 'N' then 'STRING' \n                          end);",
+      "tables": []
+    },
+    {
+      "name": "Create Collections",
+      "type": "NATIVE_PLSQL",
+      "point": "AFTER_SUBMIT",
+      "page": "Add Multiple Users",
+      "plsql": "declare\n    l_line      varchar2(32767);\n    l_emails    wwv_flow_global.vc_arr2;\n    l_username  varchar2(4000);\n    l_at        number;\n    l_dot       number;\n    l_valid     boolean := true;\n    l_domain    varchar2(4000);\nbegin\n    ---------------------\n    -- create collections\n    --\n    apex_collection.CREATE_OR_TRUNCATE_COLLECTION ('EBA_SALES_BULK_USER_INVALID');\n    apex_collection.CREATE_OR_TRUNCATE_COLLECTION ('EBA_SALES_BULK_USER_VALID');\n    apex_collection.CREATE_OR_TRUNCATE_COLLECTION ('EBA_SALES_BULK_USER_CREATE');\n\n    --------------------------------------------\n    -- replace delimiting characters with commas\n    --\n    l_line := :P153_PRELIM_USERS;\n    l_line := replace(l_line,chr(10),' ');\n    l_line := replace(l_line,chr(13),' ');\n    l_line := replace(l_line,chr(9),' ');\n    l_line := replace(l_line,'<',' ');\n    l_line := replace(l_line,'>',' ');\n    l_line := replace(l_line,';',' ');\n    l_line := replace(l_line,':',' ');\n    l_line := replace(l_line,'(',' ');\n    l_line := replace(l_line,')',' ');\n    l_line := replace(l_line,' ',',');\n\n    -----------------------------------------\n    -- get one comma separated line of emails\n    --\n    for j in 1..1000 loop\n        if instr(l_line,',,') > 0 then\n           l_line := replace(l_line,',,',',');\n        else\n           exit;\n        end if;\n    end loop;\n\n    -------------------------\n    -- get an array of emails\n    --\n    l_emails := wwv_flow_utilities.string_to_table(l_line,',');\n\n    -----------------------------\n    -- add emails to a collection\n    --\n    l_username := null;\n    l_domain := null;\n    l_at := 0;\n    l_dot := 0;\n    for j in 1..l_emails.count loop\n        l_valid := true;\n        l_username := trim(l_emails(j));\n\n        if l_username is not null then\n            if eba_sales_acl_api.get_preference_value('USERNAME_FORMAT') = 'EMAIL' then\n              -----------\n              -- Validate\n              --\n              l_at := instr(nvl(l_username,'x'),'@');\n              l_domain := substr(l_username,l_at+1);\n              l_dot := instr(l_domain,'.');\n              if l_at < 2 then\n                  -- invalid email\n                  apex_collection.add_member(\n                      p_collection_name => 'EBA_SALES_BULK_USER_INVALID',\n                      p_c001            => l_username,\n                      p_c002            => apex_lang.message('MISSING_AT_SIGN'));\n                  commit;\n                  l_valid := false;\n              end if;\n\n              if l_dot = 0 and l_valid then\n                  apex_collection.add_member(\n                      p_collection_name => 'EBA_SALES_BULK_USER_INVALID',\n                      p_c001            => l_username,\n                      p_c002            => apex_lang.message('MISSING_DOT'));\n                  commit;\n                  l_valid := false;\n              end if;\n            end if;\n\n            l_username := trim(l_username);\n            l_username := trim(both '.' from l_username);\n            l_username := replace(l_username,' ',null);\n            l_username := replace(l_username,chr(10),null);\n            l_username := replace(l_username,chr(9),null);\n            l_username := replace(l_username,chr(13),null);\n            l_username := replace(l_username,chr(49824),null);\n\n            if l_valid and length(l_username) > 255 then\n                apex_collection.add_member(\n                    p_collection_name => 'EBA_SALES_BULK_USER_INVALID',\n                    p_c001            => upper(l_username),\n                    p_c002            => apex_lang.message('USERNAME_TOO_LONG'));\n                commit;\n                l_valid := false;\n            end if;\n\n            if l_valid then\n                for c1 in (select /* APEX76a66f */ username\n                             from eba_sales_users\n                            where upper(username) = upper(l_username)\n                )\n                loop\n                    wwv_flow_collection.add_member(\n                        p_collection_name => 'EBA_SALES_BULK_USER_INVALID',\n                        p_c001            => upper(l_username),\n                        p_c002            => apex_lang.message('ALREADY_IN_ACL'));\n                    commit;\n                    l_valid := false;\n                    exit;\n                end loop;\n            end if;\n\n            if l_valid then\n                for c1 in (select /* APEXeaf772 */  c001\n                             from wwv_flow_collections\n                            where collection_name = 'EBA_SALES_BULK_USER_VALID'\n                              and c001 = upper(l_username))\n                loop\n                    apex_collection.add_member(\n                        p_collection_name => 'EBA_SALES_BULK_USER_INVALID',\n                        p_c001            => upper(l_username),\n                        p_c002            => apex_lang.message('DUPLICATE_USER'));\n                        commit;\n                    l_valid := false;\n                    exit;\n                end loop;\n            end if;\n\n            if l_valid then\n                apex_collection.add_member(\n                    p_collection_name => 'EBA_SALES_BULK_USER_VALID',\n                    p_c001            => upper(l_username));\n                    commit;\n            end if;\n\n        end if;\n        l_username := null;\n    end loop;\nend;",
+      "tables": [
+        "EBA_SALES_USERS",
+        "L_USERNAME",
+        "WWV_FLOW_COLLECTIONS"
+      ]
+    },
+    {
+      "name": "Add Users to ACL",
+      "type": "NATIVE_PLSQL",
+      "point": "AFTER_SUBMIT",
+      "page": "Add Multiple Users",
+      "plsql": "for c in\n(\n    select\n        c001       as username,\n        :P153_ROLE as access_level_id\n    from\n        apex_collections\n    where\n        collection_name = 'EBA_SALES_BULK_USER_VALID'\n)\nloop\n    insert into eba_sales_users\n    (username, access_level_id)\n    values\n    (c.username, c.access_level_id);\nend loop;\n\n---------------------\n-- delete collections\n--\nwwv_flow_collection.DELETE_COLLECTION('EBA_SALES_BULK_USER_INVALID');\nwwv_flow_collection.DELETE_COLLECTION('EBA_SALES_BULK_USER_VALID');\nwwv_flow_collection.DELETE_COLLECTION('EBA_SALES_BULK_USER_CREATE');",
+      "tables": [
+        "APEX_COLLECTIONS",
+        "EBA_SALES_USERS"
+      ]
+    },
+    {
+      "name": "Reset User Collection",
+      "type": "NATIVE_PLSQL",
+      "point": "AFTER_HEADER",
+      "page": "Getting Started",
+      "plsql": "apex_collection.truncate_collection(p_collection_name => 'NEW_USERS');",
+      "tables": []
+    },
+    {
+      "name": "Create NEW_USERS Collection",
+      "type": "NATIVE_PLSQL",
+      "point": "AFTER_HEADER",
+      "page": "Getting Started",
+      "plsql": "apex_collection.create_or_truncate_collection(p_collection_name => 'NEW_USERS');",
+      "tables": []
+    },
+    {
+      "name": "Add Current User to Collection",
+      "type": "NATIVE_PLSQL",
+      "point": "AFTER_HEADER",
+      "page": "Getting Started",
+      "plsql": "apex_collection.add_member(\n    p_collection_name => 'NEW_USERS',\n    p_c001            => lower(:APP_USER),\n    p_n001            => 3);",
+      "tables": []
+    },
+    {
+      "name": "Set Username Format based on current user's username",
+      "type": "NATIVE_PLSQL",
+      "point": "AFTER_HEADER",
+      "page": "Getting Started",
+      "plsql": "if instr(:APP_USER,'@') > 0 then\n    eba_sales_fw.set_preference_value ('USERNAME_FORMAT','EMAIL');\nelse\n    eba_sales_fw.set_preference_value ('USERNAME_FORMAT','STRING');\nend if;",
+      "tables": []
+    },
+    {
+      "name": "Process Page Data",
+      "type": "NATIVE_PLSQL",
+      "point": "AFTER_SUBMIT",
+      "page": "Getting Started",
+      "plsql": "begin\n    -- Enable ACL\n    eba_sales_fw.set_preference_value (\n        p_preference_name  => 'ACCESS_CONTROL_ENABLED',\n        p_preference_value => 'Y' );\n    \n    -- Set ACL Scope\n    eba_sales_fw.set_preference_value (\n        p_preference_name  => 'ACCESS_CONTROL_SCOPE',\n        p_preference_value => :P1000_ACL_CONFIG );\n\n    -- Define Username Preference\n    if instr(:APP_USER,'@') > 0 then\n        eba_sales_fw.set_preference_value (\n            p_preference_name  => 'USERNAME_FORMAT',\n            p_preference_value => :P1000_USERNAME_FORMAT );\n    end if;\n    \n    -- Add Users\n    begin\n        insert into eba_sales_users\n        (username, access_level_id, account_locked)\n        select\n                c001 as username,\n                n001 as access_level_id,\n                'N'  as account_locked\n            from\n                apex_collections\n            where\n                collection_name = 'NEW_USERS'\n            and\n                lower(c001) not in (select distinct lower(username) from eba_sales_users);\n    exception\n      when others then\n        null;\n    end;\n\n    -- Get rid of the collection\n    apex_collection.delete_collection(p_collection_name => 'NEW_USERS');\n\n    -- Load Sample Data\n    if :P1000_LOAD_SAMPLE_YN = 'Y' then\n        eba_sales_data.load_sample;\n    end if;\n\n    -- Set Build Options\n    for i in 1..apex_application.g_f01.count\n    loop\n        for c1 in ( select application_id, build_option_name, build_option_status\n                    from apex_application_build_options\n                    where apex_application.g_f01(i) = build_option_id\n                       and application_Id = :APP_ID)\n        loop\n            if c1.build_option_status != apex_application.g_f03(i) then\n                apex_util.set_build_option_status(  p_application_id => :APP_ID,\n                                                    p_id => apex_application.g_f01(i),\n                                                    p_build_status => upper(apex_application.g_f03(i)) );\n            end if;\n        end loop;\n    end loop;\n\n    -- Set First Run to No\n    eba_sales_fw.set_preference_value (\n        p_preference_name  => 'FIRST_RUN',\n        p_preference_value => 'NO' );\nend;",
+      "tables": [
+        "APEX_APPLICATION_BUILD_OPTIONS",
+        "APEX_COLLECTIONS",
+        "EBA_SALES_USERS"
+      ]
+    }
+  ],
+  "validations": [
+    {
+      "name": "P3_CUSTOMER_NAME not duplicated",
+      "type": "NOT_EXISTS",
+      "page": "Account Details",
+      "condition": "select null\nfrom eba_sales_customers\nwhere (:P3_ID is null or :P3_ID != id)\n    and upper(customer_name) = upper(:P3_CUSTOMER_NAME)",
+      "error_message": "An account with that name already exists.",
+      "tables": [
+        "EBA_SALES_CUSTOMERS"
+      ]
+    },
+    {
+      "name": "Valid Tag Characters",
+      "type": "EXPRESSION",
+      "page": "Account Details",
+      "condition": "not regexp_like( :P3_TAGS, '[:;#\\/\\\\\\?\\&]' )",
+      "error_message": "Tags may not contain the following characters: : ; \\ / ? &",
+      "tables": []
+    },
+    {
+      "name": "Website must start with http",
+      "type": "EXPRESSION",
+      "page": "Account Details",
+      "condition": "substr(:P3_CUSTOMER_WEB_SITE, 1, 4) = 'http'",
+      "error_message": "Please provide a URL that begins with, \"http\".",
+      "tables": []
+    },
+    {
+      "name": "LinkedIn must start with http",
+      "type": "EXPRESSION",
+      "page": "Account Details",
+      "condition": "substr(:P3_CUSTOMER_LINKEDIN, 1, 4) = 'http'",
+      "error_message": "Please provide a URL that begins with, \"http\".",
+      "tables": []
+    },
+    {
+      "name": "FB must start with http",
+      "type": "EXPRESSION",
+      "page": "Account Details",
+      "condition": "substr(:P3_CUSTOMER_FACEBOOK, 1, 4) = 'http'",
+      "error_message": "Please provide a URL that begins with, \"http\".",
+      "tables": []
+    },
+    {
+      "name": "Twitter must start with http",
+      "type": "EXPRESSION",
+      "page": "Account Details",
+      "condition": "substr(:P3_CUSTOMER_TWITTER, 1, 4) = 'http'",
+      "error_message": "Please provide a URL that begins with, \"http\".",
+      "tables": []
+    },
+    {
+      "name": "Valid Tag Characters",
+      "type": "EXPRESSION",
+      "page": "Product Details",
+      "condition": "not regexp_like( :P5_TAGS, '[:;#\\/\\\\\\?\\&]' )",
+      "error_message": "Tags may not contain the following characters: : ; \\ / ? &",
+      "tables": []
+    },
+    {
+      "name": "P9_TERRITORY_NAME not duplicated",
+      "type": "NOT_EXISTS",
+      "page": "Territory Details",
+      "condition": "select null\nfrom eba_sales_territories\nwhere (:P9_ID is null or :P9_ID != id)\n    and upper(territory_name) = upper(:P9_TERRITORY_NAME)",
+      "error_message": "A territory with that name already exists.",
+      "tables": [
+        "EBA_SALES_TERRITORIES"
+      ]
+    },
+    {
+      "name": "Valid Tag Characters",
+      "type": "EXPRESSION",
+      "page": "Territory Details",
+      "condition": "not regexp_like( :P9_TAGS, '[:;#\\/\\\\\\?\\&]' )",
+      "error_message": "Tags may not contain the following characters: : ; \\ / ? &",
+      "tables": []
+    },
+    {
+      "name": "End after the beginning",
+      "type": "FUNC_BODY_RETURNING_BOOLEAN",
+      "page": "Fiscal Quarter Details",
+      "condition": "return to_date(:P13_FIRST_DAY,:APP_DATE_FORMAT) < to_date(:P13_LAST_DAY,:APP_DATE_FORMAT);",
+      "error_message": "First and last dates must be in proper chronological order.",
+      "tables": []
+    },
+    {
+      "name": "Fiscal Year is Numeric",
+      "type": "ITEM_IS_NUMERIC",
+      "page": "Fiscal Quarter Details",
+      "condition": "P13_FISCAL_YEAR",
+      "error_message": "#LABEL# must be a numeric value.",
+      "tables": []
+    },
+    {
+      "name": "Quarter is Valid",
+      "type": "EXPRESSION",
+      "page": "Fiscal Quarter Details",
+      "condition": "substr(:P13_PERIOD_NAME,1,2) in ('Q1','Q2','Q3','Q4','q1','q2','q3','q4')",
+      "error_message": "Period Name must begin with Q1, Q2, Q3, or Q4.",
+      "tables": []
+    },
+    {
+      "name": "End >= Begin",
+      "type": "EXPRESSION",
+      "page": "Revenue by Quarter",
+      "condition": "to_date(:P14_END_QTR,'YYYYMMDD') >= to_date(:P14_BEGIN_QTR,'YYYYMMDD')",
+      "error_message": "Ending Quarter must be greater than or equal to Beginning Quarter.",
+      "tables": []
+    },
+    {
+      "name": "P16_DEAL_STATUS_CODE_ID not in (4, 11)",
+      "type": "EXPRESSION",
+      "page": "Opportunity Details",
+      "condition": ":P16_DEAL_STATUS_CODE_ID in ('4', '11')",
+      "error_message": "Use the Close Won/Lost button to set #LABEL# to a \"closed\" value.",
+      "tables": []
+    },
+    {
+      "name": "P16_DEAL_PROBABILITY is not 0 or 100",
+      "type": "EXPRESSION",
+      "page": "Opportunity Details",
+      "condition": ":P16_DEAL_PROBABILITY in ('0', '100')",
+      "error_message": "Use the Close Won/Lost button to set #LABEL# to 0 or 100.",
+      "tables": []
+    },
+    {
+      "name": "P16_DEAL_AMOUNT Not Null",
+      "type": "ITEM_NOT_NULL",
+      "page": "Opportunity Details",
+      "condition": "P16_DEAL_AMOUNT",
+      "error_message": "#LABEL# must have some value.",
+      "tables": []
+    },
+    {
+      "name": "Valid Tag Characters",
+      "type": "EXPRESSION",
+      "page": "Opportunity Details",
+      "condition": "not regexp_like( :P16_TAGS, '[:;#\\/\\\\\\?\\&]' )",
+      "error_message": "Tags may not contain the following characters: : ; \\ / ? &",
+      "tables": []
+    },
+    {
+      "name": "cannot update yourself",
+      "type": "NOT_EXISTS",
+      "page": "New User Details",
+      "condition": "select 1\n  from eba_sales_users\n where upper(username) = :APP_USER\n   and upper(username) = upper(:P21_USERNAME)",
+      "error_message": "You cannot update your own record.",
+      "tables": [
+        "EBA_SALES_USERS"
+      ]
+    },
+    {
+      "name": "P21_USERNAME Email is Valid",
+      "type": "REGULAR_EXPRESSION",
+      "page": "New User Details",
+      "condition": "P21_USERNAME",
+      "error_message": "Username is not in a valid email address format. Please note the application's username format below.",
+      "tables": []
+    },
+    {
+      "name": "Username is unique",
+      "type": "NOT_EXISTS",
+      "page": "New User Details",
+      "condition": "select\n    null\nfrom\n    apex_collections\nwhere\n    collection_name = 'NEW_USERS'\nand\n    lower(c001) = lower(:P21_USERNAME)\nand\n    :P21_SEQUENCE is null;",
+      "error_message": "This username has already been added. Please enter a unique username.",
+      "tables": [
+        "APEX_COLLECTIONS"
+      ]
+    },
+    {
+      "name": "P27_COMPETITOR_ID not duplicated",
+      "type": "NOT_EXISTS",
+      "page": "Competition Details",
+      "condition": "select null\nfrom eba_sales_deal_competition\nwhere deal_id = :P27_DEAL_ID\n    and competitor_id = :P27_COMPETITOR_ID\n    and (:P27_ID is null or id != :P27_ID)",
+      "error_message": "Selected competition already exists for this opportunity.",
+      "tables": [
+        "EBA_SALES_DEAL_COMPETITION"
+      ]
+    },
+    {
+      "name": "Valid Tag Characters",
+      "type": "EXPRESSION",
+      "page": "Lead Details",
+      "condition": "not regexp_like( :P29_TAGS, '[:;#\\/\\\\\\?\\&]' )",
+      "error_message": "Tags may not contain the following characters: : ; \\ / ? &",
+      "tables": []
+    },
+    {
+      "name": "P30_REP_ID not duplicated",
+      "type": "NOT_EXISTS",
+      "page": "Team Member Details",
+      "condition": "select null\nfrom eba_sales_deal_team\nwhere ( :P30_ID is null or id = :P30_ID )\n    and deal_id = :P30_DEAL_ID\n    and rep_id = :P30_REP_ID",
+      "error_message": "Selected team member is already associated with this opportunity.",
+      "tables": [
+        "EBA_SALES_DEAL_TEAM"
+      ]
+    },
+    {
+      "name": "Valid Tag Characters",
+      "type": "EXPRESSION",
+      "page": "Competitor Details",
+      "condition": "not regexp_like( :P52_TAGS, '[:;#\\/\\\\\\?\\&]' )",
+      "error_message": "Tags may not contain the following characters: : ; \\ / ? &",
+      "tables": []
+    },
+    {
+      "name": "URL1 must start with http",
+      "type": "EXPRESSION",
+      "page": "Competitor Details",
+      "condition": "substr(:P52_URL_1, 1, 4) = 'http'",
+      "error_message": "Please provide a URL that begins with, \"http\".",
+      "tables": []
+    },
+    {
+      "name": "URL2 must start with http",
+      "type": "EXPRESSION",
+      "page": "Competitor Details",
+      "condition": "substr(:P52_URL_2, 1, 4) = 'http'",
+      "error_message": "Please provide a URL that begins with, \"http\".",
+      "tables": []
+    },
+    {
+      "name": "URL3 must start with http",
+      "type": "EXPRESSION",
+      "page": "Competitor Details",
+      "condition": "substr(:P52_URL_3, 1, 4) = 'http'",
+      "error_message": "Please provide a URL that begins with, \"http\".",
+      "tables": []
+    },
+    {
+      "name": "URL4 must start with http",
+      "type": "EXPRESSION",
+      "page": "Competitor Details",
+      "condition": "substr(:P52_URL_4, 1, 4) = 'http'",
+      "error_message": "Please provide a URL that begins with, \"http\".",
+      "tables": []
+    },
+    {
+      "name": "Lead Source not used",
+      "type": "NOT_EXISTS",
+      "page": "Lead Source Details",
+      "condition": "select 1\nfrom eba_sales_leads\nwhere lead_source_id = :P70_ID",
+      "error_message": "Unable to delete while leads use this source.",
+      "tables": [
+        "EBA_SALES_LEADS"
+      ]
+    },
+    {
+      "name": "P71_ACCOUNT not null when existing",
+      "type": "ITEM_NOT_NULL",
+      "page": "Create Opportunity",
+      "condition": "P71_ACCOUNT",
+      "error_message": "#LABEL# must have some value.",
+      "tables": []
+    },
+    {
+      "name": "P71_CUSTOMER_NAME not null when new",
+      "type": "ITEM_NOT_NULL",
+      "page": "Create Opportunity",
+      "condition": "P71_CUSTOMER_NAME",
+      "error_message": "#LABEL# must have some value.",
+      "tables": []
+    },
+    {
+      "name": "P71_OPPORTUNITY_NAME not duplicated",
+      "type": "NOT_EXISTS",
+      "page": "Create Opportunity",
+      "condition": "select null\nfrom eba_sales_deals\nwhere upper(deal_name) = upper(:P71_OPPORTUNITY_NAME)",
+      "error_message": "An opportunity with that name already exists.",
+      "tables": [
+        "EBA_SALES_DEALS"
+      ]
+    },
+    {
+      "name": "P71_CUSTOMER_NAME not duplicated",
+      "type": "NOT_EXISTS",
+      "page": "Create Opportunity",
+      "condition": "select null\nfrom eba_sales_customers\nwhere upper(customer_name) = upper(:P71_CUSTOMER_NAME)",
+      "error_message": "An account with that name already exists.",
+      "tables": [
+        "EBA_SALES_CUSTOMERS"
+      ]
+    },
+    {
+      "name": "P71_TERRITORY_ID not null",
+      "type": "ITEM_NOT_NULL",
+      "page": "Create Opportunity",
+      "condition": "P71_TERRITORY_ID",
+      "error_message": "#LABEL# must have some value.",
+      "tables": []
+    },
+    {
+      "name": "Valid Tag Characters",
+      "type": "EXPRESSION",
+      "page": "Create Opportunity",
+      "condition": "not regexp_like( :P71_TAGS, '[:;#\\/\\\\\\?\\&]' )",
+      "error_message": "Tags may not contain the following characters: : ; \\ / ? &",
+      "tables": []
+    },
+    {
+      "name": "Valid Tag Characters Opportunity",
+      "type": "EXPRESSION",
+      "page": "Create Opportunity",
+      "condition": "not regexp_like( :P71_OPP_TAGS, '[:;#\\/\\\\\\?\\&]' )",
+      "error_message": "Tags may not contain the following characters: : ; \\ / ? &",
+      "tables": []
+    },
+    {
+      "name": "P78_DISPLAY_FROM must be timestamp",
+      "type": "ITEM_IS_TIMESTAMP",
+      "page": "Notification Details",
+      "condition": "P78_DISPLAY_FROM",
+      "error_message": "#LABEL# must be a valid timestamp.",
+      "tables": []
+    },
+    {
+      "name": "P78_DISPLAY_UNTIL must be timestamp",
+      "type": "ITEM_IS_TIMESTAMP",
+      "page": "Notification Details",
+      "condition": "P78_DISPLAY_UNTIL",
+      "error_message": "#LABEL# must be a valid timestamp.",
+      "tables": []
+    },
+    {
+      "name": "End after the beginning",
+      "type": "FUNC_BODY_RETURNING_BOOLEAN",
+      "page": "Notification Details",
+      "condition": "if :P78_DISPLAY_FROM is not null and :P78_DISPLAY_UNTIL is not null then\n    return to_timestamp(:P78_DISPLAY_FROM,'DD-MON-YYYY HH24:MI:SS') < to_timestamp(:P78_DISPLAY_UNTIL,'DD-MON-YYYY HH24:MI:SS');\nelse\n    return true;\nend if;",
+      "error_message": "Display From and To dates must be in proper chronological order.",
+      "tables": []
+    },
+    {
+      "name": "P99_FILE_BLOB is not null",
+      "type": "ITEM_NOT_NULL",
+      "page": "Attachment Details",
+      "condition": "P99_FILE_BLOB",
+      "error_message": "#LABEL# must have some value.",
+      "tables": []
+    },
+    {
+      "name": "Valid Tag Characters",
+      "type": "EXPRESSION",
+      "page": "Contact Details",
+      "condition": "not regexp_like( :P106_TAGS, '[:;#\\/\\\\\\?\\&]' )",
+      "error_message": "Tags may not contain the following characters: : ; \\ / ? &",
+      "tables": []
+    },
+    {
+      "name": "LinkedIn must start with http",
+      "type": "EXPRESSION",
+      "page": "Contact Details",
+      "condition": "substr(:P106_CONTACT_LINKEDIN, 1, 4) = 'http'",
+      "error_message": "Please provide a URL that begins with, \"http\".",
+      "tables": []
+    },
+    {
+      "name": "FB must start with http",
+      "type": "EXPRESSION",
+      "page": "Contact Details",
+      "condition": "substr(:P106_CONTACT_FACEBOOK, 1, 4) = 'http'",
+      "error_message": "Please provide a URL that begins with, \"http\".",
+      "tables": []
+    },
+    {
+      "name": "P108_PRODUCT_ID not duplicated",
+      "type": "NOT_EXISTS",
+      "page": "Product Details",
+      "condition": "select null\n  from eba_sales_deal_products\n where deal_id = :P108_DEAL_ID\n   and product_id = :P108_PRODUCT_ID\n   and (:P108_ID is null or id != :P108_ID)",
+      "error_message": "Product is already associated with this deal.",
+      "tables": [
+        "EBA_SALES_DEAL_PRODUCTS"
+      ]
+    },
+    {
+      "name": "P108_PRODUCT_ID & P108_CLOSE_DATE not duplicated",
+      "type": "NOT_EXISTS",
+      "page": "Product Details",
+      "condition": "select null\n  from eba_sales_deal_products\n where deal_id = :P108_DEAL_ID\n   and product_id = :P108_PRODUCT_ID\n   and close_date = :P108_CLOSE_DATE\n   and (:P108_ID is null or id != :P108_ID)",
+      "error_message": "Product is already associated with this deal.",
+      "tables": [
+        "EBA_SALES_DEAL_PRODUCTS"
+      ]
+    },
+    {
+      "name": "P108_QUOTE_PRICE is numeric",
+      "type": "ITEM_IS_NUMERIC",
+      "page": "Product Details",
+      "condition": "P108_QUOTE_PRICE",
+      "error_message": "#LABEL# must contain a numeric value (other than commas and a dollar sign).",
+      "tables": []
+    },
+    {
+      "name": "P108_TCV is numeric",
+      "type": "ITEM_IS_NUMERIC",
+      "page": "Product Details",
+      "condition": "P108_TCV",
+      "error_message": "#LABEL# must contain a numeric value (other than commas and a dollar sign).",
+      "tables": []
+    },
+    {
+      "name": "P114_LINK_TARGET valid URL",
+      "type": "REGULAR_EXPRESSION",
+      "page": "Link Details",
+      "condition": "P114_LINK_TARGET",
+      "error_message": "Invalid URL",
+      "tables": []
+    },
+    {
+      "name": "P114 link not duplicated",
+      "type": "NOT_EXISTS",
+      "page": "Link Details",
+      "condition": "select null\nfrom eba_sales_links\nwhere (:P114_ID is null or id != :P114_ID)\n  and (\n    (:P114_ENTITY_TYPE = 'OPPORTUNITY' and deal_id = :P114_OPPORTUNITY_ID)\n      or (:P114_ENTITY_TYPE = 'LEAD' and lead_id = :P114_LEAD_ID)\n      or (:P114_ENTITY_TYPE = 'TERRITORY' and territory_id = :P114_TERRITORY_ID)\n      or (:P114_ENTITY_TYPE = 'ACCOUNT' and account_id = :P114_ACCOUNT_ID)\n      or (:P114_ENTITY_TYPE = 'CONTACT' and contact_id = :P114_CONTACT_ID)\n      or (:P114_ENTITY_TYPE = 'PRODUCT' and product_id = :P114_PRODUCT_ID)\n  )\n  and upper(link_target) = upper(:P114_LINK_TARGET)",
+      "error_message": "Provided link already exists.",
+      "tables": [
+        "EBA_SALES_LINKS"
+      ]
+    },
+    {
+      "name": "cannot update yourself",
+      "type": "NOT_EXISTS",
+      "page": "User Access Control  ",
+      "condition": "select null\nfrom eba_sales_users\nwhere upper(username) = :APP_USER\n    and id = :P119_ID\n    and ( username <> :P119_USERNAME\n        or access_level_id <> :P119_ACCESS_LEVEL_ID\n        or account_locked <> :P119_ACCOUNT_LOCKED )",
+      "error_message": "You cannot update your own record.",
+      "tables": [
+        "EBA_SALES_USERS"
+      ]
+    },
+    {
+      "name": "P119_USERNAME valid format (email)",
+      "type": "REGULAR_EXPRESSION",
+      "page": "User Access Control  ",
+      "condition": "P119_USERNAME",
+      "error_message": "Username is not in a valid email address format. Please note the application's username format below.",
+      "tables": []
+    },
+    {
+      "name": "Filename is not null",
+      "type": "ITEM_NOT_NULL",
+      "page": "Data Load Source",
+      "condition": "P136_FILE_NAME",
+      "error_message": "#LABEL# must have some value.",
+      "tables": []
+    },
+    {
+      "name": "Uploaded data is not null",
+      "type": "ITEM_NOT_NULL",
+      "page": "Data Load Source",
+      "condition": "P136_COPY_PASTE",
+      "error_message": "#LABEL# must have some value.",
+      "tables": []
+    },
+    {
+      "name": "P145_COMPETITOR_ID not duplicated",
+      "type": "NOT_EXISTS",
+      "page": "Competition Details",
+      "condition": "select null\nfrom EBA_SALES_ACT_COMPETITION\nwhere customer_id = :P145_CUSTOMER_ID\n    and competitor_id = :P145_COMPETITOR_ID\n    and (:P145_ID is null or id != :P145_ID)",
+      "error_message": "Selected competition already exists for this opportunity.",
+      "tables": [
+        "EBA_SALES_ACT_COMPETITION"
+      ]
+    },
+    {
+      "name": "P146_I_VALIDATE is not null",
+      "type": "ITEM_NOT_NULL",
+      "page": "Validation Details",
+      "condition": "P146_I_VALIDATE",
+      "error_message": "Please check to validate.",
+      "tables": []
+    },
+    {
+      "name": "Filename is not null",
+      "type": "ITEM_NOT_NULL",
+      "page": "Data Load Source",
+      "condition": "P210_FILE_NAME",
+      "error_message": "#LABEL# must have some value.",
+      "tables": []
+    },
+    {
+      "name": "Paste buffer is not null",
+      "type": "ITEM_NOT_NULL",
+      "page": "Data Load Source",
+      "condition": "P210_COPY_PASTE",
+      "error_message": "#LABEL# must have some value.",
+      "tables": []
+    }
+  ],
+  "computations": [
+    {
+      "item": "LAST_PAGE",
+      "type": "STATIC_ASSIGNMENT",
+      "page": "Opportunities",
+      "expr": null
+    },
+    {
+      "item": "LAST_PAGE",
+      "type": "STATIC_ASSIGNMENT",
+      "page": "Accounts",
+      "expr": null
+    },
+    {
+      "item": "P80_ID",
+      "type": "STATIC_ASSIGNMENT",
+      "page": "Opportunity Details",
+      "expr": null
+    },
+    {
+      "item": "LAST_PAGE",
+      "type": "STATIC_ASSIGNMENT",
+      "page": "Leads",
+      "expr": null
+    },
+    {
+      "item": "LAST_PAGE",
+      "type": "STATIC_ASSIGNMENT",
+      "page": "Past Due Opportunities",
+      "expr": null
+    },
+    {
+      "item": "LAST_PAGE",
+      "type": "STATIC_ASSIGNMENT",
+      "page": "Contacts",
+      "expr": null
+    },
+    {
+      "item": "LAST_PAGE",
+      "type": "STATIC_ASSIGNMENT",
+      "page": "Revenue by &REP_TITLE.",
+      "expr": null
+    },
+    {
+      "item": "LAST_PAGE",
+      "type": "STATIC_ASSIGNMENT",
+      "page": "Projected Close Dates",
+      "expr": null
+    },
+    {
+      "item": "LAST_PAGE",
+      "type": "STATIC_ASSIGNMENT",
+      "page": "Territories",
+      "expr": null
+    },
+    {
+      "item": "P16_ID",
+      "type": "STATIC_ASSIGNMENT",
+      "page": "Opportunity",
+      "expr": null
+    },
+    {
+      "item": "LAST_PAGE",
+      "type": "STATIC_ASSIGNMENT",
+      "page": "Opportunity",
+      "expr": null
+    },
+    {
+      "item": "LAST_PAGE",
+      "type": "STATIC_ASSIGNMENT",
+      "page": "Opportunities",
+      "expr": null
+    },
+    {
+      "item": "P102_QUOTE_PRICE",
+      "type": "EXPRESSION",
+      "page": "Account Agreement",
+      "expr": null
+    },
+    {
+      "item": "LAST_PAGE",
+      "type": "STATIC_ASSIGNMENT",
+      "page": "Contacts",
+      "expr": null
+    },
+    {
+      "item": "LAST_PAGE",
+      "type": "STATIC_ASSIGNMENT",
+      "page": "Account Locations",
+      "expr": null
+    },
+    {
+      "item": "P108_QUOTE_PRICE",
+      "type": "EXPRESSION",
+      "page": "Product Details",
+      "expr": null
+    },
+    {
+      "item": "P108_TCV_RETURN",
+      "type": "EXPRESSION",
+      "page": "Product Details",
+      "expr": null
+    },
+    {
+      "item": "P108_PRODUCT_SOLD_AS",
+      "type": "QUERY",
+      "page": "Product Details",
+      "expr": "P108_PRODUCT_ID"
+    },
+    {
+      "item": "P114_LINK_TEXT",
+      "type": "ITEM_VALUE",
+      "page": "Link Details",
+      "expr": "P114_LINK_TEXT"
+    },
+    {
+      "item": "P119_USERNAME",
+      "type": "EXPRESSION",
+      "page": "User Access Control  ",
+      "expr": null
+    },
+    {
+      "item": "P119_ACCOUNT_LOCKED",
+      "type": "STATIC_ASSIGNMENT",
+      "page": "User Access Control  ",
+      "expr": "P119_ACCOUNT_LOCKED"
+    },
+    {
+      "item": "LAST_PAGE",
+      "type": "STATIC_ASSIGNMENT",
+      "page": "User Access Control  ",
+      "expr": null
+    },
+    {
+      "item": "P122_QUOTE_PRICE",
+      "type": "EXPRESSION",
+      "page": "Support Amount",
+      "expr": null
+    },
+    {
+      "item": "P93_ID",
+      "type": "ITEM_VALUE",
+      "page": "Territory States",
+      "expr": null
+    },
+    {
+      "item": "LAST_PAGE",
+      "type": "STATIC_ASSIGNMENT",
+      "page": "Opportunities by Competitor",
+      "expr": null
+    },
+    {
+      "item": "LAST_PAGE",
+      "type": "STATIC_ASSIGNMENT",
+      "page": "Opportunities by Product",
+      "expr": null
+    },
+    {
+      "item": "P135_HELP",
+      "type": "STATIC_ASSIGNMENT",
+      "page": "Opportunities by Product",
+      "expr": null
+    },
+    {
+      "item": "LAST_PAGE",
+      "type": "STATIC_ASSIGNMENT",
+      "page": "Add Multiple Users",
+      "expr": null
+    }
+  ],
+  "tables": [
+    "EBA_SALES_ACCESS_LEVELS",
+    "EBA_SALES_ACCOUNT_STANDING",
+    "EBA_SALES_ACT_COMPETITION",
+    "EBA_SALES_CLICKS",
+    "EBA_SALES_COMMENTS",
+    "EBA_SALES_COMPETITORS",
+    "EBA_SALES_COMPETITOR_THREATS",
+    "EBA_SALES_COUNTRIES",
+    "EBA_SALES_CURRENCIES",
+    "EBA_SALES_CUSTOMERS",
+    "EBA_SALES_CUSTOMER_CONTACTS",
+    "EBA_SALES_CUSTOMER_LOCATIONS",
+    "EBA_SALES_DEALS",
+    "EBA_SALES_DEAL_COMPETITION",
+    "EBA_SALES_DEAL_PRODUCTS",
+    "EBA_SALES_DEAL_STAGES",
+    "EBA_SALES_DEAL_STATUS_CODES",
+    "EBA_SALES_DEAL_TEAM",
+    "EBA_SALES_ERRORS",
+    "EBA_SALES_ERROR_LOOKUP",
+    "EBA_SALES_FILES",
+    "EBA_SALES_FIN_ASSESSMENTS",
+    "EBA_SALES_HISTORY",
+    "EBA_SALES_INDUSTRIES",
+    "EBA_SALES_LEADS",
+    "EBA_SALES_LEAD_SOURCES",
+    "EBA_SALES_LEAD_STATUS_CODES",
+    "EBA_SALES_LINKS",
+    "EBA_SALES_NOTIFICATIONS",
+    "EBA_SALES_PREFERENCES",
+    "EBA_SALES_PRODUCTS",
+    "EBA_SALES_RISK_ASSESSMENTS",
+    "EBA_SALES_SALESREPS",
+    "EBA_SALES_SALESREP_ROLES",
+    "EBA_SALES_SALES_PERIODS",
+    "EBA_SALES_STATES",
+    "EBA_SALES_STATUS_ASSESSMENTS",
+    "EBA_SALES_SVPS",
+    "EBA_SALES_TAGS",
+    "EBA_SALES_TAGS_SUM",
+    "EBA_SALES_TAGS_TYPE_SUM",
+    "EBA_SALES_TERRITORIES",
+    "EBA_SALES_TERRITORY_ACL",
+    "EBA_SALES_TERR_MAP",
+    "EBA_SALES_TZ_PREF",
+    "EBA_SALES_USERS",
+    "EBA_SALES_VERIFICATIONS"
+  ],
+  "packages": [
+    "EBA_SALES_ACL_API (PACKAGE BODY)",
+    "EBA_SALES_ACL_API (PACKAGE)",
+    "EBA_SALES_DATA (PACKAGE)",
+    "EBA_SALES_FW (PACKAGE)"
+  ],
+  "lovs": 58,
+  "stats": {
+    "pages": 156,
+    "processes_total": 134,
+    "processes_with_plsql": 46,
+    "validations": 57,
+    "computations": 28,
+    "tables": 47,
+    "packages": 4,
+    "lovs": 58,
+    "source_lines": 99979
+  }
+}

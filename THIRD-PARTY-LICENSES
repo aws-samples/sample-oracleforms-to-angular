@@ -1,0 +1,76 @@
+THIRD-PARTY LICENSES
+====================
+
+This sample includes, references, or depends on the third-party components listed
+below. Each remains under its own license; the terms of this repository's LICENSE
+(MIT-0) do not apply to them. Where a component is only *referenced* (pulled at
+build/deploy time rather than committed here), that is noted.
+
+--------------------------------------------------------------------------------
+1. Oracle Retail Management System (legacy Oracle Forms sample application)
+--------------------------------------------------------------------------------
+Used as: the legally-clean stand-in "legacy Oracle Forms application" that the
+migration pipeline parses in `pipeline/sample-inputs/forms/`.
+Source : https://github.com/v7med7elmy-ai/oracle-retail-management-system
+License: MIT License
+Notes  : Included `.fmb` / SQL artifacts are redistributed under the MIT terms of
+         the upstream project. Upstream comments containing offensive language
+         were removed during import; the SQL/DDL semantics are unchanged.
+
+--------------------------------------------------------------------------------
+2. Oracle APEX "Sample Opportunity Tracking" application export
+--------------------------------------------------------------------------------
+Used as: the legally-clean stand-in "legacy Oracle APEX application" that the
+pipeline parses in `pipeline/sample-inputs/apex/opportunities.sql`.
+Source : Oracle APEX packaged sample application
+License: Universal Permissive License (UPL) v1.0  —  https://oss.oracle.com/licenses/upl/
+Copyright (c) 2012, 2023 Oracle and/or its affiliates.
+
+--------------------------------------------------------------------------------
+3. Oracle Database Express Edition (XE) container image  [REFERENCED, not bundled]
+--------------------------------------------------------------------------------
+Used as: the local/dev Oracle database backing the "before"/"after" apps.
+Image  : gvenzl/oracle-xe:21-slim  (community-maintained image of Oracle XE)
+License: Oracle Database Express Edition (XE) — Oracle Free Use Terms and Conditions
+         https://www.oracle.com/downloads/licenses/oracle-free-license.html
+Notes  : Pulled at runtime. Not redistributed in this repository.
+
+--------------------------------------------------------------------------------
+4. Oracle Data Provider for .NET (ODP.NET Core)  [REFERENCED via NuGet]
+--------------------------------------------------------------------------------
+Used by: `app/dotnet_api` to connect to Oracle.
+Package: Oracle.ManagedDataAccess.Core
+License: Oracle Technology Network (OTN) License / Oracle .NET license
+Notes  : Restored from NuGet at build time. Not redistributed here.
+
+--------------------------------------------------------------------------------
+5. Application framework & library dependencies  [REFERENCED via package managers]
+--------------------------------------------------------------------------------
+Restored at build time from their respective registries; not committed here.
+
+  Component                         Ecosystem   License
+  --------------------------------  ----------  ----------------------
+  Angular (@angular/*)              npm         MIT
+  rxjs, zone.js, tslib              npm         MIT / Apache-2.0
+  .NET 8 / ASP.NET Core             NuGet       MIT
+  Dapper                            NuGet       Apache-2.0
+  Swashbuckle.AspNetCore            NuGet       MIT
+  aws-cdk-lib, constructs           PyPI        Apache-2.0
+  boto3, botocore                   PyPI        Apache-2.0
+  python-oracledb                   PyPI        Apache-2.0 / UPL-1.0
+  opensearch-py                     PyPI        Apache-2.0
+
+--------------------------------------------------------------------------------
+6. Container base images  [REFERENCED, not bundled]
+--------------------------------------------------------------------------------
+  public.ecr.aws/lambda/python:3.12          (AWS Lambda base image)
+  mcr.microsoft.com/dotnet/sdk:8.0           (.NET SDK, MIT)
+  mcr.microsoft.com/dotnet/aspnet:8.0        (.NET ASP.NET runtime, MIT)
+
+--------------------------------------------------------------------------------
+NOT INCLUDED (deliberately)
+--------------------------------------------------------------------------------
+Oracle Forms / Oracle WebLogic Server binaries and the Oracle Forms Standalone
+Launcher (`frmsal.jar`) are Oracle-proprietary and NOT redistributable. They are
+not part of this repository. To stand up a legacy Oracle Forms "before"
+environment, obtain those binaries directly from Oracle under your own license.

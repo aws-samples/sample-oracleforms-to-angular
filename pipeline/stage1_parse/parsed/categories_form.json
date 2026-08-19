@@ -1,0 +1,319 @@
+{
+  "module": "categories_form",
+  "magic": "ROS.60050",
+  "triggers": [
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "INTRNL.INTRNL",
+      "plsql": "BEGIN\nLAST_RECORD;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": []
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "INTRNL.INTRNL",
+      "plsql": "BEGIN\nLAST_RECORD;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": []
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "CATEGORIES.NEXT_BTN",
+      "plsql": "BEGIN\nNEXT_RECORD;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": [
+        "NEXT_RECORD"
+      ]
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "INTRNL.INTRNL",
+      "plsql": "BEGIN\nLAST_RECORD;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": []
+    },
+    {
+      "name": "WHEN-NEW-FORM-INSTANCE",
+      "scope": "Form",
+      "plsql": "BEGIN\nEXECUTE_QUERY;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": [
+        "EXECUTE_QUERY"
+      ]
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "INTRNL.INTRNL",
+      "plsql": "BEGIN\nFIRST_RECORD;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": []
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "INTRNL.INTRNL",
+      "plsql": "BEGIN\nLAST_RECORD;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": []
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "INTRNL.INTRNL",
+      "plsql": "BEGIN\nLAST_RECORD;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": []
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "INTRNL.INTRNL",
+      "plsql": "BEGIN\nLAST_RECORD;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": []
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "CATEGORIES.SAVE_BTN",
+      "plsql": "BEGIN\nCOMMIT_FORM;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": [
+        "COMMIT_FORM"
+      ]
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "INTRNL.INTRNL",
+      "plsql": "BEGIN\nFIRST_RECORD;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": []
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "INTRNL.INTRNL",
+      "plsql": "BEGIN\nLAST_RECORD;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": []
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "INTRNL.INTRNL",
+      "plsql": "BEGIN\nFIRST_RECORD;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": []
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "INTRNL.INTRNL",
+      "plsql": "BEGIN\nLAST_RECORD;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": []
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "INTRNL.INTRNL",
+      "plsql": "BEGIN\nFIRST_RECORD;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": []
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "INTRNL.INTRNL",
+      "plsql": "BEGIN\nLAST_RECORD;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": []
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "INTRNL.INTRNL",
+      "plsql": "BEGIN\nFIRST_RECORD;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": []
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "INTRNL.INTRNL",
+      "plsql": "BEGIN\nLAST_RECORD;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": []
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "INTRNL.INTRNL",
+      "plsql": "BEGIN\nFIRST_RECORD;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": []
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "INTRNL.INTRNL",
+      "plsql": "BEGIN\nLAST_RECORD;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": []
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "INTRNL.INTRNL",
+      "plsql": "BEGIN\nFIRST_RECORD;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": []
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "INTRNL.INTRNL",
+      "plsql": "BEGIN\nLAST_RECORD;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": []
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "INTRNL.INTRNL",
+      "plsql": "BEGIN\nFIRST_RECORD;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": []
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "INTRNL.INTRNL",
+      "plsql": "BEGIN\nLAST_RECORD;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": []
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "INTRNL.INTRNL",
+      "plsql": "BEGIN\nFIRST_RECORD;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": []
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "INTRNL.INTRNL",
+      "plsql": "BEGIN\nLAST_RECORD;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": []
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "INTRNL.INTRNL",
+      "plsql": "BEGIN\nFIRST_RECORD;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": []
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "INTRNL.INTRNL",
+      "plsql": "BEGIN\nLAST_RECORD;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": []
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "INTRNL.INTRNL",
+      "plsql": "BEGIN\nLAST_RECORD;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": []
+    }
+  ],
+  "blocks": [
+    "CATEGORIES",
+    "INTRNL"
+  ],
+  "tables": [],
+  "lovs": 0,
+  "relations": 0,
+  "navigation": [],
+  "stats": {
+    "triggers_with_logic": 29,
+    "trigger_markers_total": 30,
+    "blocks": 2,
+    "tables_referenced": 0,
+    "navigation_edges": 0,
+    "lov_markers": 0,
+    "file_bytes": 73728
+  }
+}

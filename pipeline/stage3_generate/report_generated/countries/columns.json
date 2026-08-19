@@ -1,0 +1,44 @@
+[
+  {
+    "key": "ID",
+    "label": "Edit",
+    "sortable": true,
+    "type": "number"
+  },
+  {
+    "key": "COUNTRY_CODE",
+    "label": "Country Code",
+    "sortable": true,
+    "type": "text"
+  },
+  {
+    "key": "COUNTRY_NAME",
+    "label": "Country",
+    "sortable": true,
+    "type": "text"
+  },
+  {
+    "key": "CREATED",
+    "label": "Created",
+    "sortable": true,
+    "type": "date"
+  },
+  {
+    "key": "CREATED_BY",
+    "label": "Created by",
+    "sortable": true,
+    "type": "text"
+  },
+  {
+    "key": "UPDATED",
+    "label": "Updated",
+    "sortable": true,
+    "type": "date"
+  },
+  {
+    "key": "UPDATED_BY",
+    "label": "Updated by",
+    "sortable": true,
+    "type": "text"
+  }
+]

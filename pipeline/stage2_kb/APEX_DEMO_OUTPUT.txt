@@ -1,0 +1,46 @@
+
+============================================================================
+Q: What business rule prevents duplicate customer accounts, and what error does it show?
+----------------------------------------------------------------------------
+The business rule that prevents duplicate customer accounts is "P3_CUSTOMER_NAME not duplicated" (NOT_EXISTS validation) on the Account Details page. It checks if an account with the same name already exists by comparing the uppercase customer name, excluding the current record being edited. The error message displayed to users is: "An account with that name already exists."
+Sources: apex_business_rules.md
+
+============================================================================
+Q: What validation rules apply to the Account Details page (tags, website, LinkedIn)?
+----------------------------------------------------------------------------
+The Account Details page has several validation rules:
+
+For tags: Tags may not contain the following characters: : ; \ / ? &
+
+For website: The URL must begin with "http"
+
+For LinkedIn: The URL must begin with "http"
+
+Additionally, there is a validation rule ensuring that account names are not duplicated - an account with the same name cannot already exist in the system.
+Sources: apex_business_rules.md
+
+============================================================================
+Q: How does the app compute the revenue-by-quarter reporting period?
+----------------------------------------------------------------------------
+The app computes the revenue-by-quarter reporting period by setting initial begin and end dates based on the current date and fiscal quarter information. It queries the EBA_SALES_SALES_PERIODS table to find the first day of the quarter from 270 days ago and sets that as the beginning quarter (P14_BEGIN_QTR). It then queries the same table to find the last day of the current quarter and sets that as the ending quarter (P14_END_QTR). Both values are formatted as 'YYYYMMDD'. The app also includes validation to ensure that the ending quarter is greater than or equal to the beginning quarter.
+Sources: apex_processes.md, apex_business_rules.md
+
+============================================================================
+Q: Which PL/SQL package handles user access control and preferences?
+----------------------------------------------------------------------------
+The PL/SQL package that handles user access control and preferences is `eba_sales_acl_api`. This package is used to set preference values for access control settings, including enabling/disabling access control, setting the access control scope, and configuring username formats.
+Sources: apex_processes.md
+
+============================================================================
+Q: How are new users added to the system?
+----------------------------------------------------------------------------
+New users are added to the system through multiple methods:
+
+1. **Single User Addition**: Users can be added individually by creating a member in the 'NEW_USERS' collection with their username (converted to lowercase) and access level ID. The username and access level are then inserted into the eba_sales_users table.
+
+2. **Bulk User Addition**: Multiple users can be added at once by processing a list of email addresses or usernames. The system parses the input by replacing various delimiting characters (line breaks, tabs, semicolons, colons, etc.) with commas to create a standardized list. These entries are validated and sorted into collections for valid, invalid, and users to be created. Valid users are then inserted into the eba_sales_users table with their assigned access level.
+
+3. **Initial Setup**: During the Getting Started process, the current application user is automatically added to a collection and can be inserted into the system as part of the initial configuration.
+
+The system also determines a username format preference (EMAIL or STRING) based on whether the username contains an "@" symbol, and sets account_locked status to 'N' for new users by default.
+Sources: apex_processes.md

@@ -1,0 +1,156 @@
+[
+  {
+    "key": "ID",
+    "label": "Id",
+    "sortable": true,
+    "type": "number",
+    "hidden": true
+  },
+  {
+    "key": "ROW_KEY",
+    "label": "Key",
+    "sortable": true,
+    "type": "text",
+    "hidden": true
+  },
+  {
+    "key": "CUSTOMER_NAME",
+    "label": "Account",
+    "sortable": true,
+    "type": "text",
+    "hidden": false
+  },
+  {
+    "key": "TERRITORY_NAME",
+    "label": "Territory",
+    "sortable": true,
+    "type": "text",
+    "hidden": false
+  },
+  {
+    "key": "CUSTOMER_TERRITORY_ID",
+    "label": "Customer Territory Id",
+    "sortable": true,
+    "type": "number",
+    "hidden": true
+  },
+  {
+    "key": "INDUSTRY",
+    "label": "Industry",
+    "sortable": true,
+    "type": "text",
+    "hidden": false
+  },
+  {
+    "key": "CUSTOMER_IS_KEY_ACCOUNT_YN",
+    "label": "Key Account",
+    "sortable": true,
+    "type": "bool",
+    "hidden": false
+  },
+  {
+    "key": "TAGS",
+    "label": "Tags",
+    "sortable": true,
+    "type": "text",
+    "hidden": false
+  },
+  {
+    "key": "LINKS",
+    "label": "Links",
+    "sortable": true,
+    "type": "number",
+    "hidden": false
+  },
+  {
+    "key": "ATTACHMENTS",
+    "label": "Attachments",
+    "sortable": true,
+    "type": "number",
+    "hidden": false
+  },
+  {
+    "key": "COMMENTS",
+    "label": "Comments",
+    "sortable": true,
+    "type": "number",
+    "hidden": false
+  },
+  {
+    "key": "VALIDATIONS",
+    "label": "Validations",
+    "sortable": true,
+    "type": "number",
+    "hidden": false
+  },
+  {
+    "key": "LAST_VALIDATION",
+    "label": "Last Validation",
+    "sortable": true,
+    "type": "date",
+    "hidden": false
+  },
+  {
+    "key": "VIEWS_90_DAYS",
+    "label": "90 Day Views",
+    "sortable": true,
+    "type": "number",
+    "hidden": false
+  },
+  {
+    "key": "USERS_90_DAYS",
+    "label": "90 Day Users",
+    "sortable": true,
+    "type": "number",
+    "hidden": false
+  },
+  {
+    "key": "CREATED",
+    "label": "Created",
+    "sortable": true,
+    "type": "date",
+    "hidden": true
+  },
+  {
+    "key": "CREATED_BY",
+    "label": "Created By",
+    "sortable": true,
+    "type": "text",
+    "hidden": true
+  },
+  {
+    "key": "UPDATED",
+    "label": "Updated",
+    "sortable": true,
+    "type": "date",
+    "hidden": false
+  },
+  {
+    "key": "UPDATED_BY",
+    "label": "Updated By",
+    "sortable": true,
+    "type": "text",
+    "hidden": true
+  },
+  {
+    "key": "OPEN_DEALS",
+    "label": "Open Opportunities",
+    "sortable": true,
+    "type": "number",
+    "hidden": false
+  },
+  {
+    "key": "PAST_DUE",
+    "label": "Past Due Opportunities",
+    "sortable": true,
+    "type": "number",
+    "hidden": false
+  },
+  {
+    "key": "LEADS",
+    "label": "Leads",
+    "sortable": true,
+    "type": "number",
+    "hidden": false
+  }
+]

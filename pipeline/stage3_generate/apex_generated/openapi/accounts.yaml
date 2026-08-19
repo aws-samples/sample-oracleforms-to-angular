@@ -1,0 +1,448 @@
+openapi: 3.0.3
+info:
+  title: APEX Opportunities CRM — Accounts (Customers) API
+  description: >
+    Accounts (customers) domain migrated from Oracle APEX.
+    Phase 1 preserves all original validations exactly:
+    unique customer name (case-insensitive), tag character restrictions,
+    and URL fields (website, LinkedIn, Facebook, Twitter) must begin with "http".
+  version: 1.0.0
+
+servers:
+  - url: /api/v1
+
+tags:
+  - name: Accounts
+    description: CRUD operations for sales customer accounts
+
+paths:
+  /accounts:
+    get:
+      tags: [Accounts]
+      summary: List accounts
+      operationId: listAccounts
+      parameters:
+        - name: search
+          in: query
+          description: Free-text search across customer name and tags.
+          required: false
+          schema:
+            type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            default: 1
+        - name: pageSize
+          in: query
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 200
+            default: 25
+        - name: sort
+          in: query
+          required: false
+          schema:
+            type: string
+            example: customerName asc
+      responses:
+        '200':
+          description: Paged list of accounts.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+    post:
+      tags: [Accounts]
+      summary: Create a new account
+      operationId: createAccount
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountCreate'
+      responses:
+        '201':
+          description: Account created.
+          headers:
+            Location:
+              description: URI of the created account.
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '409':
+          $ref: '#/components/responses/DuplicateName'
+
+  /accounts/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: Account (customer) identifier.
+        schema:
+          type: integer
+          format: int64
+    get:
+      tags: [Accounts]
+      summary: Get an account by id
+      operationId: getAccount
+      responses:
+        '200':
+          description: The account.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      tags: [Accounts]
+      summary: Update an existing account
+      operationId: updateAccount
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountUpdate'
+      responses:
+        '200':
+          description: Account updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/DuplicateName'
+    delete:
+      tags: [Accounts]
+      summary: Delete an account
+      operationId: deleteAccount
+      responses:
+        '204':
+          description: Account deleted.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /accounts/validate-name:
+    get:
+      tags: [Accounts]
+      summary: Check whether an account name is available
+      description: >
+        Replicates the APEX NOT_EXISTS validation on P3_CUSTOMER_NAME.
+        Case-insensitive comparison. Optionally excludes a given id (edit mode).
+      operationId: validateAccountName
+      parameters:
+        - name: customerName
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: excludeId
+          in: query
+          required: false
+          description: Account id to exclude from the uniqueness check (edit mode).
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Availability result.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  available:
+                    type: boolean
+                  message:
+                    type: string
+                    example: An account with that name already exists.
+                required:
+                  - available
+
+components:
+  schemas:
+    Account:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          readOnly: true
+        customerName:
+          type: string
+        tags:
+          type: string
+          nullable: true
+        website:
+          type: string
+          nullable: true
+        linkedin:
+          type: string
+          nullable: true
+        facebook:
+          type: string
+          nullable: true
+        twitter:
+          type: string
+          nullable: true
+        createdBy:
+          type: string
+          readOnly: true
+          nullable: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        updatedBy:
+          type: string
+          readOnly: true
+          nullable: true
+        updated:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+      required:
+        - id
+        - customerName
+
+    AccountCreate:
+      type: object
+      properties:
+        customerName:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: Must be unique (case-insensitive) across all accounts.
+        tags:
+          type: string
+          nullable: true
+          description: >
+            Tags may not contain the following characters: : ; # \ / ? &
+          pattern: '^(?:(?![:;#/\\?&]).)*$'
+        website:
+          type: string
+          nullable: true
+          description: If provided, must begin with "http".
+          pattern: '^http.*$'
+        linkedin:
+          type: string
+          nullable: true
+          description: If provided, must begin with "http".
+          pattern: '^http.*$'
+        facebook:
+          type: string
+          nullable: true
+          description: If provided, must begin with "http".
+          pattern: '^http.*$'
+        twitter:
+          type: string
+          nullable: true
+          description: If provided, must begin with "http".
+          pattern: '^http.*$'
+      required:
+        - customerName
+
+    AccountUpdate:
+      type: object
+      properties:
+        customerName:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: Must be unique (case-insensitive), excluding this account.
+        tags:
+          type: string
+          nullable: true
+          description: >
+            Tags may not contain the following characters: : ; # \ / ? &
+          pattern: '^(?:(?![:;#/\\?&]).)*$'
+        website:
+          type: string
+          nullable: true
+          description: If provided, must begin with "http".
+          pattern: '^http.*$'
+        linkedin:
+          type: string
+          nullable: true
+          description: If provided, must begin with "http".
+          pattern: '^http.*$'
+        facebook:
+          type: string
+          nullable: true
+          description: If provided, must begin with "http".
+          pattern: '^http.*$'
+        twitter:
+          type: string
+          nullable: true
+          description: If provided, must begin with "http".
+          pattern: '^http.*$'
+      required:
+        - customerName
+
+    AccountList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Account'
+        page:
+          type: integer
+        pageSize:
+          type: integer
+        totalCount:
+          type: integer
+      required:
+        - items
+        - page
+        - pageSize
+        - totalCount
+
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+      required:
+        - code
+        - message
+
+    ValidationErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          example: VALIDATION_ERROR
+        message:
+          type: string
+          example: One or more validations failed.
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+                description: Logical field name (e.g. customerName, tags, website).
+              message:
+                type: string
+              rule:
+                type: string
+                description: >
+                  Identifier of the originating APEX validation
+                  (e.g. NAME_NOT_EXISTS, VALID_TAG_CHARACTERS,
+                  WEBSITE_HTTP, LINKEDIN_HTTP, FACEBOOK_HTTP, TWITTER_HTTP).
+            required:
+              - field
+              - message
+      required:
+        - code
+        - message
+        - errors
+
+  responses:
+    Unauthorized:
+      description: Authentication required.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Forbidden:
+      description: Insufficient access level.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Account not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    DuplicateName:
+      description: An account with that name already exists.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ValidationErrorResponse'
+          example:
+            code: VALIDATION_ERROR
+            message: One or more validations failed.
+            errors:
+              - field: customerName
+                message: An account with that name already exists.
+                rule: NAME_NOT_EXISTS
+    ValidationError:
+      description: >
+        One or more field validations failed. Mirrors the APEX validations:
+        unique name, valid tag characters, and http-prefixed URLs.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ValidationErrorResponse'
+          examples:
+            tagCharacters:
+              value:
+                code: VALIDATION_ERROR
+                message: One or more validations failed.
+                errors:
+                  - field: tags
+                    message: 'Tags may not contain the following characters: : ; \ / ? &'
+                    rule: VALID_TAG_CHARACTERS
+            websiteHttp:
+              value:
+                code: VALIDATION_ERROR
+                message: One or more validations failed.
+                errors:
+                  - field: website
+                    message: Please provide a URL that begins with, "http".
+                    rule: WEBSITE_HTTP
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - bearerAuth: []

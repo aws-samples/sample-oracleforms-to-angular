@@ -1,0 +1,519 @@
+openapi: 3.0.3
+info:
+  title: ORDERS Domain API
+  description: >-
+    Thin gateway over the authoritative Oracle schema for the ORDERS module.
+    Replicates the legacy Oracle Forms master-detail behaviour exactly:
+    Orders (master) and Order_Items (detail). Business rules preserved:
+    Order_ID is assigned from ORDER_SEQ on insert; a master Order cannot be
+    deleted while matching Order_Items exist; line-item TOTAL_PRICE is
+    computed as NVL(QUANTITY,0) * NVL(UNIT_PRICE,0).
+  version: 1.0.0
+servers:
+  - url: /api
+paths:
+  /orders:
+    get:
+      operationId: listOrders
+      summary: List order header records
+      tags:
+        - Orders
+      parameters:
+        - $ref: '#/components/parameters/Offset'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: Collection of order headers.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Order'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    post:
+      operationId: createOrder
+      summary: Create a new order header (Order_ID assigned from ORDER_SEQ)
+      tags:
+        - Orders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderCreate'
+      responses:
+        '201':
+          description: Order header created. Order_ID is server-assigned.
+          headers:
+            Location:
+              description: URI of the created order.
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /orders/{id}:
+    parameters:
+      - $ref: '#/components/parameters/OrderId'
+    get:
+      operationId: getOrder
+      summary: Get a single order header with its line items
+      description: >-
+        Returns the master order header together with its detail Order_Items,
+        replicating the ON-POPULATE-DETAILS master-detail query behaviour.
+      tags:
+        - Orders
+      responses:
+        '200':
+          description: Order header plus line items.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderWithItems'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    put:
+      operationId: updateOrder
+      summary: Update an existing order header
+      tags:
+        - Orders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderUpdate'
+      responses:
+        '200':
+          description: Order header updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    delete:
+      operationId: deleteOrder
+      summary: Delete an order header
+      description: >-
+        Replicates ON-CHECK-DELETE-MASTER: deletion is rejected when matching
+        Order_Items detail records exist.
+      tags:
+        - Orders
+      responses:
+        '204':
+          description: Order header deleted.
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          description: >-
+            Cannot delete master record when matching detail records exist.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /orders/{id}/items:
+    parameters:
+      - $ref: '#/components/parameters/OrderId'
+    post:
+      operationId: createOrderItem
+      summary: Add a line item to an order
+      description: >-
+        Total_Price is computed server-side as
+        NVL(Quantity,0) * NVL(Unit_Price,0), replicating WHEN-VALIDATE-ITEM.
+      tags:
+        - OrderItems
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderItemCreate'
+      responses:
+        '201':
+          description: Line item created. Item_ID assigned from ITEM_SEQ.
+          headers:
+            Location:
+              description: URI of the created line item.
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderItem'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /orders/{id}/items/{itemId}:
+    parameters:
+      - $ref: '#/components/parameters/OrderId'
+      - $ref: '#/components/parameters/ItemId'
+    put:
+      operationId: updateOrderItem
+      summary: Update a line item
+      description: >-
+        Total_Price is recomputed server-side as
+        NVL(Quantity,0) * NVL(Unit_Price,0), replicating WHEN-VALIDATE-ITEM.
+      tags:
+        - OrderItems
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderItemUpdate'
+      responses:
+        '200':
+          description: Line item updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderItem'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    delete:
+      operationId: deleteOrderItem
+      summary: Delete a line item
+      tags:
+        - OrderItems
+      responses:
+        '204':
+          description: Line item deleted.
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+components:
+  parameters:
+    OrderId:
+      name: id
+      in: path
+      required: true
+      description: ORDERS.ORDER_ID
+      schema:
+        type: integer
+        format: int64
+    ItemId:
+      name: itemId
+      in: path
+      required: true
+      description: ORDER_ITEMS.ITEM_ID
+      schema:
+        type: integer
+        format: int64
+    Offset:
+      name: offset
+      in: query
+      required: false
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 500
+        default: 50
+  responses:
+    BadRequest:
+      description: Invalid request payload or parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Requested resource does not exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Conflict:
+      description: Referential or constraint conflict.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ServerError:
+      description: Unexpected server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Order:
+      type: object
+      description: Maps to the ORDERS table.
+      properties:
+        orderId:
+          type: integer
+          format: int64
+          description: ORDERS.ORDER_ID (PK, assigned from ORDER_SEQ).
+        orderData:
+          type: string
+          format: date-time
+          nullable: true
+          description: ORDERS.ORDER_DATA (DATE, DEFAULT SYSDATE).
+        customerId:
+          type: integer
+          format: int64
+          nullable: true
+          description: ORDERS.CUSTOMER_ID (FK -> CUSTOMERS.CUSTOMER_ID).
+        employeeId:
+          type: integer
+          format: int64
+          nullable: true
+          description: ORDERS.EMPLOYEE_ID (FK -> EMPLOYEES.EMPLOYEE_ID).
+        totalAmount:
+          type: number
+          format: double
+          nullable: true
+          description: ORDERS.TOTAL_AMOUNT NUMBER(10,2).
+        tableNumber:
+          type: integer
+          format: int64
+          nullable: true
+          description: ORDERS.TABLE_NUMBER NUMBER.
+        orderType:
+          type: string
+          maxLength: 50
+          nullable: true
+          description: ORDERS.ORDER_TYPE VARCHAR2(50).
+        discount:
+          type: number
+          format: double
+          nullable: true
+          description: ORDERS.DISCOUNT NUMBER(10,2).
+        finalAmount:
+          type: number
+          format: double
+          nullable: true
+          description: ORDERS.FINAL_AMOUNT NUMBER(10,2).
+        statues:
+          type: string
+          maxLength: 50
+          nullable: true
+          description: ORDERS.STATUES VARCHAR2(50).
+      required:
+        - orderId
+    OrderCreate:
+      type: object
+      description: >-
+        Payload for creating an order. ORDER_ID is server-assigned from
+        ORDER_SEQ (PRE-INSERT) and must NOT be supplied.
+      properties:
+        orderData:
+          type: string
+          format: date-time
+          nullable: true
+        customerId:
+          type: integer
+          format: int64
+          nullable: true
+        employeeId:
+          type: integer
+          format: int64
+          nullable: true
+        totalAmount:
+          type: number
+          format: double
+          nullable: true
+        tableNumber:
+          type: integer
+          format: int64
+          nullable: true
+        orderType:
+          type: string
+          maxLength: 50
+          nullable: true
+        discount:
+          type: number
+          format: double
+          nullable: true
+        finalAmount:
+          type: number
+          format: double
+          nullable: true
+        statues:
+          type: string
+          maxLength: 50
+          nullable: true
+    OrderUpdate:
+      type: object
+      description: Payload for updating an existing order header.
+      properties:
+        orderData:
+          type: string
+          format: date-time
+          nullable: true
+        customerId:
+          type: integer
+          format: int64
+          nullable: true
+        employeeId:
+          type: integer
+          format: int64
+          nullable: true
+        totalAmount:
+          type: number
+          format: double
+          nullable: true
+        tableNumber:
+          type: integer
+          format: int64
+          nullable: true
+        orderType:
+          type: string
+          maxLength: 50
+          nullable: true
+        discount:
+          type: number
+          format: double
+          nullable: true
+        finalAmount:
+          type: number
+          format: double
+          nullable: true
+        statues:
+          type: string
+          maxLength: 50
+          nullable: true
+    OrderWithItems:
+      allOf:
+        - $ref: '#/components/schemas/Order'
+        - type: object
+          properties:
+            items:
+              type: array
+              description: Detail Order_Items for this master order.
+              items:
+                $ref: '#/components/schemas/OrderItem'
+          required:
+            - items
+    OrderItem:
+      type: object
+      description: Maps to the ORDER_ITEMS table.
+      properties:
+        itemId:
+          type: integer
+          format: int64
+          description: ORDER_ITEMS.ITEM_ID (PK, assigned from ITEM_SEQ).
+        orderIdFk:
+          type: integer
+          format: int64
+          nullable: true
+          description: ORDER_ITEMS.ORDER_ID_FK (FK -> ORDERS.ORDER_ID).
+        productIdFk:
+          type: integer
+          format: int64
+          nullable: true
+          description: ORDER_ITEMS.PRODUCT_ID_FK (FK -> PRODUCTS.PRODUCT_ID).
+        quantity:
+          type: number
+          format: double
+          description: ORDER_ITEMS.QUANTITY (NOT NULL).
+        unitPrice:
+          type: number
+          format: double
+          nullable: true
+          description: ORDER_ITEMS.UNIT_PRICE NUMBER(8,2).
+        totalPrice:
+          type: number
+          format: double
+          nullable: true
+          description: >-
+            ORDER_ITEMS.TOTAL_PRICE NUMBER(10,2). Computed server-side as
+            NVL(QUANTITY,0) * NVL(UNIT_PRICE,0).
+      required:
+        - itemId
+        - quantity
+    OrderItemCreate:
+      type: object
+      description: >-
+        Payload for creating a line item. ITEM_ID is server-assigned from
+        ITEM_SEQ. ORDER_ID_FK is taken from the path. TOTAL_PRICE is computed
+        server-side and any supplied value is ignored.
+      properties:
+        productIdFk:
+          type: integer
+          format: int64
+          nullable: true
+        quantity:
+          type: number
+          format: double
+        unitPrice:
+          type: number
+          format: double
+          nullable: true
+      required:
+        - quantity
+    OrderItemUpdate:
+      type: object
+      description: >-
+        Payload for updating a line item. TOTAL_PRICE is recomputed
+        server-side as NVL(QUANTITY,0) * NVL(UNIT_PRICE,0).
+      properties:
+        productIdFk:
+          type: integer
+          format: int64
+          nullable: true
+        quantity:
+          type: number
+          format: double
+        unitPrice:
+          type: number
+          format: double
+          nullable: true
+      required:
+        - quantity
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code.
+        message:
+          type: string
+          description: Human-readable message (mirrors legacy form messages).
+        details:
+          type: array
+          items:
+            type: string
+      required:
+        - code
+        - message

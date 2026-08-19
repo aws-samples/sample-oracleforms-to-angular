@@ -1,0 +1,216 @@
+# Form: categories_form
+
+Source: `categories_form.fmb` (Oracle Forms, object store `ROS.60050`). This form bundles UI, business logic (triggers), and data access.
+
+- Blocks: CATEGORIES, INTRNL
+- Tables accessed: n/a
+- Navigates to: n/a
+- Triggers with logic: 29
+
+## Triggers and PL/SQL logic
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on CATEGORIES.NEXT_BTN
+_builtins=['NEXT_RECORD']_
+```plsql
+BEGIN
+NEXT_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-NEW-FORM-INSTANCE on Form
+_builtins=['EXECUTE_QUERY']_
+```plsql
+BEGIN
+EXECUTE_QUERY;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+FIRST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on CATEGORIES.SAVE_BTN
+_builtins=['COMMIT_FORM']_
+```plsql
+BEGIN
+COMMIT_FORM;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+FIRST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+FIRST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+FIRST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+FIRST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+FIRST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+FIRST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+FIRST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+FIRST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+FIRST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
+
+### WHEN-BUTTON-PRESSED on INTRNL.INTRNL
+```plsql
+BEGIN
+LAST_RECORD;
+END;
+```
