@@ -105,13 +105,21 @@ class StorageStack(Stack):
         )
 
         # CloudFront with Origin Access Control.
+        # Explicit, prefix+region-scoped OAC name -> globally unique per deployment
+        # (CloudFront OACs are account-global; the CDK auto name collides with
+        # another copy of this sample already deployed in the same account).
+        frontend_oac = cloudfront.S3OriginAccessControl(
+            self, "FrontendOac",
+            origin_access_control_name=f"{prefix}-frontend-oac-{Stack.of(self).region}",
+        )
+
         self.distribution = cloudfront.Distribution(
             self, "FrontendDistribution",
             comment=f"{prefix} Angular frontend",
             default_root_object="index.html",
             default_behavior=cloudfront.BehaviorOptions(
                 origin=origins.S3BucketOrigin.with_origin_access_control(
-                    self.frontend_bucket),
+                    self.frontend_bucket, origin_access_control=frontend_oac),
                 viewer_protocol_policy=cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
                 function_associations=[cloudfront.FunctionAssociation(
                     function=spa_router,

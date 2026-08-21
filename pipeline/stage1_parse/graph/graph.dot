@@ -11,6 +11,7 @@ digraph RIMS_GPC {
   "form:MAIN_MENU" [shape=component,fillcolor="#E8A87C",label="MAIN_MENU"];
   "form:ORDERS" [shape=component,fillcolor="#E8A87C",label="ORDERS"];
   "sequence:ORDER_SEQ" [shape=oval,fillcolor="#C38D9E",label="ORDER_SEQ"];
+  "sequence:ITEM_SEQ" [shape=oval,fillcolor="#C38D9E",label="ITEM_SEQ"];
   "form:CATEGORIES_FORM" [shape=component,fillcolor="#E8A87C",label="CATEGORIES_FORM"];
   "form:CUSTOMERS_FORM" [shape=component,fillcolor="#E8A87C",label="CUSTOMERS_FORM"];
   "form:EMPLOYEES_FORM" [shape=component,fillcolor="#E8A87C",label="EMPLOYEES_FORM"];
@@ -26,12 +27,11 @@ digraph RIMS_GPC {
   "form:MAIN_MENU" -> "form:EMPLOYEES_FORM" [color="#E27D60",label="NAVIGATES"];
   "form:MAIN_MENU" -> "form:ORDERS" [color="#E27D60",label="NAVIGATES"];
   "form:MAIN_MENU" -> "form:PRODUCT_FORM" [color="#E27D60",label="NAVIGATES"];
-  "form:ORDERS" -> "form:CATEGORIES_FORM" [color="#E27D60",label="NAVIGATES"];
-  "form:ORDERS" -> "form:CUSTOMERS_FORM" [color="#E27D60",label="NAVIGATES"];
+  "form:ORDERS" -> "table:ORDERS" [color="#666",label="ACCESSES"];
   "form:ORDERS" -> "table:ORDER_ITEMS" [color="#666",label="ACCESSES"];
   "form:ORDERS" -> "table:PRODUCTS" [color="#666",label="ACCESSES"];
   "form:ORDERS" -> "sequence:ORDER_SEQ" [color="#999",style=dashed,label="USES_SEQUENCE"];
-  "form:ORDERS" -> "sequence:ORDER_SEQ" [color="#999",style=dashed,label="USES_SEQUENCE"];
+  "form:ORDERS" -> "sequence:ITEM_SEQ" [color="#999",style=dashed,label="USES_SEQUENCE"];
   "form:PRODUCT_FORM" -> "form:CATEGORIES_FORM" [color="#E27D60",label="NAVIGATES"];
   "form:PRODUCT_FORM" -> "table:CATEGORIES" [color="#666",label="ACCESSES"];
 }

@@ -14,7 +14,7 @@ out() { aws cloudformation describe-stacks --region "$REGION" --stack-name "$1" 
   --query "Stacks[0].Outputs[?OutputKey=='$2'].OutputValue" --output text 2>/dev/null || true; }
 
 echo "== Emptying S3 buckets (best effort) =="
-for b in "$(out StorageStack FrontendBucketName)" "$(out BedrockKBStack KbSourceBucketName)"; do
+for b in "$(out StorageStack FrontendBucketName)" "$(out StorageStack ArtifactsBucketName)"; do
   [ -n "$b" ] && [ "$b" != "None" ] && aws s3 rm "s3://$b" --recursive --region "$REGION" || true
 done
 

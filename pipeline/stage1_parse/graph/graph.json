@@ -84,7 +84,7 @@
     {
       "id": "form:MAIN_MENU",
       "type": "form",
-      "triggers": 6,
+      "triggers": 7,
       "blocks": [
         "BLOCK7"
       ]
@@ -92,10 +92,9 @@
     {
       "id": "form:ORDERS",
       "type": "form",
-      "triggers": 17,
+      "triggers": 22,
       "blocks": [
-        "BLOCK7",
-        "INTRNL",
+        "CTRL",
         "ORDERS",
         "ORDER_ITEMS"
       ]
@@ -105,9 +104,13 @@
       "type": "sequence"
     },
     {
+      "id": "sequence:ITEM_SEQ",
+      "type": "sequence"
+    },
+    {
       "id": "form:CATEGORIES_FORM",
       "type": "form",
-      "triggers": 29,
+      "triggers": 9,
       "blocks": [
         "CATEGORIES",
         "INTRNL"
@@ -116,23 +119,25 @@
     {
       "id": "form:CUSTOMERS_FORM",
       "type": "form",
-      "triggers": 24,
+      "triggers": 9,
       "blocks": [
+        "CUSTOMERS",
         "INTRNL"
       ]
     },
     {
       "id": "form:EMPLOYEES_FORM",
       "type": "form",
-      "triggers": 18,
+      "triggers": 9,
       "blocks": [
+        "EMPLOYEES",
         "INTRNL"
       ]
     },
     {
       "id": "form:PRODUCT_FORM",
       "type": "form",
-      "triggers": 18,
+      "triggers": 10,
       "blocks": [
         "BLOCK7",
         "INTRNL",
@@ -204,13 +209,8 @@
     },
     {
       "from": "form:ORDERS",
-      "to": "form:CATEGORIES_FORM",
-      "type": "NAVIGATES"
-    },
-    {
-      "from": "form:ORDERS",
-      "to": "form:CUSTOMERS_FORM",
-      "type": "NAVIGATES"
+      "to": "table:ORDERS",
+      "type": "ACCESSES"
     },
     {
       "from": "form:ORDERS",
@@ -226,11 +226,11 @@
       "from": "form:ORDERS",
       "to": "sequence:ORDER_SEQ",
       "type": "USES_SEQUENCE",
-      "trigger": "PRE-FORM"
+      "trigger": "PRE-INSERT"
     },
     {
       "from": "form:ORDERS",
-      "to": "sequence:ORDER_SEQ",
+      "to": "sequence:ITEM_SEQ",
       "type": "USES_SEQUENCE",
       "trigger": "PRE-INSERT"
     },
@@ -248,9 +248,9 @@
   "summary": {
     "forms": 6,
     "tables": 7,
-    "sequences": 1,
+    "sequences": 2,
     "fk_edges": 6,
-    "navigation_edges": 8,
-    "access_edges": 3
+    "navigation_edges": 6,
+    "access_edges": 4
   }
 }

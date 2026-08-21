@@ -80,7 +80,8 @@ class BedrockKbStack(Stack):
             self, "AossEndpointSg",
             vpc=network.vpc,
             security_group_name=f"{prefix}-aoss-ep-sg",
-            description="AOSS interface endpoint — HTTPS from pipeline Lambdas only",
+            # EC2 rejects non-ASCII GroupDescription values (BUG-19) - keep this ASCII
+            description="AOSS interface endpoint - HTTPS from pipeline Lambdas only",
             allow_all_outbound=True,
         )
         aoss_ep_sg.add_ingress_rule(
@@ -128,6 +129,10 @@ class BedrockKbStack(Stack):
                 ],
                 "AllowFromPublic": False,
                 "SourceVPCEs": [vpce.attr_id],
+                # Bedrock validates + ingests from ITS managed network, not the
+                # customer VPC: without this the KnowledgeBase create fails with
+                # a 401 from AOSS (BUG-9). Still no public access.
+                "SourceServices": ["bedrock.amazonaws.com"],
             }]),
         )
         # The policy references vpce.attr_id, so it must not be created before

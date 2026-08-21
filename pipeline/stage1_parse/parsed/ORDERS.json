@@ -3,18 +3,39 @@
   "magic": "ROS.60050",
   "triggers": [
     {
-      "name": "ON-POPULATE-DETAILS",
-      "scope": "ORDERS",
-      "plsql": "Begin ORDER_ITEMS detail program section\nIF ( (:ORDERS.ORDER_ID is not null) ) THEN\nrel_id := Find_Relation('ORDERS.ORDERS_ORDER_ITEMS');\nQuery_Master_Details(rel_id, 'ORDER_ITEMS');\nEND IF;\nIF ( :System.cursor_item <> startitm ) THEN\nGo_Item(startitm);\nCheck_Package_Failure;\nEND IF;\nEND;",
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "CTRL.PAY_BTN",
+      "plsql": "BEGIN\nIF :System.Form_Status = 'CHANGED' THEN\nCOMMIT_FORM;\nIF :System.Form_Status = 'CHANGED' THEN RAISE FORM_TRIGGER_FAILURE; END IF;\nEND IF;\npkg_orders.set_status(:ORDERS.ORDER_ID, 'Paid', NULL, NVL(:CTRL.PAY_METHOD, 'Cash'));\nForms_Ddl('COMMIT');\nRefresh_Order_Header;\nMESSAGE('Order ' || TO_CHAR(:ORDERS.ORDER_ID) || ' is now Paid.');\nEXCEPTION WHEN OTHERS THEN\nMESSAGE(SUBSTR(SQLERRM, 1, 200));\nRAISE FORM_TRIGGER_FAILURE;\nEND;\nEND;",
       "tables": [],
       "items": [
+        "CTRL.PAY_METHOD",
         "ORDERS.ORDER_ID"
       ],
       "sequences": [],
       "calls_form": [],
       "builtins": [
-        "CHECK_PACKAGE_FAILURE",
-        "GO_ITEM"
+        "COMMIT_FORM",
+        "FORM_TRIGGER_FAILURE",
+        "MESSAGE",
+        "RAISE"
+      ]
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "CTRL.CANCEL_BTN",
+      "plsql": "BEGIN\nIF :System.Form_Status = 'CHANGED' THEN\nCOMMIT_FORM;\nIF :System.Form_Status = 'CHANGED' THEN RAISE FORM_TRIGGER_FAILURE; END IF;\nEND IF;\npkg_orders.set_status(:ORDERS.ORDER_ID, 'Cancelled', :CTRL.CANCEL_REASON);\nForms_Ddl('COMMIT');\nRefresh_Order_Header;\nMESSAGE('Order ' || TO_CHAR(:ORDERS.ORDER_ID) || ' is now Cancelled.');\nEXCEPTION WHEN OTHERS THEN\nMESSAGE(SUBSTR(SQLERRM, 1, 200));\nRAISE FORM_TRIGGER_FAILURE;\nEND;\nEND;",
+      "tables": [],
+      "items": [
+        "CTRL.CANCEL_REASON",
+        "ORDERS.ORDER_ID"
+      ],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": [
+        "COMMIT_FORM",
+        "FORM_TRIGGER_FAILURE",
+        "MESSAGE",
+        "RAISE"
       ]
     },
     {
@@ -30,32 +51,6 @@
         "MESSAGE",
         "RAISE"
       ]
-    },
-    {
-      "name": "PRE-FORM",
-      "scope": "Form",
-      "plsql": "BEGIN\nSELECT order_seq.NEXTVAL INTO :ORDERS.ORDER_ID FROM DUAL;\nEND;",
-      "tables": [
-        "DUAL"
-      ],
-      "items": [
-        "ORDERS.ORDER_ID"
-      ],
-      "sequences": [
-        "ORDER_SEQ"
-      ],
-      "calls_form": [],
-      "builtins": []
-    },
-    {
-      "name": "ON-CLEAR-DETAILS",
-      "scope": "Form",
-      "plsql": "BEGIN\nClear_All_Master_Details;\nEND;",
-      "tables": [],
-      "items": [],
-      "sequences": [],
-      "calls_form": [],
-      "builtins": []
     },
     {
       "name": "PRE-INSERT",
@@ -74,8 +69,24 @@
       "builtins": []
     },
     {
+      "name": "WHEN-NEW-RECORD-INSTANCE",
+      "scope": "ORDERS",
+      "plsql": "BEGIN\n:CTRL.SUBTOTAL := NULL;\n:CTRL.DISCOUNT_AMT := NULL;\n:CTRL.GST_AMT := NULL;\n:CTRL.QST_AMT := NULL;\n:CTRL.TOTAL_DUE := NULL;\nEND;",
+      "tables": [],
+      "items": [
+        "CTRL.DISCOUNT_AMT",
+        "CTRL.GST_AMT",
+        "CTRL.QST_AMT",
+        "CTRL.SUBTOTAL",
+        "CTRL.TOTAL_DUE"
+      ],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": []
+    },
+    {
       "name": "WHEN-BUTTON-PRESSED",
-      "scope": "INTRNL.INTRNL",
+      "scope": "ORDERS.NEXT_BTN",
       "plsql": "BEGIN\nNEXT_RECORD;\nEND;",
       "tables": [],
       "items": [],
@@ -87,7 +98,7 @@
     },
     {
       "name": "WHEN-BUTTON-PRESSED",
-      "scope": "INTRNL.INTRNL",
+      "scope": "ORDERS.PRE_BTN",
       "plsql": "BEGIN\nPREVIOUS_RECORD;\nEND;",
       "tables": [],
       "items": [],
@@ -98,8 +109,45 @@
       ]
     },
     {
+      "name": "ON-CLEAR-DETAILS",
+      "scope": "Form",
+      "plsql": "BEGIN\nClear_All_Master_Details;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": []
+    },
+    {
+      "name": "WHEN-NEW-FORM-INSTANCE",
+      "scope": "Form",
+      "plsql": "BEGIN\nEXECUTE_QUERY;\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": [
+        "EXECUTE_QUERY"
+      ]
+    },
+    {
+      "name": "ON-POPULATE-DETAILS",
+      "scope": "ORDERS",
+      "plsql": "Begin ORDER_ITEMS detail program section\nIF ( (:ORDERS.ORDER_ID is not null) ) THEN\nrel_id := Find_Relation('ORDERS.ORDERS_ORDER_ITEMS');\nQuery_Master_Details(rel_id, 'ORDER_ITEMS');\nEND IF;\nIF ( :System.cursor_item <> startitm ) THEN\nGo_Item(startitm);\nCheck_Package_Failure;\nEND IF;\nEND;",
+      "tables": [],
+      "items": [
+        "ORDERS.ORDER_ID"
+      ],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": [
+        "CHECK_PACKAGE_FAILURE",
+        "GO_ITEM"
+      ]
+    },
+    {
       "name": "WHEN-BUTTON-PRESSED",
-      "scope": "INTRNL.INTRNL",
+      "scope": "ORDERS.PUSH_BUTTON8",
       "plsql": "BEGIN\nCREATE_RECORD;\nEND;",
       "tables": [],
       "items": [],
@@ -109,19 +157,7 @@
     },
     {
       "name": "WHEN-BUTTON-PRESSED",
-      "scope": "INTRNL.INTRNL",
-      "plsql": "BEGIN\nPREVIOUS_RECORD;\nEND;",
-      "tables": [],
-      "items": [],
-      "sequences": [],
-      "calls_form": [],
-      "builtins": [
-        "PREVIOUS_RECORD"
-      ]
-    },
-    {
-      "name": "WHEN-BUTTON-PRESSED",
-      "scope": "INTRNL.INTRNL",
+      "scope": "ORDERS.PUSH_BUTTON9",
       "plsql": "BEGIN\nDELETE_RECORD;\nCOMMIT_FORM;\nEND;",
       "tables": [],
       "items": [],
@@ -133,20 +169,8 @@
     },
     {
       "name": "WHEN-BUTTON-PRESSED",
-      "scope": "INTRNL.INTRNL",
-      "plsql": "BEGIN\nPREVIOUS_RECORD;\nEND;",
-      "tables": [],
-      "items": [],
-      "sequences": [],
-      "calls_form": [],
-      "builtins": [
-        "PREVIOUS_RECORD"
-      ]
-    },
-    {
-      "name": "WHEN-BUTTON-PRESSED",
-      "scope": "INTRNL.INTRNL",
-      "plsql": "BEGIN\nCOMMIT_FORM;\nIF FORM_SUCCESS THEN\nMESSAGE('\n!');\nMESSAGE(' '); --\nELSE\nMESSAGE('\n');\nEND IF;\nEND;",
+      "scope": "ORDERS.PUSH_BUTTON10",
+      "plsql": "BEGIN\nCOMMIT_FORM;\nIF FORM_SUCCESS THEN\nMESSAGE('Order saved successfully.');\nELSE\nMESSAGE('Could not save the order - check the data and try again.');\nEND IF;\nEND;",
       "tables": [],
       "items": [],
       "sequences": [],
@@ -159,7 +183,7 @@
     },
     {
       "name": "WHEN-BUTTON-PRESSED",
-      "scope": "INTRNL.INTRNL",
+      "scope": "ORDERS.PUSH_BUTTON14",
       "plsql": "BEGIN\nEXIT_FORM(NO_VALIDATE);\nEND;",
       "tables": [],
       "items": [],
@@ -169,7 +193,7 @@
     },
     {
       "name": "WHEN-BUTTON-PRESSED",
-      "scope": "INTRNL.INTRNL",
+      "scope": "ORDERS.ITEM15",
       "plsql": "BEGIN\nFIRST_RECORD;\nEND;",
       "tables": [],
       "items": [],
@@ -179,13 +203,48 @@
     },
     {
       "name": "WHEN-BUTTON-PRESSED",
-      "scope": "INTRNL.INTRNL",
+      "scope": "ORDERS.ITEM16",
       "plsql": "BEGIN\nLAST_RECORD;\nEND;",
       "tables": [],
       "items": [],
       "sequences": [],
       "calls_form": [],
       "builtins": []
+    },
+    {
+      "name": "PRE-INSERT",
+      "scope": "ORDER_ITEMS",
+      "plsql": "BEGIN\nSELECT item_seq.NEXTVAL INTO :ORDER_ITEMS.ITEM_ID FROM DUAL;\nEND;",
+      "tables": [
+        "DUAL"
+      ],
+      "items": [
+        "ORDER_ITEMS.ITEM_ID"
+      ],
+      "sequences": [
+        "ITEM_SEQ"
+      ],
+      "calls_form": [],
+      "builtins": []
+    },
+    {
+      "name": "WHEN-VALIDATE-ITEM",
+      "scope": "ORDER_ITEMS.PRODUCT_ID_FK",
+      "plsql": "BEGIN\n:ORDER_ITEMS.UNIT_PRICE := pkg_pricing.line_unit_price(:ORDER_ITEMS.PRODUCT_ID_FK);\n:ORDER_ITEMS.TOTAL_PRICE := NVL(:ORDER_ITEMS.QUANTITY, 0) * NVL(:ORDER_ITEMS.UNIT_PRICE, 0);\nEXCEPTION WHEN OTHERS THEN\nMESSAGE(SUBSTR(SQLERRM, 1, 200));\nRAISE FORM_TRIGGER_FAILURE;\nEND;",
+      "tables": [],
+      "items": [
+        "ORDER_ITEMS.PRODUCT_ID_FK",
+        "ORDER_ITEMS.QUANTITY",
+        "ORDER_ITEMS.TOTAL_PRICE",
+        "ORDER_ITEMS.UNIT_PRICE"
+      ],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": [
+        "FORM_TRIGGER_FAILURE",
+        "MESSAGE",
+        "RAISE"
+      ]
     },
     {
       "name": "WHEN-VALIDATE-ITEM",
@@ -203,42 +262,81 @@
     },
     {
       "name": "WHEN-BUTTON-PRESSED",
-      "scope": "BLOCK7.ITEM12",
-      "plsql": "BEGIN\n/CALL_FORM('D:\\dp_project\\categories_form.fmx');\nEND;",
+      "scope": "CTRL.TOTALS_BTN",
+      "plsql": "BEGIN\nIF :System.Form_Status = 'CHANGED' THEN\nCOMMIT_FORM;\nIF :System.Form_Status = 'CHANGED' THEN RAISE FORM_TRIGGER_FAILURE; END IF;\nEND IF;\npkg_pricing.order_totals(:ORDERS.ORDER_ID,\n:CTRL.SUBTOTAL, :CTRL.DISCOUNT_AMT,\n:CTRL.GST_AMT, :CTRL.QST_AMT, :CTRL.TOTAL_DUE);\nEXCEPTION WHEN OTHERS THEN\nMESSAGE(SUBSTR(SQLERRM, 1, 200));\nRAISE FORM_TRIGGER_FAILURE;\nEND;\nEND;",
       "tables": [],
-      "items": [],
-      "sequences": [],
-      "calls_form": [
-        "CATEGORIES_FORM.FMX"
+      "items": [
+        "CTRL.DISCOUNT_AMT",
+        "CTRL.GST_AMT",
+        "CTRL.QST_AMT",
+        "CTRL.SUBTOTAL",
+        "CTRL.TOTAL_DUE",
+        "ORDERS.ORDER_ID"
       ],
+      "sequences": [],
+      "calls_form": [],
       "builtins": [
-        "CALL_FORM"
+        "COMMIT_FORM",
+        "FORM_TRIGGER_FAILURE",
+        "MESSAGE",
+        "RAISE"
+      ]
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "CTRL.CONFIRM_BTN",
+      "plsql": "BEGIN\nIF :System.Form_Status = 'CHANGED' THEN\nCOMMIT_FORM;\nIF :System.Form_Status = 'CHANGED' THEN RAISE FORM_TRIGGER_FAILURE; END IF;\nEND IF;\npkg_orders.set_status(:ORDERS.ORDER_ID, 'Confirmed');\nForms_Ddl('COMMIT');\nRefresh_Order_Header;\nMESSAGE('Order ' || TO_CHAR(:ORDERS.ORDER_ID) || ' is now Confirmed.');\nEXCEPTION WHEN OTHERS THEN\nMESSAGE(SUBSTR(SQLERRM, 1, 200));\nRAISE FORM_TRIGGER_FAILURE;\nEND;\nEND;",
+      "tables": [],
+      "items": [
+        "ORDERS.ORDER_ID"
+      ],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": [
+        "COMMIT_FORM",
+        "FORM_TRIGGER_FAILURE",
+        "MESSAGE",
+        "RAISE"
+      ]
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "CTRL.READY_BTN",
+      "plsql": "BEGIN\nIF :System.Form_Status = 'CHANGED' THEN\nCOMMIT_FORM;\nIF :System.Form_Status = 'CHANGED' THEN RAISE FORM_TRIGGER_FAILURE; END IF;\nEND IF;\npkg_orders.set_status(:ORDERS.ORDER_ID, 'Ready');\nForms_Ddl('COMMIT');\nRefresh_Order_Header;\nMESSAGE('Order ' || TO_CHAR(:ORDERS.ORDER_ID) || ' is now Ready.');\nEXCEPTION WHEN OTHERS THEN\nMESSAGE(SUBSTR(SQLERRM, 1, 200));\nRAISE FORM_TRIGGER_FAILURE;\nEND;\nEND;",
+      "tables": [],
+      "items": [
+        "ORDERS.ORDER_ID"
+      ],
+      "sequences": [],
+      "calls_form": [],
+      "builtins": [
+        "COMMIT_FORM",
+        "FORM_TRIGGER_FAILURE",
+        "MESSAGE",
+        "RAISE"
       ]
     }
   ],
   "blocks": [
-    "BLOCK7",
-    "INTRNL",
+    "CTRL",
     "ORDERS",
     "ORDER_ITEMS"
   ],
   "tables": [
+    "ORDERS",
     "ORDER_ITEMS",
     "PRODUCTS"
   ],
   "lovs": 0,
-  "relations": 35,
-  "navigation": [
-    "CATEGORIES_FORM",
-    "CUSTOMERS_FORM"
-  ],
+  "relations": 55,
+  "navigation": [],
   "stats": {
-    "triggers_with_logic": 17,
-    "trigger_markers_total": 17,
-    "blocks": 4,
-    "tables_referenced": 2,
-    "navigation_edges": 2,
+    "triggers_with_logic": 22,
+    "trigger_markers_total": 36,
+    "blocks": 3,
+    "tables_referenced": 3,
+    "navigation_edges": 0,
     "lov_markers": 0,
-    "file_bytes": 147456
+    "file_bytes": 98304
   }
 }

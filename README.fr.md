@@ -36,11 +36,11 @@ l'ensemble du pipeline soit reproductible par n'importe qui.
 
 **Pipeline de migration GenAI**
 
-[![GenAI migration pipeline](docs/architecture-pipeline.svg)](https://raw.githubusercontent.com/bennciz/oracleforms-to-angular/main/docs/architecture-pipeline.svg)
+[![GenAI migration pipeline](docs/architecture-pipeline.svg)](https://raw.githubusercontent.com/aws-samples/sample-oracleforms-to-angular/main/docs/architecture-pipeline.svg)
 
 **Architecture cible « après »**
 
-[![Target architecture](docs/architecture-target.svg)](https://raw.githubusercontent.com/bennciz/oracleforms-to-angular/main/docs/architecture-target.svg)
+[![Target architecture](docs/architecture-target.svg)](https://raw.githubusercontent.com/aws-samples/sample-oracleforms-to-angular/main/docs/architecture-target.svg)
 
 ## Fonctionnement
 

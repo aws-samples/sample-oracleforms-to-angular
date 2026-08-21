@@ -32,6 +32,7 @@ builder.Services.AddSingleton<IDbConnectionFactory>(
     new OracleConnectionFactory(connString));
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IReportService, ReportService>();
+builder.Services.AddScoped(_ => new Sample.Orders.OrderService(connString));
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

@@ -15,16 +15,6 @@
       },
       {
         "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
         "scope": "CATEGORIES.NEXT_BTN",
         "plsql": "BEGIN\nNEXT_RECORD;\nEND;",
         "tables": [],
@@ -37,13 +27,15 @@
       },
       {
         "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
+        "scope": "CATEGORIES.PRE_BTN",
+        "plsql": "BEGIN\nPREVIOUS_RECORD;\nEND;",
         "tables": [],
         "items": [],
         "sequences": [],
         "calls_form": [],
-        "builtins": []
+        "builtins": [
+          "PREVIOUS_RECORD"
+        ]
       },
       {
         "name": "WHEN-NEW-FORM-INSTANCE",
@@ -69,8 +61,8 @@
       },
       {
         "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
+        "scope": "CATEGORIES.ADD_BTN",
+        "plsql": "BEGIN\nCREATE_RECORD;\nEND;",
         "tables": [],
         "items": [],
         "sequences": [],
@@ -79,23 +71,15 @@
       },
       {
         "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
+        "scope": "CATEGORIES.DELETE_BTN",
+        "plsql": "BEGIN\nDELETE_RECORD;\nCOMMIT_FORM;\nEND;",
         "tables": [],
         "items": [],
         "sequences": [],
         "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
+        "builtins": [
+          "COMMIT_FORM"
+        ]
       },
       {
         "name": "WHEN-BUTTON-PRESSED",
@@ -111,188 +95,8 @@
       },
       {
         "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nFIRST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nFIRST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nFIRST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nFIRST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nFIRST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nFIRST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nFIRST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nFIRST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nFIRST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
+        "scope": "CATEGORIES.PUSH_BUTTON14",
+        "plsql": "BEGIN\nEXIT_FORM(NO_VALIDATE);\nEND;",
         "tables": [],
         "items": [],
         "sequences": [],
@@ -309,8 +113,8 @@
     "relations": 0,
     "navigation": [],
     "stats": {
-      "triggers_with_logic": 29,
-      "trigger_markers_total": 30,
+      "triggers_with_logic": 9,
+      "trigger_markers_total": 34,
       "blocks": 2,
       "tables_referenced": 0,
       "navigation_edges": 0,
@@ -333,6 +137,30 @@
         "builtins": []
       },
       {
+        "name": "WHEN-BUTTON-PRESSED",
+        "scope": "CUSTOMERS.NEXT_BTN",
+        "plsql": "BEGIN\nNEXT_RECORD;\nEND;",
+        "tables": [],
+        "items": [],
+        "sequences": [],
+        "calls_form": [],
+        "builtins": [
+          "NEXT_RECORD"
+        ]
+      },
+      {
+        "name": "WHEN-BUTTON-PRESSED",
+        "scope": "CUSTOMERS.PRE_BTN",
+        "plsql": "BEGIN\nPREVIOUS_RECORD;\nEND;",
+        "tables": [],
+        "items": [],
+        "sequences": [],
+        "calls_form": [],
+        "builtins": [
+          "PREVIOUS_RECORD"
+        ]
+      },
+      {
         "name": "WHEN-NEW-FORM-INSTANCE",
         "scope": "Form",
         "plsql": "BEGIN\nEXECUTE_QUERY;\nEND;",
@@ -356,8 +184,8 @@
       },
       {
         "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
+        "scope": "CUSTOMERS.PUSH_BUTTON8",
+        "plsql": "BEGIN\nCREATE_RECORD;\nEND;",
         "tables": [],
         "items": [],
         "sequences": [],
@@ -365,8 +193,20 @@
         "builtins": []
       },
       {
-        "name": "WHEN-NEW-FORM-INSTANCE",
-        "scope": "Form",
+        "name": "WHEN-BUTTON-PRESSED",
+        "scope": "CUSTOMERS.PUSH_BUTTON9",
+        "plsql": "BEGIN\nDELETE_RECORD;\nCOMMIT_FORM;\nEND;",
+        "tables": [],
+        "items": [],
+        "sequences": [],
+        "calls_form": [],
+        "builtins": [
+          "COMMIT_FORM"
+        ]
+      },
+      {
+        "name": "WHEN-BUTTON-PRESSED",
+        "scope": "CUSTOMERS.PUSH_BUTTON10",
         "plsql": "BEGIN\nCOMMIT_FORM;\nEND;",
         "tables": [],
         "items": [],
@@ -378,188 +218,8 @@
       },
       {
         "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nFIRST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nFIRST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nFIRST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nFIRST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nFIRST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nFIRST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nFIRST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nFIRST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nFIRST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
+        "scope": "CUSTOMERS.PUSH_BUTTON14",
+        "plsql": "BEGIN\nEXIT_FORM(NO_VALIDATE);\nEND;",
         "tables": [],
         "items": [],
         "sequences": [],
@@ -568,6 +228,7 @@
       }
     ],
     "blocks": [
+      "CUSTOMERS",
       "INTRNL"
     ],
     "tables": [],
@@ -575,9 +236,9 @@
     "relations": 0,
     "navigation": [],
     "stats": {
-      "triggers_with_logic": 24,
-      "trigger_markers_total": 24,
-      "blocks": 1,
+      "triggers_with_logic": 9,
+      "trigger_markers_total": 30,
+      "blocks": 2,
       "tables_referenced": 0,
       "navigation_edges": 0,
       "lov_markers": 0,
@@ -600,23 +261,27 @@
       },
       {
         "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
+        "scope": "EMPLOYEES.NEXT_BTN",
+        "plsql": "BEGIN\nNEXT_RECORD;\nEND;",
         "tables": [],
         "items": [],
         "sequences": [],
         "calls_form": [],
-        "builtins": []
+        "builtins": [
+          "NEXT_RECORD"
+        ]
       },
       {
         "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
+        "scope": "EMPLOYEES.PRE_BTN",
+        "plsql": "BEGIN\nPREVIOUS_RECORD;\nEND;",
         "tables": [],
         "items": [],
         "sequences": [],
         "calls_form": [],
-        "builtins": []
+        "builtins": [
+          "PREVIOUS_RECORD"
+        ]
       },
       {
         "name": "WHEN-NEW-FORM-INSTANCE",
@@ -632,8 +297,8 @@
       },
       {
         "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
+        "scope": "EMPLOYEES.ADD_BTN",
+        "plsql": "BEGIN\nCREATE_RECORD;\nEND;",
         "tables": [],
         "items": [],
         "sequences": [],
@@ -642,43 +307,39 @@
       },
       {
         "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
+        "scope": "EMPLOYEES.DELETE_BTN",
+        "plsql": "BEGIN\nDELETE_RECORD;\nCOMMIT_FORM;\nEND;",
         "tables": [],
         "items": [],
         "sequences": [],
         "calls_form": [],
-        "builtins": []
+        "builtins": [
+          "COMMIT_FORM"
+        ]
       },
       {
         "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
+        "scope": "EMPLOYEES.SAVE_BTN",
+        "plsql": "BEGIN\nCOMMIT_FORM;\nEND;",
         "tables": [],
         "items": [],
         "sequences": [],
         "calls_form": [],
-        "builtins": []
+        "builtins": [
+          "COMMIT_FORM"
+        ]
       },
       {
         "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
+        "scope": "EMPLOYEES.PUSH_BUTTON6",
+        "plsql": "BEGIN\n<MESSAGE('gooooooooooooooooooooood');\nEXIT_FORM(NO_VALIDATE);\nEND;",
         "tables": [],
         "items": [],
         "sequences": [],
         "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
+        "builtins": [
+          "MESSAGE"
+        ]
       },
       {
         "name": "WHEN-BUTTON-PRESSED",
@@ -689,89 +350,10 @@
         "sequences": [],
         "calls_form": [],
         "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
       }
     ],
     "blocks": [
+      "EMPLOYEES",
       "INTRNL"
     ],
     "tables": [],
@@ -779,9 +361,9 @@
     "relations": 0,
     "navigation": [],
     "stats": {
-      "triggers_with_logic": 18,
-      "trigger_markers_total": 28,
-      "blocks": 1,
+      "triggers_with_logic": 9,
+      "trigger_markers_total": 34,
+      "blocks": 2,
       "tables_referenced": 0,
       "navigation_edges": 0,
       "lov_markers": 0,
@@ -801,6 +383,34 @@
         "sequences": [],
         "calls_form": [],
         "builtins": []
+      },
+      {
+        "name": "WHEN-BUTTON-PRESSED",
+        "scope": "BLOCK7.PUSH_BUTTON17",
+        "plsql": "BEGIN\n'\nCALL_FORM('D:\\dp_project\\ORDERS.fmx');\nEND;",
+        "tables": [],
+        "items": [],
+        "sequences": [],
+        "calls_form": [
+          "ORDERS.FMX"
+        ],
+        "builtins": [
+          "CALL_FORM"
+        ]
+      },
+      {
+        "name": "WHEN-BUTTON-PRESSED",
+        "scope": "BLOCK7.PUSH_BUTTON11",
+        "plsql": "BEGIN\n.CALL_FORM('D:\\dp_project\\customers_form.fmx');\nEND;",
+        "tables": [],
+        "items": [],
+        "sequences": [],
+        "calls_form": [
+          "CUSTOMERS_FORM.FMX"
+        ],
+        "builtins": [
+          "CALL_FORM"
+        ]
       },
       {
         "name": "WHEN-NEW-FORM-INSTANCE",
@@ -855,16 +465,6 @@
         "builtins": [
           "CALL_FORM"
         ]
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "BLOCK7.ITEM16",
-        "plsql": "BEGIN\nEXIT_FORM(ASK_COMMIT);\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
       }
     ],
     "blocks": [
@@ -881,8 +481,8 @@
       "PRODUCT_FORM"
     ],
     "stats": {
-      "triggers_with_logic": 6,
-      "trigger_markers_total": 6,
+      "triggers_with_logic": 7,
+      "trigger_markers_total": 9,
       "blocks": 1,
       "tables_referenced": 0,
       "navigation_edges": 5,
@@ -895,18 +495,39 @@
     "magic": "ROS.60050",
     "triggers": [
       {
-        "name": "ON-POPULATE-DETAILS",
-        "scope": "ORDERS",
-        "plsql": "Begin ORDER_ITEMS detail program section\nIF ( (:ORDERS.ORDER_ID is not null) ) THEN\nrel_id := Find_Relation('ORDERS.ORDERS_ORDER_ITEMS');\nQuery_Master_Details(rel_id, 'ORDER_ITEMS');\nEND IF;\nIF ( :System.cursor_item <> startitm ) THEN\nGo_Item(startitm);\nCheck_Package_Failure;\nEND IF;\nEND;",
+        "name": "WHEN-BUTTON-PRESSED",
+        "scope": "CTRL.PAY_BTN",
+        "plsql": "BEGIN\nIF :System.Form_Status = 'CHANGED' THEN\nCOMMIT_FORM;\nIF :System.Form_Status = 'CHANGED' THEN RAISE FORM_TRIGGER_FAILURE; END IF;\nEND IF;\npkg_orders.set_status(:ORDERS.ORDER_ID, 'Paid', NULL, NVL(:CTRL.PAY_METHOD, 'Cash'));\nForms_Ddl('COMMIT');\nRefresh_Order_Header;\nMESSAGE('Order ' || TO_CHAR(:ORDERS.ORDER_ID) || ' is now Paid.');\nEXCEPTION WHEN OTHERS THEN\nMESSAGE(SUBSTR(SQLERRM, 1, 200));\nRAISE FORM_TRIGGER_FAILURE;\nEND;\nEND;",
         "tables": [],
         "items": [
+          "CTRL.PAY_METHOD",
           "ORDERS.ORDER_ID"
         ],
         "sequences": [],
         "calls_form": [],
         "builtins": [
-          "CHECK_PACKAGE_FAILURE",
-          "GO_ITEM"
+          "COMMIT_FORM",
+          "FORM_TRIGGER_FAILURE",
+          "MESSAGE",
+          "RAISE"
+        ]
+      },
+      {
+        "name": "WHEN-BUTTON-PRESSED",
+        "scope": "CTRL.CANCEL_BTN",
+        "plsql": "BEGIN\nIF :System.Form_Status = 'CHANGED' THEN\nCOMMIT_FORM;\nIF :System.Form_Status = 'CHANGED' THEN RAISE FORM_TRIGGER_FAILURE; END IF;\nEND IF;\npkg_orders.set_status(:ORDERS.ORDER_ID, 'Cancelled', :CTRL.CANCEL_REASON);\nForms_Ddl('COMMIT');\nRefresh_Order_Header;\nMESSAGE('Order ' || TO_CHAR(:ORDERS.ORDER_ID) || ' is now Cancelled.');\nEXCEPTION WHEN OTHERS THEN\nMESSAGE(SUBSTR(SQLERRM, 1, 200));\nRAISE FORM_TRIGGER_FAILURE;\nEND;\nEND;",
+        "tables": [],
+        "items": [
+          "CTRL.CANCEL_REASON",
+          "ORDERS.ORDER_ID"
+        ],
+        "sequences": [],
+        "calls_form": [],
+        "builtins": [
+          "COMMIT_FORM",
+          "FORM_TRIGGER_FAILURE",
+          "MESSAGE",
+          "RAISE"
         ]
       },
       {
@@ -922,32 +543,6 @@
           "MESSAGE",
           "RAISE"
         ]
-      },
-      {
-        "name": "PRE-FORM",
-        "scope": "Form",
-        "plsql": "BEGIN\nSELECT order_seq.NEXTVAL INTO :ORDERS.ORDER_ID FROM DUAL;\nEND;",
-        "tables": [
-          "DUAL"
-        ],
-        "items": [
-          "ORDERS.ORDER_ID"
-        ],
-        "sequences": [
-          "ORDER_SEQ"
-        ],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "ON-CLEAR-DETAILS",
-        "scope": "Form",
-        "plsql": "BEGIN\nClear_All_Master_Details;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
       },
       {
         "name": "PRE-INSERT",
@@ -966,8 +561,24 @@
         "builtins": []
       },
       {
+        "name": "WHEN-NEW-RECORD-INSTANCE",
+        "scope": "ORDERS",
+        "plsql": "BEGIN\n:CTRL.SUBTOTAL := NULL;\n:CTRL.DISCOUNT_AMT := NULL;\n:CTRL.GST_AMT := NULL;\n:CTRL.QST_AMT := NULL;\n:CTRL.TOTAL_DUE := NULL;\nEND;",
+        "tables": [],
+        "items": [
+          "CTRL.DISCOUNT_AMT",
+          "CTRL.GST_AMT",
+          "CTRL.QST_AMT",
+          "CTRL.SUBTOTAL",
+          "CTRL.TOTAL_DUE"
+        ],
+        "sequences": [],
+        "calls_form": [],
+        "builtins": []
+      },
+      {
         "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
+        "scope": "ORDERS.NEXT_BTN",
         "plsql": "BEGIN\nNEXT_RECORD;\nEND;",
         "tables": [],
         "items": [],
@@ -979,7 +590,7 @@
       },
       {
         "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
+        "scope": "ORDERS.PRE_BTN",
         "plsql": "BEGIN\nPREVIOUS_RECORD;\nEND;",
         "tables": [],
         "items": [],
@@ -990,158 +601,9 @@
         ]
       },
       {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nCREATE_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nPREVIOUS_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": [
-          "PREVIOUS_RECORD"
-        ]
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nDELETE_RECORD;\nCOMMIT_FORM;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": [
-          "COMMIT_FORM"
-        ]
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nPREVIOUS_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": [
-          "PREVIOUS_RECORD"
-        ]
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nCOMMIT_FORM;\nIF FORM_SUCCESS THEN\nMESSAGE('\n!');\nMESSAGE(' '); --\nELSE\nMESSAGE('\n');\nEND IF;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": [
-          "COMMIT_FORM",
-          "FORM_SUCCESS",
-          "MESSAGE"
-        ]
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nEXIT_FORM(NO_VALIDATE);\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nFIRST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-VALIDATE-ITEM",
-        "scope": "ORDER_ITEMS.QUANTITY",
-        "plsql": "BEGIN\n:ORDER_ITEMS.TOTAL_PRICE := nvl(:ORDER_ITEMS.QUANTITY, 0) * nvl(:ORDER_ITEMS.UNIT_PRICE, 0);\nEND;",
-        "tables": [],
-        "items": [
-          "ORDER_ITEMS.QUANTITY",
-          "ORDER_ITEMS.TOTAL_PRICE",
-          "ORDER_ITEMS.UNIT_PRICE"
-        ],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "BLOCK7.ITEM12",
-        "plsql": "BEGIN\n/CALL_FORM('D:\\dp_project\\categories_form.fmx');\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [
-          "CATEGORIES_FORM.FMX"
-        ],
-        "builtins": [
-          "CALL_FORM"
-        ]
-      }
-    ],
-    "blocks": [
-      "BLOCK7",
-      "INTRNL",
-      "ORDERS",
-      "ORDER_ITEMS"
-    ],
-    "tables": [
-      "ORDER_ITEMS",
-      "PRODUCTS"
-    ],
-    "lovs": 0,
-    "relations": 35,
-    "navigation": [
-      "CATEGORIES_FORM",
-      "CUSTOMERS_FORM"
-    ],
-    "stats": {
-      "triggers_with_logic": 17,
-      "trigger_markers_total": 17,
-      "blocks": 4,
-      "tables_referenced": 2,
-      "navigation_edges": 2,
-      "lov_markers": 0,
-      "file_bytes": 147456
-    }
-  },
-  {
-    "module": "product_form",
-    "magic": "ROS.60050",
-    "triggers": [
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
+        "name": "ON-CLEAR-DETAILS",
+        "scope": "Form",
+        "plsql": "BEGIN\nClear_All_Master_Details;\nEND;",
         "tables": [],
         "items": [],
         "sequences": [],
@@ -1161,9 +623,269 @@
         ]
       },
       {
+        "name": "ON-POPULATE-DETAILS",
+        "scope": "ORDERS",
+        "plsql": "Begin ORDER_ITEMS detail program section\nIF ( (:ORDERS.ORDER_ID is not null) ) THEN\nrel_id := Find_Relation('ORDERS.ORDERS_ORDER_ITEMS');\nQuery_Master_Details(rel_id, 'ORDER_ITEMS');\nEND IF;\nIF ( :System.cursor_item <> startitm ) THEN\nGo_Item(startitm);\nCheck_Package_Failure;\nEND IF;\nEND;",
+        "tables": [],
+        "items": [
+          "ORDERS.ORDER_ID"
+        ],
+        "sequences": [],
+        "calls_form": [],
+        "builtins": [
+          "CHECK_PACKAGE_FAILURE",
+          "GO_ITEM"
+        ]
+      },
+      {
+        "name": "WHEN-BUTTON-PRESSED",
+        "scope": "ORDERS.PUSH_BUTTON8",
+        "plsql": "BEGIN\nCREATE_RECORD;\nEND;",
+        "tables": [],
+        "items": [],
+        "sequences": [],
+        "calls_form": [],
+        "builtins": []
+      },
+      {
+        "name": "WHEN-BUTTON-PRESSED",
+        "scope": "ORDERS.PUSH_BUTTON9",
+        "plsql": "BEGIN\nDELETE_RECORD;\nCOMMIT_FORM;\nEND;",
+        "tables": [],
+        "items": [],
+        "sequences": [],
+        "calls_form": [],
+        "builtins": [
+          "COMMIT_FORM"
+        ]
+      },
+      {
+        "name": "WHEN-BUTTON-PRESSED",
+        "scope": "ORDERS.PUSH_BUTTON10",
+        "plsql": "BEGIN\nCOMMIT_FORM;\nIF FORM_SUCCESS THEN\nMESSAGE('Order saved successfully.');\nELSE\nMESSAGE('Could not save the order - check the data and try again.');\nEND IF;\nEND;",
+        "tables": [],
+        "items": [],
+        "sequences": [],
+        "calls_form": [],
+        "builtins": [
+          "COMMIT_FORM",
+          "FORM_SUCCESS",
+          "MESSAGE"
+        ]
+      },
+      {
+        "name": "WHEN-BUTTON-PRESSED",
+        "scope": "ORDERS.PUSH_BUTTON14",
+        "plsql": "BEGIN\nEXIT_FORM(NO_VALIDATE);\nEND;",
+        "tables": [],
+        "items": [],
+        "sequences": [],
+        "calls_form": [],
+        "builtins": []
+      },
+      {
+        "name": "WHEN-BUTTON-PRESSED",
+        "scope": "ORDERS.ITEM15",
+        "plsql": "BEGIN\nFIRST_RECORD;\nEND;",
+        "tables": [],
+        "items": [],
+        "sequences": [],
+        "calls_form": [],
+        "builtins": []
+      },
+      {
+        "name": "WHEN-BUTTON-PRESSED",
+        "scope": "ORDERS.ITEM16",
+        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
+        "tables": [],
+        "items": [],
+        "sequences": [],
+        "calls_form": [],
+        "builtins": []
+      },
+      {
+        "name": "PRE-INSERT",
+        "scope": "ORDER_ITEMS",
+        "plsql": "BEGIN\nSELECT item_seq.NEXTVAL INTO :ORDER_ITEMS.ITEM_ID FROM DUAL;\nEND;",
+        "tables": [
+          "DUAL"
+        ],
+        "items": [
+          "ORDER_ITEMS.ITEM_ID"
+        ],
+        "sequences": [
+          "ITEM_SEQ"
+        ],
+        "calls_form": [],
+        "builtins": []
+      },
+      {
+        "name": "WHEN-VALIDATE-ITEM",
+        "scope": "ORDER_ITEMS.PRODUCT_ID_FK",
+        "plsql": "BEGIN\n:ORDER_ITEMS.UNIT_PRICE := pkg_pricing.line_unit_price(:ORDER_ITEMS.PRODUCT_ID_FK);\n:ORDER_ITEMS.TOTAL_PRICE := NVL(:ORDER_ITEMS.QUANTITY, 0) * NVL(:ORDER_ITEMS.UNIT_PRICE, 0);\nEXCEPTION WHEN OTHERS THEN\nMESSAGE(SUBSTR(SQLERRM, 1, 200));\nRAISE FORM_TRIGGER_FAILURE;\nEND;",
+        "tables": [],
+        "items": [
+          "ORDER_ITEMS.PRODUCT_ID_FK",
+          "ORDER_ITEMS.QUANTITY",
+          "ORDER_ITEMS.TOTAL_PRICE",
+          "ORDER_ITEMS.UNIT_PRICE"
+        ],
+        "sequences": [],
+        "calls_form": [],
+        "builtins": [
+          "FORM_TRIGGER_FAILURE",
+          "MESSAGE",
+          "RAISE"
+        ]
+      },
+      {
+        "name": "WHEN-VALIDATE-ITEM",
+        "scope": "ORDER_ITEMS.QUANTITY",
+        "plsql": "BEGIN\n:ORDER_ITEMS.TOTAL_PRICE := nvl(:ORDER_ITEMS.QUANTITY, 0) * nvl(:ORDER_ITEMS.UNIT_PRICE, 0);\nEND;",
+        "tables": [],
+        "items": [
+          "ORDER_ITEMS.QUANTITY",
+          "ORDER_ITEMS.TOTAL_PRICE",
+          "ORDER_ITEMS.UNIT_PRICE"
+        ],
+        "sequences": [],
+        "calls_form": [],
+        "builtins": []
+      },
+      {
+        "name": "WHEN-BUTTON-PRESSED",
+        "scope": "CTRL.TOTALS_BTN",
+        "plsql": "BEGIN\nIF :System.Form_Status = 'CHANGED' THEN\nCOMMIT_FORM;\nIF :System.Form_Status = 'CHANGED' THEN RAISE FORM_TRIGGER_FAILURE; END IF;\nEND IF;\npkg_pricing.order_totals(:ORDERS.ORDER_ID,\n:CTRL.SUBTOTAL, :CTRL.DISCOUNT_AMT,\n:CTRL.GST_AMT, :CTRL.QST_AMT, :CTRL.TOTAL_DUE);\nEXCEPTION WHEN OTHERS THEN\nMESSAGE(SUBSTR(SQLERRM, 1, 200));\nRAISE FORM_TRIGGER_FAILURE;\nEND;\nEND;",
+        "tables": [],
+        "items": [
+          "CTRL.DISCOUNT_AMT",
+          "CTRL.GST_AMT",
+          "CTRL.QST_AMT",
+          "CTRL.SUBTOTAL",
+          "CTRL.TOTAL_DUE",
+          "ORDERS.ORDER_ID"
+        ],
+        "sequences": [],
+        "calls_form": [],
+        "builtins": [
+          "COMMIT_FORM",
+          "FORM_TRIGGER_FAILURE",
+          "MESSAGE",
+          "RAISE"
+        ]
+      },
+      {
+        "name": "WHEN-BUTTON-PRESSED",
+        "scope": "CTRL.CONFIRM_BTN",
+        "plsql": "BEGIN\nIF :System.Form_Status = 'CHANGED' THEN\nCOMMIT_FORM;\nIF :System.Form_Status = 'CHANGED' THEN RAISE FORM_TRIGGER_FAILURE; END IF;\nEND IF;\npkg_orders.set_status(:ORDERS.ORDER_ID, 'Confirmed');\nForms_Ddl('COMMIT');\nRefresh_Order_Header;\nMESSAGE('Order ' || TO_CHAR(:ORDERS.ORDER_ID) || ' is now Confirmed.');\nEXCEPTION WHEN OTHERS THEN\nMESSAGE(SUBSTR(SQLERRM, 1, 200));\nRAISE FORM_TRIGGER_FAILURE;\nEND;\nEND;",
+        "tables": [],
+        "items": [
+          "ORDERS.ORDER_ID"
+        ],
+        "sequences": [],
+        "calls_form": [],
+        "builtins": [
+          "COMMIT_FORM",
+          "FORM_TRIGGER_FAILURE",
+          "MESSAGE",
+          "RAISE"
+        ]
+      },
+      {
+        "name": "WHEN-BUTTON-PRESSED",
+        "scope": "CTRL.READY_BTN",
+        "plsql": "BEGIN\nIF :System.Form_Status = 'CHANGED' THEN\nCOMMIT_FORM;\nIF :System.Form_Status = 'CHANGED' THEN RAISE FORM_TRIGGER_FAILURE; END IF;\nEND IF;\npkg_orders.set_status(:ORDERS.ORDER_ID, 'Ready');\nForms_Ddl('COMMIT');\nRefresh_Order_Header;\nMESSAGE('Order ' || TO_CHAR(:ORDERS.ORDER_ID) || ' is now Ready.');\nEXCEPTION WHEN OTHERS THEN\nMESSAGE(SUBSTR(SQLERRM, 1, 200));\nRAISE FORM_TRIGGER_FAILURE;\nEND;\nEND;",
+        "tables": [],
+        "items": [
+          "ORDERS.ORDER_ID"
+        ],
+        "sequences": [],
+        "calls_form": [],
+        "builtins": [
+          "COMMIT_FORM",
+          "FORM_TRIGGER_FAILURE",
+          "MESSAGE",
+          "RAISE"
+        ]
+      }
+    ],
+    "blocks": [
+      "CTRL",
+      "ORDERS",
+      "ORDER_ITEMS"
+    ],
+    "tables": [
+      "ORDERS",
+      "ORDER_ITEMS",
+      "PRODUCTS"
+    ],
+    "lovs": 0,
+    "relations": 55,
+    "navigation": [],
+    "stats": {
+      "triggers_with_logic": 22,
+      "trigger_markers_total": 36,
+      "blocks": 3,
+      "tables_referenced": 3,
+      "navigation_edges": 0,
+      "lov_markers": 0,
+      "file_bytes": 98304
+    }
+  },
+  {
+    "module": "product_form",
+    "magic": "ROS.60050",
+    "triggers": [
+      {
         "name": "WHEN-BUTTON-PRESSED",
         "scope": "INTRNL.INTRNL",
         "plsql": "BEGIN\nLAST_RECORD;\nEND;",
+        "tables": [],
+        "items": [],
+        "sequences": [],
+        "calls_form": [],
+        "builtins": []
+      },
+      {
+        "name": "WHEN-BUTTON-PRESSED",
+        "scope": "PRODUCTS.NEXT_BTN",
+        "plsql": "BEGIN\nNEXT_RECORD;\nEND;",
+        "tables": [],
+        "items": [],
+        "sequences": [],
+        "calls_form": [],
+        "builtins": [
+          "NEXT_RECORD"
+        ]
+      },
+      {
+        "name": "WHEN-BUTTON-PRESSED",
+        "scope": "PRODUCTS.PRE_BTN",
+        "plsql": "BEGIN\nPREVIOUS_RECORD;\nEND;",
+        "tables": [],
+        "items": [],
+        "sequences": [],
+        "calls_form": [],
+        "builtins": [
+          "PREVIOUS_RECORD"
+        ]
+      },
+      {
+        "name": "WHEN-NEW-FORM-INSTANCE",
+        "scope": "Form",
+        "plsql": "BEGIN\nEXECUTE_QUERY;\nEND;",
+        "tables": [],
+        "items": [],
+        "sequences": [],
+        "calls_form": [],
+        "builtins": [
+          "EXECUTE_QUERY"
+        ]
+      },
+      {
+        "name": "WHEN-BUTTON-PRESSED",
+        "scope": "PRODUCTS.ADD_BTN",
+        "plsql": "BEGIN\nCREATE_RECORD;\nEND;",
         "tables": [],
         "items": [],
         "sequences": [],
@@ -1183,31 +905,21 @@
         ]
       },
       {
-        "name": "WHEN-NEW-FORM-INSTANCE",
-        "scope": "Form",
-        "plsql": "BEGIN\nEXECUTE_QUERY;\nEND;",
+        "name": "WHEN-BUTTON-PRESSED",
+        "scope": "PRODUCTS.SAVE_BTN",
+        "plsql": "BEGIN\nCOMMIT_FORM;\nEND;",
         "tables": [],
         "items": [],
         "sequences": [],
         "calls_form": [],
         "builtins": [
-          "EXECUTE_QUERY"
+          "COMMIT_FORM"
         ]
       },
       {
         "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
+        "scope": "PRODUCTS.PUSH_BUTTON11",
+        "plsql": "BEGIN\nEXIT_FORM(NO_VALIDATE);\nEND;",
         "tables": [],
         "items": [],
         "sequences": [],
@@ -1218,96 +930,6 @@
         "name": "WHEN-BUTTON-PRESSED",
         "scope": "INTRNL.INTRNL",
         "plsql": "BEGIN\nFIRST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nFIRST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-        "tables": [],
-        "items": [],
-        "sequences": [],
-        "calls_form": [],
-        "builtins": []
-      },
-      {
-        "name": "WHEN-BUTTON-PRESSED",
-        "scope": "INTRNL.INTRNL",
-        "plsql": "BEGIN\nLAST_RECORD;\nEND;",
         "tables": [],
         "items": [],
         "sequences": [],
@@ -1343,8 +965,8 @@
       "CATEGORIES_FORM"
     ],
     "stats": {
-      "triggers_with_logic": 18,
-      "trigger_markers_total": 18,
+      "triggers_with_logic": 10,
+      "trigger_markers_total": 23,
       "blocks": 3,
       "tables_referenced": 1,
       "navigation_edges": 1,

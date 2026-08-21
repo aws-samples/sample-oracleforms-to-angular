@@ -177,7 +177,7 @@ def build(parsed_dir: str, schema_path: str, out_dir: str):
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--parsed", default="stage1_parse/parsed")
-    ap.add_argument("--schema", default="forms/tables.SQL")
+    ap.add_argument("--schema", default="sample-inputs/forms/tables.SQL")
     ap.add_argument("--out", default="stage1_parse/graph")
     a = ap.parse_args()
     build(a.parsed, a.schema, a.out)

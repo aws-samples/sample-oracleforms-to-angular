@@ -14,23 +14,27 @@
     },
     {
       "name": "WHEN-BUTTON-PRESSED",
-      "scope": "INTRNL.INTRNL",
-      "plsql": "BEGIN\nLAST_RECORD;\nEND;",
+      "scope": "EMPLOYEES.NEXT_BTN",
+      "plsql": "BEGIN\nNEXT_RECORD;\nEND;",
       "tables": [],
       "items": [],
       "sequences": [],
       "calls_form": [],
-      "builtins": []
+      "builtins": [
+        "NEXT_RECORD"
+      ]
     },
     {
       "name": "WHEN-BUTTON-PRESSED",
-      "scope": "INTRNL.INTRNL",
-      "plsql": "BEGIN\nLAST_RECORD;\nEND;",
+      "scope": "EMPLOYEES.PRE_BTN",
+      "plsql": "BEGIN\nPREVIOUS_RECORD;\nEND;",
       "tables": [],
       "items": [],
       "sequences": [],
       "calls_form": [],
-      "builtins": []
+      "builtins": [
+        "PREVIOUS_RECORD"
+      ]
     },
     {
       "name": "WHEN-NEW-FORM-INSTANCE",
@@ -46,8 +50,8 @@
     },
     {
       "name": "WHEN-BUTTON-PRESSED",
-      "scope": "INTRNL.INTRNL",
-      "plsql": "BEGIN\nLAST_RECORD;\nEND;",
+      "scope": "EMPLOYEES.ADD_BTN",
+      "plsql": "BEGIN\nCREATE_RECORD;\nEND;",
       "tables": [],
       "items": [],
       "sequences": [],
@@ -56,43 +60,39 @@
     },
     {
       "name": "WHEN-BUTTON-PRESSED",
-      "scope": "INTRNL.INTRNL",
-      "plsql": "BEGIN\nLAST_RECORD;\nEND;",
+      "scope": "EMPLOYEES.DELETE_BTN",
+      "plsql": "BEGIN\nDELETE_RECORD;\nCOMMIT_FORM;\nEND;",
       "tables": [],
       "items": [],
       "sequences": [],
       "calls_form": [],
-      "builtins": []
+      "builtins": [
+        "COMMIT_FORM"
+      ]
     },
     {
       "name": "WHEN-BUTTON-PRESSED",
-      "scope": "INTRNL.INTRNL",
-      "plsql": "BEGIN\nLAST_RECORD;\nEND;",
+      "scope": "EMPLOYEES.SAVE_BTN",
+      "plsql": "BEGIN\nCOMMIT_FORM;\nEND;",
       "tables": [],
       "items": [],
       "sequences": [],
       "calls_form": [],
-      "builtins": []
+      "builtins": [
+        "COMMIT_FORM"
+      ]
     },
     {
       "name": "WHEN-BUTTON-PRESSED",
-      "scope": "INTRNL.INTRNL",
-      "plsql": "BEGIN\nLAST_RECORD;\nEND;",
+      "scope": "EMPLOYEES.PUSH_BUTTON6",
+      "plsql": "BEGIN\n<MESSAGE('gooooooooooooooooooooood');\nEXIT_FORM(NO_VALIDATE);\nEND;",
       "tables": [],
       "items": [],
       "sequences": [],
       "calls_form": [],
-      "builtins": []
-    },
-    {
-      "name": "WHEN-BUTTON-PRESSED",
-      "scope": "INTRNL.INTRNL",
-      "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-      "tables": [],
-      "items": [],
-      "sequences": [],
-      "calls_form": [],
-      "builtins": []
+      "builtins": [
+        "MESSAGE"
+      ]
     },
     {
       "name": "WHEN-BUTTON-PRESSED",
@@ -103,89 +103,10 @@
       "sequences": [],
       "calls_form": [],
       "builtins": []
-    },
-    {
-      "name": "WHEN-BUTTON-PRESSED",
-      "scope": "INTRNL.INTRNL",
-      "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-      "tables": [],
-      "items": [],
-      "sequences": [],
-      "calls_form": [],
-      "builtins": []
-    },
-    {
-      "name": "WHEN-BUTTON-PRESSED",
-      "scope": "INTRNL.INTRNL",
-      "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-      "tables": [],
-      "items": [],
-      "sequences": [],
-      "calls_form": [],
-      "builtins": []
-    },
-    {
-      "name": "WHEN-BUTTON-PRESSED",
-      "scope": "INTRNL.INTRNL",
-      "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-      "tables": [],
-      "items": [],
-      "sequences": [],
-      "calls_form": [],
-      "builtins": []
-    },
-    {
-      "name": "WHEN-BUTTON-PRESSED",
-      "scope": "INTRNL.INTRNL",
-      "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-      "tables": [],
-      "items": [],
-      "sequences": [],
-      "calls_form": [],
-      "builtins": []
-    },
-    {
-      "name": "WHEN-BUTTON-PRESSED",
-      "scope": "INTRNL.INTRNL",
-      "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-      "tables": [],
-      "items": [],
-      "sequences": [],
-      "calls_form": [],
-      "builtins": []
-    },
-    {
-      "name": "WHEN-BUTTON-PRESSED",
-      "scope": "INTRNL.INTRNL",
-      "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-      "tables": [],
-      "items": [],
-      "sequences": [],
-      "calls_form": [],
-      "builtins": []
-    },
-    {
-      "name": "WHEN-BUTTON-PRESSED",
-      "scope": "INTRNL.INTRNL",
-      "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-      "tables": [],
-      "items": [],
-      "sequences": [],
-      "calls_form": [],
-      "builtins": []
-    },
-    {
-      "name": "WHEN-BUTTON-PRESSED",
-      "scope": "INTRNL.INTRNL",
-      "plsql": "BEGIN\nLAST_RECORD;\nEND;",
-      "tables": [],
-      "items": [],
-      "sequences": [],
-      "calls_form": [],
-      "builtins": []
     }
   ],
   "blocks": [
+    "EMPLOYEES",
     "INTRNL"
   ],
   "tables": [],
@@ -193,9 +114,9 @@
   "relations": 0,
   "navigation": [],
   "stats": {
-    "triggers_with_logic": 18,
-    "trigger_markers_total": 28,
-    "blocks": 1,
+    "triggers_with_logic": 9,
+    "trigger_markers_total": 34,
+    "blocks": 2,
     "tables_referenced": 0,
     "navigation_edges": 0,
     "lov_markers": 0,

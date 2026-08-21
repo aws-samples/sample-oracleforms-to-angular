@@ -35,11 +35,11 @@ anyone.
 
 **GenAI migration pipeline**
 
-[![GenAI migration pipeline](docs/architecture-pipeline.svg)](https://raw.githubusercontent.com/bennciz/oracleforms-to-angular/main/docs/architecture-pipeline.svg)
+[![GenAI migration pipeline](docs/architecture-pipeline.svg)](https://raw.githubusercontent.com/aws-samples/sample-oracleforms-to-angular/main/docs/architecture-pipeline.svg)
 
 **Target "after" architecture**
 
-[![Target architecture](docs/architecture-target.svg)](https://raw.githubusercontent.com/bennciz/oracleforms-to-angular/main/docs/architecture-target.svg)
+[![Target architecture](docs/architecture-target.svg)](https://raw.githubusercontent.com/aws-samples/sample-oracleforms-to-angular/main/docs/architecture-target.svg)
 
 ## How It Works
 
@@ -73,7 +73,9 @@ cp .env.example .env          # fill in your values
 
 `deploy-all` provisions the infrastructure, builds and pushes the .NET API container, wires
 the CloudFront `/api/*` proxy, then builds and ships the Angular SPA. It prints the CloudFront
-URL when done.
+URL when done. **Before the first run, read [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md)** — it
+covers the required TLS decision (`acm_cert_arn` vs `ENABLE_HTTP_SANDBOX=1`), the `APP_ONLY=1`
+and `ARCH=` switches, verification steps, and the optional legacy "before" environments.
 
 To run the **migration pipeline** against the bundled sample inputs, see
 [`pipeline/README.md`](pipeline/README.md).

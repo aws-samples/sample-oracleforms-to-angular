@@ -1,0 +1,17 @@
+# Python dependencies for running the migration pipeline locally
+# (stage scripts + run_pipeline.py). Install with:
+#   pip install -r pipeline/requirements.txt
+#
+# The cloud-native pipeline runs as Lambda containers with their own pinned
+# deps (see infrastructure/pipeline/common/requirements.txt). This file covers
+# only the local, run-it-and-read-it path over sample-inputs/.
+
+# AWS SDK — used by every stage that calls S3, SSM, or Bedrock (botocore ships with it).
+boto3>=1.34.0
+
+# OpenSearch Serverless client — required by stage2_kb/provision_kb.py to create
+# the vector index and by ask_kb.py-adjacent tooling.
+opensearch-py>=2.4.0
+
+# Behavioural-equivalence test suites (stage4_validate/*).
+pytest>=8.0

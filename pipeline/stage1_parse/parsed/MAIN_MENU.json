@@ -13,6 +13,34 @@
       "builtins": []
     },
     {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "BLOCK7.PUSH_BUTTON17",
+      "plsql": "BEGIN\n'\nCALL_FORM('D:\\dp_project\\ORDERS.fmx');\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [
+        "ORDERS.FMX"
+      ],
+      "builtins": [
+        "CALL_FORM"
+      ]
+    },
+    {
+      "name": "WHEN-BUTTON-PRESSED",
+      "scope": "BLOCK7.PUSH_BUTTON11",
+      "plsql": "BEGIN\n.CALL_FORM('D:\\dp_project\\customers_form.fmx');\nEND;",
+      "tables": [],
+      "items": [],
+      "sequences": [],
+      "calls_form": [
+        "CUSTOMERS_FORM.FMX"
+      ],
+      "builtins": [
+        "CALL_FORM"
+      ]
+    },
+    {
       "name": "WHEN-NEW-FORM-INSTANCE",
       "scope": "Form",
       "plsql": "BEGIN\nEXECUTE_QUERY;\nEND;",
@@ -65,16 +93,6 @@
       "builtins": [
         "CALL_FORM"
       ]
-    },
-    {
-      "name": "WHEN-BUTTON-PRESSED",
-      "scope": "BLOCK7.ITEM16",
-      "plsql": "BEGIN\nEXIT_FORM(ASK_COMMIT);\nEND;",
-      "tables": [],
-      "items": [],
-      "sequences": [],
-      "calls_form": [],
-      "builtins": []
     }
   ],
   "blocks": [
@@ -91,8 +109,8 @@
     "PRODUCT_FORM"
   ],
   "stats": {
-    "triggers_with_logic": 6,
-    "trigger_markers_total": 6,
+    "triggers_with_logic": 7,
+    "trigger_markers_total": 9,
     "blocks": 1,
     "tables_referenced": 0,
     "navigation_edges": 5,

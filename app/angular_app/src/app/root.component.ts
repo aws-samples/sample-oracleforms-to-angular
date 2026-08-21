@@ -9,6 +9,7 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
   template: `
     <nav class="global-nav">
       <span class="brand">Modernized Oracle App &mdash; Sample</span>
+      <a routerLink="/orders" routerLinkActive="active">Orders</a>
       <a routerLink="/accounts" routerLinkActive="active">Accounts</a>
       <a routerLink="/reports/accounts" routerLinkActive="active">Reports</a>
     </nav>

@@ -19,7 +19,7 @@ import glob, json, os
 HERE = os.path.dirname(__file__)
 PARSED = os.path.join(HERE, "..", "stage1_parse", "parsed")
 GRAPH = os.path.join(HERE, "..", "stage1_parse", "graph", "graph.json")
-SCHEMA = os.path.join(HERE, "..", "forms", "tables.SQL")
+SCHEMA = os.path.join(HERE, "..", "sample-inputs", "forms", "tables.SQL")
 OUT = os.path.join(HERE, "corpus")
 
 KEY_RULES = {"WHEN-VALIDATE-ITEM", "ON-CHECK-DELETE-MASTER", "PRE-INSERT",

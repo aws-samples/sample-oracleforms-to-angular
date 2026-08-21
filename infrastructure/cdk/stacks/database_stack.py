@@ -114,6 +114,8 @@ class DatabaseStack(Stack):
             "/tmp/oracle-setup/ --region $REGION || true",
             f"aws s3 cp s3://{artifacts.bucket_name}/input/schema/load_hr_schema.sql "
             "/tmp/oracle-setup/ --region $REGION || true",
+            f"aws s3 cp s3://{artifacts.bucket_name}/input/schema/apex_sample_seed.sql "
+            "/tmp/oracle-setup/ --region $REGION || true",
 
             # Install the Oracle sample HR schema.
             "cd /tmp/oracle-setup && git clone --depth 1 "
@@ -128,6 +130,10 @@ class DatabaseStack(Stack):
             "\"sqlplus -s system/$DB_PWD@localhost:1521/XEPDB1 @/tmp/oracle-setup/load_hr_schema.sql || true\"",
             "docker exec oraclexe bash -lc "
             "\"sqlplus -s system/$DB_PWD@localhost:1521/XEPDB1 @/tmp/oracle-setup/app_data_packages.sql || true\"",
+            # APEX-path data (apex_sample.eba_sales_* + app_data.report_registry)
+            # for the Accounts/Reports screens (BUG-14).
+            "docker exec oraclexe bash -lc "
+            "\"sqlplus -s system/$DB_PWD@localhost:1521/XEPDB1 @/tmp/oracle-setup/apex_sample_seed.sql || true\"",
 
             # The SQL creates APP_DATA with a placeholder password. Align it with
             # the generated secret so the ECS task (user app_data) can log in.

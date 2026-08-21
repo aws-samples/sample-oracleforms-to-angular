@@ -17,7 +17,8 @@ run_pipeline.py    One-command orchestrator over the sample inputs
 
 ## Prerequisites
 
-- Python ≥ 3.11 with `boto3` (`pip install boto3`); Graphviz `dot` for the graph image.
+- Python ≥ 3.11; install deps with `pip install -r requirements.txt` (boto3, opensearch-py,
+  pytest). Graphviz `dot` is optional, only for rendering the dependency-graph image.
 - AWS credentials with **Amazon Bedrock** access (Claude inference profile + Titan
   Embeddings) for stages 2–4. Stage 1 needs no AWS/AI.
 - Copy [`../.env.example`](../.env.example) to `../.env` and set the values (region, KB ids, …).

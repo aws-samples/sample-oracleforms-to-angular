@@ -23,16 +23,26 @@ class ApiStack(Stack):
         super().__init__(scope, cid, **kwargs)
         self.prefix = prefix
 
-        # An ACM certificate is required — plain HTTP is not a shipped default.
-        # Provide the ARN via: cdk deploy -c acm_cert_arn=<arn>
+        # TLS posture. Production default: HTTPS-only ALB with an ACM certificate,
+        #   cdk deploy -c acm_cert_arn=<arn>
+        # Sandbox escape hatch (NON-PRODUCTION): -c enable_http_sandbox=1 deploys an
+        # HTTP-only ALB so the sample can run without owning a domain / ACM cert.
+        # Never use the sandbox toggle for anything internet-facing with real data.
         cert_arn = self.node.try_get_context("acm_cert_arn")
-        if not cert_arn:
+        http_sandbox = str(
+            self.node.try_get_context("enable_http_sandbox") or ""
+        ).lower() in ("1", "true", "yes")
+        if not cert_arn and not http_sandbox:
             raise ValueError(
                 "Provide an ACM certificate ARN via '-c acm_cert_arn=<arn>' "
-                "— the ALB is HTTPS-only; plain HTTP is not a shipped default."
+                "(the ALB is HTTPS-only by default). For a non-production sandbox "
+                "without a domain/cert, pass '-c enable_http_sandbox=1' to deploy "
+                "an HTTP-only ALB."
             )
-        certificate = acm.Certificate.from_certificate_arn(
-            self, "ApiCert", cert_arn)
+        certificate = (
+            acm.Certificate.from_certificate_arn(self, "ApiCert", cert_arn)
+            if cert_arn else None
+        )
 
         cluster = ecs.Cluster(
             self, "Cluster",
@@ -51,6 +61,18 @@ class ApiStack(Stack):
             family=f"{prefix}-dotnet-api",
             cpu=512,
             memory_limit_mib=1024,
+            # CPU architecture MUST match the pushed container image (BUG-13).
+            # deploy-all.sh passes -c arch=<amd64|arm64> derived from the build
+            # host so the image is always built natively. Default: amd64.
+            runtime_platform=ecs.RuntimePlatform(
+                cpu_architecture=(
+                    ecs.CpuArchitecture.ARM64
+                    if str(self.node.try_get_context("arch") or "amd64").lower()
+                    in ("arm64", "aarch64")
+                    else ecs.CpuArchitecture.X86_64
+                ),
+                operating_system_family=ecs.OperatingSystemFamily.LINUX,
+            ),
             task_role=security.ecs_task_role,
             # Execution role owned by SecurityStack (holds the secret/KMS grants)
             # to avoid a SecurityStack <-> ApiStack dependency cycle.
@@ -98,24 +120,37 @@ class ApiStack(Stack):
         )
 
         # Fargate service fronted by the internet-facing ALB above.
-        # HTTPS is required; redirect_http=True adds an HTTP:80 listener that
-        # issues a 301 redirect to HTTPS:443 (the redirect listener is why
-        # port 80 remains open on the ALB SG in NetworkStack).
-        self.service = ecs_patterns.ApplicationLoadBalancedFargateService(
-            self, "ApiService",
+        common = dict(
             service_name=f"{prefix}-dotnet-api",
             cluster=cluster,
             task_definition=task_def,
             desired_count=1,
             load_balancer=alb,
-            protocol=elbv2.ApplicationProtocol.HTTPS,
-            listener_port=443,
-            certificate=certificate,
-            redirect_http=True,
             security_groups=[network.ecs_api_sg],
             task_subnets=network.private_subnets,
             assign_public_ip=False,
         )
+        if certificate is not None:
+            # Production posture: HTTPS-only; redirect_http adds an HTTP:80 ->
+            # HTTPS:443 301 redirect (why port 80 stays open on the ALB SG).
+            self.service = ecs_patterns.ApplicationLoadBalancedFargateService(
+                self, "ApiService",
+                protocol=elbv2.ApplicationProtocol.HTTPS,
+                listener_port=443,
+                certificate=certificate,
+                redirect_http=True,
+                **common,
+            )
+            scheme = "https"
+        else:
+            # NON-PRODUCTION sandbox: HTTP-only ALB on port 80, no cert/redirect.
+            self.service = ecs_patterns.ApplicationLoadBalancedFargateService(
+                self, "ApiService",
+                protocol=elbv2.ApplicationProtocol.HTTP,
+                listener_port=80,
+                **common,
+            )
+            scheme = "http"
         self.service.target_group.configure_health_check(
             path="/health",
             healthy_http_codes="200",
@@ -123,4 +158,4 @@ class ApiStack(Stack):
         )
 
         CfnOutput(self, "ApiUrl",
-                  value=f"https://{self.service.load_balancer.load_balancer_dns_name}")
+                  value=f"{scheme}://{self.service.load_balancer.load_balancer_dns_name}")

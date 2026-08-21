@@ -52,8 +52,9 @@ def extract_runs(data: bytes, min_len: int = 3) -> list[tuple[int, str]]:
 # ---- structural markers ------------------------------------------------------
 
 TRIGGER_RE = re.compile(
-    # tolerate a stray object-store byte glued to the front (e.g. ")WHEN-...")
-    r"^[)#\s]?((?:PRE|POST|WHEN|ON|KEY)-[A-Z-]+)\s*\(([^)]+)\)\s*$"
+    # tolerate stray object-store bytes glued to the front — Builder-written
+    # fmbs use ")"/"#", frmxml2f-written fmbs use "&" and others (BUG-17)
+    r"^[^A-Za-z]{0,2}((?:PRE|POST|WHEN|ON|KEY)-[A-Z-]+)\s*\(([^)]+)\)\s*$"
 )
 # base-table / column references and navigation
 CALL_FORM_RE = re.compile(r"CALL_FORM\('([^']+)'\)", re.IGNORECASE)
@@ -199,7 +200,39 @@ def parse_fmb(path: str) -> ParsedForm:
         trig.calls_form = [re.split(r"[\\/]", c)[-1].upper()
                            for c in CALL_FORM_RE.findall(body)]
         trig.builtins = sorted({b for b in FORMS_BUILTINS if re.search(rf"\b{b}\b", body, re.I)})
-        pf.triggers.append(asdict(trig))
+        # the object store may repeat a marker (e.g. relation-maintained
+        # triggers); keep one copy per (name, scope, body) (BUG-17)
+        rec = asdict(trig)
+        if rec not in pf.triggers:
+            pf.triggers.append(rec)
+
+    # A (name, scope) pair identifies at most ONE trigger, but the object store
+    # can carry the same marker in several regions and only one window holds the
+    # real body — the others reconstruct property-table noise (BUG-17). Keep the
+    # best-scoring body per pair. INTRNL.INTRNL is a shared placeholder scope in
+    # Builder-written fmbs (many distinct triggers), so it is exempt.
+    def _code_score(body: str) -> tuple[int, int]:
+        lines = body.splitlines()
+        hits = sum(1 for ln in lines if CODE_HINT_RE.search(ln))
+        noise = sum(1 for ln in lines
+                    if re.fullmatch(r"\d*r\d+g\d+b\d+\S*|gray\d+\S*", ln.strip()))
+        return (hits - 2 * noise, len(body))
+
+    best: dict[tuple[str, str], dict] = {}
+    order: list[dict] = []
+    for rec in pf.triggers:
+        key = (rec["name"], rec["scope"])
+        if rec["scope"].upper() == "INTRNL.INTRNL":
+            order.append(rec)
+            continue
+        cur = best.get(key)
+        if cur is None:
+            best[key] = rec
+            order.append(rec)
+        elif _code_score(rec["plsql"]) > _code_score(cur["plsql"]):
+            order[order.index(cur)] = rec
+            best[key] = rec
+    pf.triggers = order
 
     # Blocks referenced
     pf.blocks = sorted({sc.split(".")[0].upper() for _, _, sc in markers

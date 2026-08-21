@@ -67,3 +67,12 @@ The migrated form now matches the legacy form on ALL recovered validations, incl
 the required-Territory rule that only surfaced by driving the live legacy UI. This is
 the intended shadow-mode workflow: run against the real system → find divergence →
 fix the migration → re-run to green.
+
+## Part 2 — ORDERS (Oracle Forms legacy vs migrated .NET)
+
+The Forms-migrated ORDERS module has its own shadow battery — per-product
+pricing, order economics (volume tiers, GST/QST, cash rounding), dual-path
+create, the full status lifecycle, and all four business-rule guards
+(ORA-20001..-20004), which must fail identically on both sides. Runner:
+`shadow_orders.py`; latest run: **31/31 agreement** — see
+[SHADOW_RESULTS_ORDERS.md](SHADOW_RESULTS_ORDERS.md).

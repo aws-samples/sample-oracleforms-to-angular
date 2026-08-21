@@ -7,7 +7,7 @@ it. For setup and deployment see the [README](README.md).
 
 ## The four stages
 
-[![GenAI migration pipeline](docs/architecture-pipeline.svg)](https://raw.githubusercontent.com/bennciz/oracleforms-to-angular/main/docs/architecture-pipeline.svg)
+[![GenAI migration pipeline](docs/architecture-pipeline.svg)](https://raw.githubusercontent.com/aws-samples/sample-oracleforms-to-angular/main/docs/architecture-pipeline.svg)
 
 ### Stage 1 — Parse (deterministic, no AI)
 
@@ -74,7 +74,7 @@ orders?"* retrieves that exact rule with a citation.
 > key, `:=` with `*` → computed total). It is a retrieval aid, **not** an authoritative spec —
 > the authoritative content is the verbatim PL/SQL that sits beside it.
 
-[![What goes into the Knowledge Base](docs/knowledge-base-corpus.svg)](https://raw.githubusercontent.com/bennciz/oracleforms-to-angular/main/docs/knowledge-base-corpus.svg)
+[![What goes into the Knowledge Base](docs/knowledge-base-corpus.svg)](https://raw.githubusercontent.com/aws-samples/sample-oracleforms-to-angular/main/docs/knowledge-base-corpus.svg)
 
 **Gotchas baked in:** Claude requires an **inference-profile** ARN (a bare model id returns
 "on-demand throughput isn't supported"); the collection takes ~5 min to become active before
@@ -124,7 +124,7 @@ UI in headless Chrome for end-to-end parity.
   run several minutes; Express has a hard 5-minute ceiling, so the workflow uses STANDARD.
   Step Functions payloads carry **S3 keys only** (256 KB limit) — only metadata moves, never
   bulk data.
-- **Target "after" runtime.** [![Target architecture](docs/architecture-target.svg)](https://raw.githubusercontent.com/bennciz/oracleforms-to-angular/main/docs/architecture-target.svg)
+- **Target "after" runtime.** [![Target architecture](docs/architecture-target.svg)](https://raw.githubusercontent.com/aws-samples/sample-oracleforms-to-angular/main/docs/architecture-target.svg)
   The Angular SPA is served over HTTPS from S3 via **CloudFront**; CloudFront also
   reverse-proxies `/api/*` to an **ALB → ECS Fargate** .NET service, so the SPA calls
   **same-origin** relative URLs (no mixed content, no CORS). The API is a thin gateway over the

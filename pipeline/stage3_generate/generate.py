@@ -28,7 +28,7 @@ GEN_MODEL = f"arn:aws:bedrock:{REGION}:{ACCOUNT}:inference-profile/us.anthropic.
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.join(HERE, "..")
 PARSED = os.path.join(ROOT, "stage1_parse", "parsed")
-SCHEMA = os.path.join(ROOT, "forms", "tables.SQL")
+SCHEMA = os.path.join(ROOT, "sample-inputs", "forms", "tables.SQL")
 GRAPH = os.path.join(ROOT, "stage1_parse", "graph", "graph.json")
 OUT = os.path.join(HERE, "generated")
 

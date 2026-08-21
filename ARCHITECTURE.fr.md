@@ -8,7 +8,7 @@ conception qui le sous-tendent. Pour la configuration et le déploiement, consul
 
 ## Les quatre étapes
 
-[![GenAI migration pipeline](docs/architecture-pipeline.svg)](https://raw.githubusercontent.com/bennciz/oracleforms-to-angular/main/docs/architecture-pipeline.svg)
+[![GenAI migration pipeline](docs/architecture-pipeline.svg)](https://raw.githubusercontent.com/aws-samples/sample-oracleforms-to-angular/main/docs/architecture-pipeline.svg)
 
 ### Étape 1 — Analyse (déterministe, sans IA)
 
@@ -81,7 +81,7 @@ pour les commandes ? »* retrouve cette règle précise avec une citation.
 > **non** d'une spécification faisant autorité — le contenu faisant autorité est le PL/SQL verbatim
 > qui l'accompagne.
 
-[![What goes into the Knowledge Base](docs/knowledge-base-corpus.svg)](https://raw.githubusercontent.com/bennciz/oracleforms-to-angular/main/docs/knowledge-base-corpus.svg)
+[![What goes into the Knowledge Base](docs/knowledge-base-corpus.svg)](https://raw.githubusercontent.com/aws-samples/sample-oracleforms-to-angular/main/docs/knowledge-base-corpus.svg)
 
 **Points d'attention intégrés :** Claude exige un ARN de **profil d'inférence** (un identifiant de
 modèle brut retourne « on-demand throughput isn't supported ») ; la collection prend ~5 min pour
@@ -133,7 +133,7 @@ Chrome sans interface graphique pour une parité de bout en bout.
   étendue s'exécutent plusieurs minutes ; Express a un plafond strict de 5 minutes, donc le flux
   de travail utilise STANDARD. Les charges utiles de Step Functions transportent **uniquement
   des clés S3** (limite de 256 Ko) — seules les métadonnées circulent, jamais les données en bloc.
-- **Exécution cible « après ».** [![Target architecture](docs/architecture-target.svg)](https://raw.githubusercontent.com/bennciz/oracleforms-to-angular/main/docs/architecture-target.svg)
+- **Exécution cible « après ».** [![Target architecture](docs/architecture-target.svg)](https://raw.githubusercontent.com/aws-samples/sample-oracleforms-to-angular/main/docs/architecture-target.svg)
   La SPA Angular est servie via HTTPS depuis S3 par **CloudFront** ; CloudFront effectue aussi un
   reverse-proxy `/api/*` vers un service .NET **ALB → ECS Fargate**, de sorte que la SPA utilise
   des URL relatives **en même origine** (aucun contenu mixte, aucun CORS). L'API est une

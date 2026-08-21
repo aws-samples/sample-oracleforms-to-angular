@@ -127,10 +127,13 @@ def ensure_aoss_policies(role_arn: str):
 
     # Collection is reachable only via the VPC endpoint — AllowFromPublic is False.
     # SourceVPCEs restricts access to the endpoint provisioned by BedrockKbStack.
+    # SourceServices lets Bedrock validate/ingest from its managed network —
+    # required for the Knowledge Base to attach at all (BUG-9); not public.
     net = [{"Rules": [{"ResourceType": "collection", "Resource": [f"collection/{COLL}"]},
                       {"ResourceType": "dashboard", "Resource": [f"collection/{COLL}"]}],
             "AllowFromPublic": False,
-            "SourceVPCEs": [VPCE]}]
+            "SourceVPCEs": [VPCE],
+            "SourceServices": ["bedrock.amazonaws.com"]}]
     _put_aoss("network", net)
 
     access = [{"Rules": [
