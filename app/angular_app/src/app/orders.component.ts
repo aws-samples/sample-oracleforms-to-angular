@@ -1,5 +1,5 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
+
 import { FormsModule } from '@angular/forms';
 import { OrdersService, OrderTotalsDto } from './orders.service';
 
@@ -76,10 +76,10 @@ const ORA_MESSAGES: Record<number, Record<Lang, string>> = {
 };
 
 @Component({
-  selector: 'app-orders',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
-  templateUrl: './orders.component.html',
+    selector: 'app-orders',
+    imports: [FormsModule],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    templateUrl: './orders.component.html'
 })
 export class OrdersComponent implements OnInit {
   private readonly ordersService = inject(OrdersService);
@@ -370,9 +370,5 @@ export class OrdersComponent implements OnInit {
     } else {
       this.statusMessage = raw || fallback || this.t('saveFailed');
     }
-  }
-
-  trackByIndex(index: number): number {
-    return index;
   }
 }

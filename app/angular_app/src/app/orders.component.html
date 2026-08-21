@@ -1,156 +1,166 @@
 <!-- Modern "after" of the legacy Oracle Forms ORDERS module (v2, English).
-     Mirrors the re-authored form: Order Header + nav buttons, lifecycle panel
-     (CTRL block: totals + CONFIRM/READY/PAY/CANCEL calling pkg_orders /
-     pkg_pricing through the thin API), Order Lines detail grid. Field prompts
-     keep the legacy quirks ("Order Data", "Statues"); chrome is EN/FR. -->
-<div class="cmd-wrap" *ngIf="orders.length; else empty">
-  <div class="titlebar">
-    <span>{{ t('title') }}</span>
-    <button class="langtoggle" (click)="toggleLang()">{{ lang === 'en' ? 'FR' : 'EN' }}</button>
-  </div>
-
-  <div class="form-body" *ngIf="orders[currentIndex] as o">
-    <fieldset class="framebox master-frame">
-      <legend>{{ t('orderHeader') }}</legend>
-      <div class="master">
-        <div class="fld"><label>Order Id</label>
-          <input [ngModel]="o.orderId ?? t('newRecord')" [ngModelOptions]="{standalone:true}" readonly></div>
-        <div class="fld"><label>Order Data</label>
-          <input [(ngModel)]="o.orderData" [ngModelOptions]="{standalone:true}" placeholder="DD-MON-YYYY"></div>
-        <div class="fld"><label>Customer Id</label>
-          <input type="number" [(ngModel)]="o.customerId" [ngModelOptions]="{standalone:true}"></div>
-        <div class="fld"><label>Employee Id</label>
-          <input type="number" [(ngModel)]="o.employeeId" [ngModelOptions]="{standalone:true}"></div>
-        <div class="fld"><label>Total Amount</label>
-          <input [ngModel]="o.totalAmount" [ngModelOptions]="{standalone:true}" readonly></div>
-        <div class="fld"><label>Table Number</label>
-          <input type="number" [(ngModel)]="o.tableNumber" [ngModelOptions]="{standalone:true}"></div>
-        <div class="fld"><label>Order Type</label>
-          <select [(ngModel)]="o.orderType" [ngModelOptions]="{standalone:true}">
-            <option [ngValue]="null"></option>
-            <option *ngFor="let ot of orderTypes" [ngValue]="ot">{{ ot }}</option>
-          </select></div>
-        <div class="fld"><label>Discount</label>
-          <input type="number" [(ngModel)]="o.discount" [ngModelOptions]="{standalone:true}"></div>
-        <div class="fld"><label>Final Amount</label>
-          <input [ngModel]="o.finalAmount" [ngModelOptions]="{standalone:true}" readonly></div>
-        <div class="fld"><label>Statues</label>
-          <input [ngModel]="o.statues" [ngModelOptions]="{standalone:true}" readonly
-                 [class.st-open]="o.statues === 'Open'" [class.st-paid]="o.statues === 'Paid'"
-                 [class.st-cancelled]="o.statues === 'Cancelled'"></div>
-      </div>
-    </fieldset>
-
-    <div class="buttons">
-      <button (click)="nextRecord()">{{ t('next') }}</button>
-      <button (click)="previousRecord()">{{ t('previous') }}</button>
-      <button (click)="createRecord()">{{ t('addNew') }}</button>
-      <button (click)="deleteRecord()">{{ t('delete') }}</button>
-      <button class="save" (click)="save()">{{ t('save') }}</button>
-      <button (click)="firstRecord()">{{ t('first') }}</button>
-      <button (click)="lastRecord()">{{ t('last') }}</button>
+Mirrors the re-authored form: Order Header + nav buttons, lifecycle panel
+(CTRL block: totals + CONFIRM/READY/PAY/CANCEL calling pkg_orders /
+pkg_pricing through the thin API), Order Lines detail grid. Field prompts
+keep the legacy quirks ("Order Data", "Statues"); chrome is EN/FR. -->
+@if (orders.length) {
+  <div class="cmd-wrap">
+    <div class="titlebar">
+      <span>{{ t('title') }}</span>
+      <button class="langtoggle" (click)="toggleLang()">{{ lang === 'en' ? 'FR' : 'EN' }}</button>
     </div>
-
-    <fieldset class="framebox lifecycle">
-      <legend>CTRL</legend>
-      <div class="fld wide"><label>{{ t('cancelReason') }}</label>
-        <input [(ngModel)]="cancelReason" [ngModelOptions]="{standalone:true}"></div>
-      <div class="fld wide"><label>{{ t('payMethod') }}</label>
-        <select [(ngModel)]="payMethod" [ngModelOptions]="{standalone:true}">
-          <option *ngFor="let pm of payMethods" [ngValue]="pm">{{ pm }}</option>
-        </select></div>
-
-      <div class="totals">
-        <div class="fld wide"><label>{{ t('subtotal') }}</label>
-          <input [ngModel]="totals?.subtotal" [ngModelOptions]="{standalone:true}" readonly></div>
-        <div class="fld wide"><label>{{ t('volumeDiscount') }}</label>
-          <input [ngModel]="totals?.discount" [ngModelOptions]="{standalone:true}" readonly></div>
-        <div class="fld wide"><label>{{ t('gst') }}</label>
-          <input [ngModel]="totals?.gst" [ngModelOptions]="{standalone:true}" readonly></div>
-        <div class="fld wide"><label>{{ t('qst') }}</label>
-          <input [ngModel]="totals?.qst" [ngModelOptions]="{standalone:true}" readonly></div>
-        <div class="fld wide total-due"><label>{{ t('totalDue') }}</label>
-          <input [ngModel]="totals?.total" [ngModelOptions]="{standalone:true}" readonly></div>
+    @if (orders[currentIndex]; as o) {
+      <div class="form-body">
+        <fieldset class="framebox master-frame">
+          <legend>{{ t('orderHeader') }}</legend>
+          <div class="master">
+            <div class="fld"><label>Order Id</label>
+            <input [ngModel]="o.orderId ?? t('newRecord')" [ngModelOptions]="{standalone:true}" readonly></div>
+            <div class="fld"><label>Order Data</label>
+            <input [(ngModel)]="o.orderData" [ngModelOptions]="{standalone:true}" placeholder="DD-MON-YYYY"></div>
+            <div class="fld"><label>Customer Id</label>
+            <input type="number" [(ngModel)]="o.customerId" [ngModelOptions]="{standalone:true}"></div>
+            <div class="fld"><label>Employee Id</label>
+            <input type="number" [(ngModel)]="o.employeeId" [ngModelOptions]="{standalone:true}"></div>
+            <div class="fld"><label>Total Amount</label>
+            <input [ngModel]="o.totalAmount" [ngModelOptions]="{standalone:true}" readonly></div>
+            <div class="fld"><label>Table Number</label>
+            <input type="number" [(ngModel)]="o.tableNumber" [ngModelOptions]="{standalone:true}"></div>
+            <div class="fld"><label>Order Type</label>
+            <select [(ngModel)]="o.orderType" [ngModelOptions]="{standalone:true}">
+              <option [ngValue]="null"></option>
+              @for (ot of orderTypes; track ot) {
+                <option [ngValue]="ot">{{ ot }}</option>
+              }
+            </select></div>
+            <div class="fld"><label>Discount</label>
+            <input type="number" [(ngModel)]="o.discount" [ngModelOptions]="{standalone:true}"></div>
+            <div class="fld"><label>Final Amount</label>
+            <input [ngModel]="o.finalAmount" [ngModelOptions]="{standalone:true}" readonly></div>
+            <div class="fld"><label>Statues</label>
+            <input [ngModel]="o.statues" [ngModelOptions]="{standalone:true}" readonly
+              [class.st-open]="o.statues === 'Open'" [class.st-paid]="o.statues === 'Paid'"
+            [class.st-cancelled]="o.statues === 'Cancelled'"></div>
+          </div>
+        </fieldset>
+        <div class="buttons">
+          <button (click)="nextRecord()">{{ t('next') }}</button>
+          <button (click)="previousRecord()">{{ t('previous') }}</button>
+          <button (click)="createRecord()">{{ t('addNew') }}</button>
+          <button (click)="deleteRecord()">{{ t('delete') }}</button>
+          <button class="save" (click)="save()">{{ t('save') }}</button>
+          <button (click)="firstRecord()">{{ t('first') }}</button>
+          <button (click)="lastRecord()">{{ t('last') }}</button>
+        </div>
+        <fieldset class="framebox lifecycle">
+          <legend>CTRL</legend>
+          <div class="fld wide"><label>{{ t('cancelReason') }}</label>
+          <input [(ngModel)]="cancelReason" [ngModelOptions]="{standalone:true}"></div>
+          <div class="fld wide"><label>{{ t('payMethod') }}</label>
+          <select [(ngModel)]="payMethod" [ngModelOptions]="{standalone:true}">
+            @for (pm of payMethods; track pm) {
+              <option [ngValue]="pm">{{ pm }}</option>
+            }
+          </select></div>
+          <div class="totals">
+            <div class="fld wide"><label>{{ t('subtotal') }}</label>
+            <input [ngModel]="$safeNavigationMigration(totals?.subtotal)" [ngModelOptions]="{standalone:true}" readonly></div>
+            <div class="fld wide"><label>{{ t('volumeDiscount') }}</label>
+            <input [ngModel]="$safeNavigationMigration(totals?.discount)" [ngModelOptions]="{standalone:true}" readonly></div>
+            <div class="fld wide"><label>{{ t('gst') }}</label>
+            <input [ngModel]="$safeNavigationMigration(totals?.gst)" [ngModelOptions]="{standalone:true}" readonly></div>
+            <div class="fld wide"><label>{{ t('qst') }}</label>
+            <input [ngModel]="$safeNavigationMigration(totals?.qst)" [ngModelOptions]="{standalone:true}" readonly></div>
+            <div class="fld wide total-due"><label>{{ t('totalDue') }}</label>
+            <input [ngModel]="$safeNavigationMigration(totals?.total)" [ngModelOptions]="{standalone:true}" readonly></div>
+          </div>
+          <div class="lifecycle-buttons">
+            <button (click)="computeTotals()">{{ t('computeTotals') }}</button>
+            <button (click)="confirmOrder()">{{ t('confirm') }}</button>
+            <button (click)="markReady()">{{ t('markReady') }}</button>
+            <button (click)="payOrder()">{{ t('pay') }}</button>
+            <button class="danger" (click)="cancelOrder()">{{ t('cancelOrder') }}</button>
+          </div>
+        </fieldset>
       </div>
-
-      <div class="lifecycle-buttons">
-        <button (click)="computeTotals()">{{ t('computeTotals') }}</button>
-        <button (click)="confirmOrder()">{{ t('confirm') }}</button>
-        <button (click)="markReady()">{{ t('markReady') }}</button>
-        <button (click)="payOrder()">{{ t('pay') }}</button>
-        <button class="danger" (click)="cancelOrder()">{{ t('cancelOrder') }}</button>
-      </div>
+    }
+    <fieldset class="framebox lines-frame">
+      <legend>{{ t('orderLines') }}</legend>
+      <table class="items">
+        <thead><tr>
+          <th>Item Id</th><th>Order Id Fk</th><th>Product Id Fk</th>
+          <th>Quantity</th><th>Unit Price</th><th>Total Price</th><th></th>
+        </tr></thead>
+        <tbody>
+          @for (it of items; track $index; let i = $index) {
+            <tr>
+              <td class="ro">{{ it.itemId }}</td>
+              <td class="ro">{{ it.orderIdFk }}</td>
+              <td><input type="number" [(ngModel)]="it.productIdFk"
+              (change)="onProductChange(it)" [ngModelOptions]="{standalone:true}"></td>
+              <td><input type="number" [(ngModel)]="it.quantity"
+              (ngModelChange)="recomputeLineTotal(it)" [ngModelOptions]="{standalone:true}"></td>
+              <td class="ro">{{ it.unitPrice }}</td>
+              <td class="ro">{{ it.totalPrice }}</td>
+              <td><button class="linebtn" (click)="removeItem(i)">{{ t('removeLine') }}</button></td>
+            </tr>
+          }
+          @if (!items.length) {
+            <tr><td colspan="7" class="muted">&nbsp;</td></tr>
+          }
+        </tbody>
+      </table>
+      <button class="linebtn addline" (click)="addItem()">{{ t('addLine') }}</button>
     </fieldset>
-  </div>
+    <div class="statusrow">
+      <span class="rec">{{ t('record') }}: {{ currentIndex + 1 }}/{{ orders.length }}
+        @if (isNewRecord) {
+          {{ t('newRecord') }}
+        }</span>
+        @if (statusMessage) {
+          <span class="msg">{{ statusMessage }}</span>
+        }
+      </div>
+    </div>
+  } @else {
+    <p style="padding:24px;font-family:sans-serif">Loading orders…</p>
+  }
 
-  <fieldset class="framebox lines-frame">
-    <legend>{{ t('orderLines') }}</legend>
-    <table class="items">
-      <thead><tr>
-        <th>Item Id</th><th>Order Id Fk</th><th>Product Id Fk</th>
-        <th>Quantity</th><th>Unit Price</th><th>Total Price</th><th></th>
-      </tr></thead>
-      <tbody>
-        <tr *ngFor="let it of items; let i = index; trackBy: trackByIndex">
-          <td class="ro">{{ it.itemId }}</td>
-          <td class="ro">{{ it.orderIdFk }}</td>
-          <td><input type="number" [(ngModel)]="it.productIdFk"
-                     (change)="onProductChange(it)" [ngModelOptions]="{standalone:true}"></td>
-          <td><input type="number" [(ngModel)]="it.quantity"
-                     (ngModelChange)="recomputeLineTotal(it)" [ngModelOptions]="{standalone:true}"></td>
-          <td class="ro">{{ it.unitPrice }}</td>
-          <td class="ro">{{ it.totalPrice }}</td>
-          <td><button class="linebtn" (click)="removeItem(i)">{{ t('removeLine') }}</button></td>
-        </tr>
-        <tr *ngIf="!items.length"><td colspan="7" class="muted">&nbsp;</td></tr>
-      </tbody>
-    </table>
-    <button class="linebtn addline" (click)="addItem()">{{ t('addLine') }}</button>
-  </fieldset>
 
-  <div class="statusrow">
-    <span class="rec">{{ t('record') }}: {{ currentIndex + 1 }}/{{ orders.length }}
-      <ng-container *ngIf="isNewRecord">{{ t('newRecord') }}</ng-container></span>
-    <span class="msg" *ngIf="statusMessage">{{ statusMessage }}</span>
-  </div>
-</div>
-
-<ng-template #empty><p style="padding:24px;font-family:sans-serif">Loading orders…</p></ng-template>
-
-<style>
-  .cmd-wrap { font-family:"Segoe UI",Tahoma,sans-serif; color:#0a1a2f; max-width:1100px; margin:14px auto; border:1px solid #9db2c8; background:#e9eef4; }
-  .titlebar { background:linear-gradient(#3f6ea5,#2b527d); color:#fff; font-weight:600; padding:6px 12px; font-size:14px; display:flex; justify-content:space-between; align-items:center; }
-  .langtoggle { background:#fff; color:#2b527d; border:none; border-radius:3px; padding:2px 10px; font-weight:700; cursor:pointer; font-size:12px; }
-  .form-body { display:flex; gap:16px; padding:14px; align-items:flex-start; }
-  .framebox { border:1px solid #9db2c8; border-radius:3px; background:#eef3f8; margin:0; padding:10px 12px; }
-  .framebox legend { font-size:12px; font-weight:600; color:#12365e; padding:0 6px; }
-  .master-frame { flex:1 1 auto; max-width:430px; }
-  .master { display:flex; flex-direction:column; gap:7px; }
-  .fld { display:grid; grid-template-columns:110px 1fr; align-items:center; gap:8px; }
-  .fld.wide { grid-template-columns:130px 1fr; }
-  .fld label { font-size:13px; color:#12365e; }
-  .fld input, .fld select { padding:4px 7px; border:1px solid #7f9bbd; border-radius:2px; background:#fff; font-size:13px; color:#0a1a2f; }
-  .fld input[readonly] { background:#c9d6e6; font-weight:600; }
-  .fld input.st-open { color:#0a6b2d; } .fld input.st-paid { color:#12365e; } .fld input.st-cancelled { color:#8a1f1f; }
-  .buttons { display:flex; flex-direction:column; gap:8px; width:140px; padding-top:12px; }
-  .buttons button, .lifecycle-buttons button { padding:7px 10px; border:1px solid #6f8bb0; border-radius:3px; background:#f3f7fb; color:#12365e; font-weight:600; cursor:pointer; font-size:12px; }
-  .buttons button:hover, .lifecycle-buttons button:hover { background:#dfe9f5; }
-  .buttons button.save { margin:6px 0; background:#eaf1fa; }
-  .lifecycle { width:330px; display:flex; flex-direction:column; gap:7px; }
-  .totals { display:flex; flex-direction:column; gap:5px; margin-top:4px; padding-top:8px; border-top:1px dashed #9db2c8; }
-  .total-due input { font-weight:700; color:#12365e; }
-  .lifecycle-buttons { display:grid; grid-template-columns:1fr 1fr; gap:7px; margin-top:8px; }
-  .lifecycle-buttons button:first-child { grid-column:1 / -1; }
-  .lifecycle-buttons button.danger { color:#8a1f1f; border-color:#b98a8a; }
-  .lines-frame { margin:0 14px 10px; }
-  table.items { width:100%; border-collapse:collapse; font-size:12px; background:#fff; }
-  table.items th { background:#c9d6e6; border:1px solid #9db2c8; padding:4px 6px; text-align:left; font-weight:600; }
-  table.items td { border:1px solid #cdd9e6; padding:2px 4px; }
-  table.items td.ro { background:#eef3f8; }
-  table.items input { width:92%; border:1px solid #cbd6e3; padding:2px 4px; font-size:12px; color:#0a1a2f; }
-  .linebtn { border:1px solid #6f8bb0; border-radius:3px; background:#f3f7fb; color:#12365e; cursor:pointer; font-size:11px; padding:2px 8px; }
-  .linebtn.addline { margin-top:6px; }
-  .muted { height:22px; }
-  .statusrow { border-top:1px solid #9db2c8; background:#dde5ee; padding:4px 12px; font-size:12px; display:flex; gap:20px; }
-  .statusrow .msg { color:#7a3b00; font-weight:600; }
-</style>
+  <style>
+    .cmd-wrap { font-family:"Segoe UI",Tahoma,sans-serif; color:#0a1a2f; max-width:1100px; margin:14px auto; border:1px solid #9db2c8; background:#e9eef4; }
+    .titlebar { background:linear-gradient(#3f6ea5,#2b527d); color:#fff; font-weight:600; padding:6px 12px; font-size:14px; display:flex; justify-content:space-between; align-items:center; }
+    .langtoggle { background:#fff; color:#2b527d; border:none; border-radius:3px; padding:2px 10px; font-weight:700; cursor:pointer; font-size:12px; }
+    .form-body { display:flex; gap:16px; padding:14px; align-items:flex-start; }
+    .framebox { border:1px solid #9db2c8; border-radius:3px; background:#eef3f8; margin:0; padding:10px 12px; }
+    .framebox legend { font-size:12px; font-weight:600; color:#12365e; padding:0 6px; }
+    .master-frame { flex:1 1 auto; max-width:430px; }
+    .master { display:flex; flex-direction:column; gap:7px; }
+    .fld { display:grid; grid-template-columns:110px 1fr; align-items:center; gap:8px; }
+    .fld.wide { grid-template-columns:130px 1fr; }
+    .fld label { font-size:13px; color:#12365e; }
+    .fld input, .fld select { padding:4px 7px; border:1px solid #7f9bbd; border-radius:2px; background:#fff; font-size:13px; color:#0a1a2f; }
+    .fld input[readonly] { background:#c9d6e6; font-weight:600; }
+    .fld input.st-open { color:#0a6b2d; } .fld input.st-paid { color:#12365e; } .fld input.st-cancelled { color:#8a1f1f; }
+    .buttons { display:flex; flex-direction:column; gap:8px; width:140px; padding-top:12px; }
+    .buttons button, .lifecycle-buttons button { padding:7px 10px; border:1px solid #6f8bb0; border-radius:3px; background:#f3f7fb; color:#12365e; font-weight:600; cursor:pointer; font-size:12px; }
+    .buttons button:hover, .lifecycle-buttons button:hover { background:#dfe9f5; }
+    .buttons button.save { margin:6px 0; background:#eaf1fa; }
+    .lifecycle { width:330px; display:flex; flex-direction:column; gap:7px; }
+    .totals { display:flex; flex-direction:column; gap:5px; margin-top:4px; padding-top:8px; border-top:1px dashed #9db2c8; }
+    .total-due input { font-weight:700; color:#12365e; }
+    .lifecycle-buttons { display:grid; grid-template-columns:1fr 1fr; gap:7px; margin-top:8px; }
+    .lifecycle-buttons button:first-child { grid-column:1 / -1; }
+    .lifecycle-buttons button.danger { color:#8a1f1f; border-color:#b98a8a; }
+    .lines-frame { margin:0 14px 10px; }
+    table.items { width:100%; border-collapse:collapse; font-size:12px; background:#fff; }
+    table.items th { background:#c9d6e6; border:1px solid #9db2c8; padding:4px 6px; text-align:left; font-weight:600; }
+    table.items td { border:1px solid #cdd9e6; padding:2px 4px; }
+    table.items td.ro { background:#eef3f8; }
+    table.items input { width:92%; border:1px solid #cbd6e3; padding:2px 4px; font-size:12px; color:#0a1a2f; }
+    .linebtn { border:1px solid #6f8bb0; border-radius:3px; background:#f3f7fb; color:#12365e; cursor:pointer; font-size:11px; padding:2px 8px; }
+    .linebtn.addline { margin-top:6px; }
+    .muted { height:22px; }
+    .statusrow { border-top:1px solid #9db2c8; background:#dde5ee; padding:4px 12px; font-size:12px; display:flex; gap:20px; }
+    .statusrow .msg { color:#7a3b00; font-weight:600; }
+  </style>
