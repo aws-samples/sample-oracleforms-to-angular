@@ -21,7 +21,11 @@ done
 echo "== cdk destroy --all =="
 cd "$CDK_DIR"
 [ -d .venv ] && source .venv/bin/activate
-cdk destroy --all --force
+# cdk synthesizes every stack before destroying anything, and ApiStack's TLS
+# gate raises unless a TLS context key is present. Its value is irrelevant for
+# teardown (CloudFormation deletes the deployed stacks by name); it only has
+# to let the synth complete.
+cdk destroy --all --force -c enable_http_sandbox=1
 
 echo
 echo "Stacks destroyed. If you provisioned an OpenSearch Serverless collection or"

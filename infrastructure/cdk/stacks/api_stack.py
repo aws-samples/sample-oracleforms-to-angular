@@ -13,6 +13,7 @@ from aws_cdk import (
     aws_ecs as ecs,
     aws_ecs_patterns as ecs_patterns,
     aws_elasticloadbalancingv2 as elbv2,
+    aws_ssm as ssm,
 )
 from constructs import Construct
 
@@ -155,6 +156,17 @@ class ApiStack(Stack):
             path="/health",
             healthy_http_codes="200",
             interval=Duration.seconds(30),
+        )
+
+        # Record the ALB DNS where StorageStack can find it at synth time, so
+        # the CloudFront /api/* behavior survives any later deploy that omits
+        # -c api_alb_dns (see storage_stack.py). A plain SSM parameter keeps
+        # the two stacks decoupled (no cross-stack reference cycle).
+        ssm.StringParameter(
+            self, "ApiAlbDnsParam",
+            parameter_name=f"/{prefix}/api-alb-dns",
+            string_value=self.service.load_balancer.load_balancer_dns_name,
+            description="ALB DNS for the CloudFront /api/* origin (read by StorageStack)",
         )
 
         CfnOutput(self, "ApiUrl",

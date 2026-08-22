@@ -1,4 +1,4 @@
-digraph RIMS_GPC {
+digraph legacy_forms {
   rankdir=LR;
   node [style=filled,fontname="Helvetica"];
   "table:CATEGORIES" [shape=cylinder,fillcolor="#85CDCA",label="CATEGORIES"];

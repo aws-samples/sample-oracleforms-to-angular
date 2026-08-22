@@ -272,6 +272,115 @@ UPDATE ORDER_ITEMS
                 new { ItemId = itemId }).ConfigureAwait(false);
         }
 
+        /// <summary>
+        /// COMMIT_FORM: persists the master and reconciles the detail block in ONE
+        /// database transaction, exactly like the legacy form's commit —
+        ///   - the order header is inserted (ORDER_SEQ) or updated;
+        ///   - items in the payload are upserted;
+        ///   - items previously on the order but absent from the payload are DELETED
+        ///     (the stock-restock trigger fires for them);
+        ///   - a business-rule violation anywhere (stock guard, line freeze, ...)
+        ///     rolls the WHOLE commit back — no partially saved order.
+        /// A null items list means "leave the detail block untouched".
+        /// Returns the (possibly newly assigned) ORDER_ID.
+        /// </summary>
+        public async Task<decimal> CommitAsync(Order order, IReadOnlyList<OrderItem> items)
+        {
+            if (order == null) throw new ArgumentNullException(nameof(order));
+
+            using var conn = CreateConnection();
+            using var tx = conn.BeginTransaction();
+
+            var exists = order.OrderId > 0 && await conn.ExecuteScalarAsync<int>(
+                "SELECT COUNT(*) FROM ORDERS WHERE ORDER_ID = :OrderId",
+                new { order.OrderId }, tx).ConfigureAwait(false) > 0;
+
+            if (exists)
+            {
+                const string updateSql = @"
+UPDATE ORDERS
+   SET ORDER_DATA   = :OrderData,
+       CUSTOMER_ID  = :CustomerId,
+       EMPLOYEE_ID  = :EmployeeId,
+       TOTAL_AMOUNT = :TotalAmount,
+       TABLE_NUMBER = :TableNumber,
+       ORDER_TYPE   = :OrderType,
+       DISCOUNT     = :Discount,
+       FINAL_AMOUNT = :FinalAmount,
+       STATUES      = :Statues
+ WHERE ORDER_ID     = :OrderId";
+                await conn.ExecuteAsync(updateSql, new
+                {
+                    order.OrderData, order.CustomerId, order.EmployeeId,
+                    order.TotalAmount, order.TableNumber, order.OrderType,
+                    order.Discount, order.FinalAmount, order.Statues, order.OrderId
+                }, tx).ConfigureAwait(false);
+            }
+            else
+            {
+                order.OrderId = await conn.ExecuteScalarAsync<decimal>(
+                    "SELECT ORDER_SEQ.NEXTVAL FROM DUAL", transaction: tx).ConfigureAwait(false);
+
+                const string insertSql = @"
+INSERT INTO ORDERS
+    (ORDER_ID, ORDER_DATA, CUSTOMER_ID, EMPLOYEE_ID, TOTAL_AMOUNT,
+     TABLE_NUMBER, ORDER_TYPE, DISCOUNT, FINAL_AMOUNT, STATUES)
+VALUES
+    (:OrderId, NVL(:OrderData, SYSDATE), :CustomerId, :EmployeeId, :TotalAmount,
+     :TableNumber, :OrderType, :Discount, :FinalAmount, :Statues)";
+                await conn.ExecuteAsync(insertSql, new
+                {
+                    order.OrderId, order.OrderData, order.CustomerId, order.EmployeeId,
+                    order.TotalAmount, order.TableNumber, order.OrderType,
+                    order.Discount, order.FinalAmount, order.Statues
+                }, tx).ConfigureAwait(false);
+            }
+
+            if (items != null)
+            {
+                var existingIds = (await conn.QueryAsync<decimal>(
+                    "SELECT ITEM_ID FROM ORDER_ITEMS WHERE ORDER_ID_FK = :OrderId",
+                    new { order.OrderId }, tx).ConfigureAwait(false)).ToList();
+                var keepIds = items.Where(i => i.ItemId > 0).Select(i => i.ItemId).ToHashSet();
+
+                foreach (var goneId in existingIds.Where(id => !keepIds.Contains(id)))
+                {
+                    await conn.ExecuteAsync(
+                        "DELETE FROM ORDER_ITEMS WHERE ITEM_ID = :ItemId",
+                        new { ItemId = goneId }, tx).ConfigureAwait(false);
+                }
+
+                foreach (var item in items)
+                {
+                    item.OrderIdFk = order.OrderId;
+                    if (item.ItemId > 0 && existingIds.Contains(item.ItemId))
+                    {
+                        item.TotalPrice = ComputeTotalPrice(item.Quantity, item.UnitPrice);
+                        const string updateItemSql = @"
+UPDATE ORDER_ITEMS
+   SET ORDER_ID_FK   = :OrderIdFk,
+       PRODUCT_ID_FK = :ProductIdFk,
+       QUANTITY      = :Quantity,
+       UNIT_PRICE    = :UnitPrice,
+       TOTAL_PRICE   = :TotalPrice
+ WHERE ITEM_ID       = :ItemId";
+                        await conn.ExecuteAsync(updateItemSql, new
+                        {
+                            item.OrderIdFk, item.ProductIdFk, item.Quantity,
+                            item.UnitPrice, item.TotalPrice, item.ItemId
+                        }, tx).ConfigureAwait(false);
+                    }
+                    else
+                    {
+                        await InsertItemInternalAsync(conn, tx, item).ConfigureAwait(false);
+                    }
+                }
+            }
+
+            tx.Commit();
+            return order.OrderId;
+        }
+
         // ---------------------------------------------------------------------
         // Tier-1 business rules (PHASE 1 - REPLICATE): the legacy PL/SQL packages
         // pkg_pricing / pkg_orders stay authoritative; the API is a thin gateway.

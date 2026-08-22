@@ -1,7 +1,7 @@
 {
   "name": "modern-oracle-app",
   "version": "1.0.0",
-  "description": "Modern Oracle application — Angular 17 SPA migrated from the legacy Oracle application",
+  "description": "Modern Oracle application — Angular SPA migrated from the legacy Oracle application",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

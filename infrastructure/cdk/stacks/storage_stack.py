@@ -4,6 +4,8 @@ All resources use RemovalPolicy.DESTROY + auto-delete/empty for clean POC
 teardown. Buckets are SSE-KMS with the CMK from SecurityStack. The frontend
 bucket is private and served only through CloudFront (Origin Access Control).
 """
+import os
+
 from aws_cdk import (
     Stack,
     RemovalPolicy,
@@ -15,6 +17,29 @@ from aws_cdk import (
     aws_cloudfront_origins as origins,
 )
 from constructs import Construct
+
+
+def _alb_dns_from_ssm(prefix: str) -> str | None:
+    """Synth-time read of the ALB DNS that ApiStack records in SSM.
+
+    Uses boto3 directly (not ssm.StringParameter.value_from_lookup) so the
+    value is re-read on every synth — the CDK lookup caches its result in
+    cdk.context.json, and a cached "not found" from the first deploy would
+    permanently defeat the fallback. Returns None when the parameter does not
+    exist yet (fresh deploy, before ApiStack) or the lookup cannot run.
+    """
+    try:
+        import boto3
+        region = os.environ.get("CDK_DEFAULT_REGION") or os.environ.get("AWS_REGION")
+        value = boto3.client("ssm", region_name=region).get_parameter(
+            Name=f"/{prefix}/api-alb-dns")["Parameter"]["Value"]
+        print(f"StorageStack: /api/* origin from SSM /{prefix}/api-alb-dns -> {value}")
+        return value
+    except Exception:
+        # Expected before ApiStack's first deploy (ParameterNotFound) or when
+        # synthesizing without credentials; the /api/* behavior is added later
+        # by deploy-all.sh's explicit -c api_alb_dns wiring pass.
+        return None
 
 
 class StorageStack(Stack):
@@ -60,9 +85,15 @@ class StorageStack(Stack):
         # The ALB DNS is passed via context (-c api_alb_dns=<dns>) as a literal
         # string, NOT read from ApiStack: ApiStack already depends on StorageStack
         # (ECR repo), so a construct reference the other way would form a
-        # dependency cycle. A plain string creates no cross-stack edge. Same
-        # toggle pattern as ObservabilityStack's detach_pipeline_metric.
-        api_alb_dns = self.node.try_get_context("api_alb_dns")
+        # dependency cycle. A plain string creates no cross-stack edge.
+        #
+        # When the flag is absent, fall back to the SSM parameter ApiStack
+        # records after it deploys. Without this fallback, ANY later `cdk
+        # deploy` that pulls StorageStack in (directly or as a dependency of
+        # another stack) without the flag would silently REMOVE the /api/*
+        # behavior and break the running app.
+        api_alb_dns = (self.node.try_get_context("api_alb_dns")
+                       or _alb_dns_from_ssm(prefix))
 
         additional_behaviors = {}
         if api_alb_dns:

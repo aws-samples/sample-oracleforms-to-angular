@@ -1,5 +1,6 @@
 using System;
 using System.Data;
+using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
 using Microsoft.AspNetCore.Mvc;
@@ -143,31 +144,17 @@ public sealed class OrdersController : ControllerBase
         }
     }
 
-    // COMMIT_FORM: persist master + details together. (The original generated
-    // endpoint bound a bare Order while the client posts { order, items } —
-    // items silently never saved; see BUGLOG BUG-15/BUG-18.)
+    // COMMIT_FORM: persist master + reconcile details in ONE database
+    // transaction — items absent from the payload are deleted, and a
+    // business-rule violation anywhere rolls the whole commit back.
     [HttpPost("commit")]
     public async Task<IActionResult> Commit([FromBody] CommitDto dto)
     {
         if (dto?.Order is null) return BadRequest(new { code = 0, message = "order is required" });
         try
         {
-            var order = dto.Order;
-            if (order.OrderId > 0 && await _svc.GetByIdAsync(order.OrderId) is not null)
-                await _svc.UpdateAsync(order);
-            else
-                order.OrderId = await _svc.CreateAsync(order);
-
-            if (dto.Items is not null)
-            {
-                foreach (var item in dto.Items)
-                {
-                    item.OrderIdFk = order.OrderId;
-                    if (item.ItemId > 0) await _svc.UpdateItemAsync(item);
-                    else item.ItemId = await _svc.AddItemAsync(item);
-                }
-            }
-            var saved = await _svc.GetByIdAsync(order.OrderId);
+            var orderId = await _svc.CommitAsync(dto.Order, dto.Items);
+            var saved = await _svc.GetByIdAsync(orderId);
             return Ok(new { success = true, message = "Saved.", order = saved, items = saved?.Items });
         }
         catch (OracleException ex) when (ex.Number is >= 20001 and <= 20006)
@@ -217,8 +204,25 @@ public sealed class OrdersController : ControllerBase
         }
     }
 
+    // EXECUTE_QUERY in enter-query mode: the client sends any OrderDto field
+    // as an exact-match criterion. Filtered in memory over the (small) sample
+    // dataset — no dynamic SQL.
     [HttpGet("search")]
-    public async Task<IActionResult> Search() => Ok(await _svc.GetAllAsync());
+    public async Task<IActionResult> Search(
+        [FromQuery] long? orderId, [FromQuery] long? customerId,
+        [FromQuery] long? employeeId, [FromQuery] long? tableNumber,
+        [FromQuery] string? orderType, [FromQuery] string? statues)
+    {
+        var all = await _svc.GetAllAsync();
+        var filtered = all.Where(o =>
+            (orderId is null || o.OrderId == orderId) &&
+            (customerId is null || o.CustomerId == customerId) &&
+            (employeeId is null || o.EmployeeId == employeeId) &&
+            (tableNumber is null || o.TableNumber == tableNumber) &&
+            (orderType is null || string.Equals(o.OrderType, orderType, StringComparison.OrdinalIgnoreCase)) &&
+            (statues is null || string.Equals(o.Statues, statues, StringComparison.OrdinalIgnoreCase)));
+        return Ok(filtered);
+    }
 
     // First message line without the "ORA-2000x: " prefix; code carried separately.
     private static object BusinessError(OracleException ex)
