@@ -60,8 +60,8 @@ l'observabilité.
 
 - Un compte AWS avec accès aux modèles **Amazon Bedrock** (Anthropic Claude + Amazon Titan
   Embeddings) activés dans votre région.
-- **AWS CLI v2**, **AWS CDK CLI** (`npm i -g aws-cdk`), **Docker**, **Node.js ≥ 18**,
-  **Python ≥ 3.11**, **.NET SDK 8**.
+- **AWS CLI v2**, **AWS CDK CLI** (`npm i -g aws-cdk`), **Docker**, **Node.js ≥ 22**
+  (requis par les outils de build Angular 22), **Python ≥ 3.11**, **.NET SDK 8**.
 - Une base de données Oracle pour les applications « avant »/« après ». Cet exemple cible
   **Oracle XE** (p. ex. l'image communautaire `gvenzl/oracle-xe:21-slim`) — **amenez la vôtre** ;
   aucun binaire Oracle n'est redistribué ici.

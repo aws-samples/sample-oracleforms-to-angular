@@ -1,12 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 
 // App shell: provides a minimal global nav and hosts the router outlet.
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive],
-  template: `
+    selector: 'app-root',
+    imports: [RouterOutlet, RouterLink, RouterLinkActive],
+    template: `
     <nav class="global-nav">
       <span class="brand">Modernized Oracle App &mdash; Sample</span>
       <a routerLink="/orders" routerLinkActive="active">Orders</a>
@@ -15,7 +14,8 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
     </nav>
     <router-outlet></router-outlet>
   `,
-  styles: [`
+    changeDetection: ChangeDetectionStrategy.Eager,
+    styles: [`
     .global-nav {
       display: flex;
       align-items: center;
@@ -41,6 +41,6 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
     }
     a:hover { color: #fff; }
     a.active { color: #fff; background: #1e3250; }
-  `],
+  `]
 })
 export class RootComponent {}

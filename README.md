@@ -58,8 +58,8 @@ written to **Amazon S3**; **Amazon CloudWatch** provides observability.
 
 - An AWS account with access to **Amazon Bedrock** models (Anthropic Claude + Amazon Titan
   Embeddings) enabled in your region.
-- **AWS CLI v2**, **AWS CDK CLI** (`npm i -g aws-cdk`), **Docker**, **Node.js ≥ 18**,
-  **Python ≥ 3.11**, **.NET SDK 8**.
+- **AWS CLI v2**, **AWS CDK CLI** (`npm i -g aws-cdk`), **Docker**, **Node.js ≥ 22**
+  (required by the Angular 22 build tooling), **Python ≥ 3.11**, **.NET SDK 8**.
 - An Oracle database for the "before"/"after" apps. This sample targets **Oracle XE** (e.g.
   the community `gvenzl/oracle-xe:21-slim` image) — **bring your own**; no Oracle binaries are
   redistributed here.

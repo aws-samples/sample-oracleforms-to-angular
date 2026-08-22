@@ -1,5 +1,5 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
+
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
@@ -18,150 +18,189 @@ interface ReportColumn {
 interface ReportData { title: string; columns: ReportColumn[]; rows: Record<string, any>[]; }
 
 @Component({
-  selector: 'app-report-grid',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
-  template: `
-  <div class="app" *ngIf="data as d">
-    <!-- ── left nav rail ── -->
-    <aside class="nav">
-      <div class="logo"><div class="mark">M</div><span>Opportunities</span></div>
-      <nav>
-        <a class="item"><i>⌂</i> Home</a>
-        <a class="item"><i>◎</i> Leads <b class="pill-n">16</b></a>
-        <a class="item"><i>◈</i> Opportunities <b class="pill-n">19</b></a>
-        <a class="item"><i>◍</i> Territories <b class="pill-n">12</b></a>
-        <a class="item active"><i>◭</i> Accounts <b class="pill-n">{{ d.rows.length }}</b></a>
-        <a class="item"><i>◑</i> Contacts</a>
-        <a class="item"><i>▤</i> Products <b class="pill-n">12</b></a>
-        <a class="item"><i>▦</i> Reports</a>
-      </nav>
-      <div class="nav-foot">migrated from Oracle APEX<br><b>Angular + .NET</b></div>
-    </aside>
-
-    <!-- ── main ── -->
-    <div class="main">
-      <header class="top">
-        <h1>{{ d.title }}</h1>
-        <div class="top-r">
-          <div class="views">
-            <button [class.on]="view==='cards'" (click)="view='cards'" title="Cards">▦</button>
-            <button [class.on]="view==='table'" (click)="view='table'" title="Table">☰</button>
-          </div>
-          <button class="create">+ Create Account</button>
-        </div>
-      </header>
-
-      <div class="body">
-        <!-- filter rail -->
-        <div class="filters">
-          <div class="search">
-            <svg viewBox="0 0 24 24" width="15" height="15"><path fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 4.99L20.49 19zm-6 0A4.5 4.5 0 1 1 14 9.5 4.5 4.5 0 0 1 9.5 14z"/></svg>
-            <input [(ngModel)]="q" (ngModelChange)="apply()" placeholder="Search Accounts" />
-          </div>
-          <label class="fl">Territory
-            <select [(ngModel)]="fTerr" (ngModelChange)="apply()">
-              <option value="">– All –</option>
-              <option *ngFor="let t of territories" [value]="t">{{ t }}</option>
-            </select>
-          </label>
-          <label class="fl">Key Accounts
-            <select [(ngModel)]="fKey" (ngModelChange)="apply()">
-              <option value="">– All –</option>
-              <option value="Yes">Yes</option><option value="No">No</option>
-            </select>
-          </label>
-          <label class="fl">Sort
-            <select [(ngModel)]="sortSel" (ngModelChange)="applySort()">
-              <option value="CUSTOMER_NAME">Account</option>
-              <option value="OPEN_DEALS">Open Opportunities</option>
-              <option value="LEADS">Leads</option>
-              <option value="TERRITORY_NAME">Territory</option>
-            </select>
-          </label>
-          <button class="reset" (click)="reset()">↺ Reset</button>
-          <div class="fcount"><b>{{ view2.length }}</b> of {{ d.rows.length }} accounts</div>
-        </div>
-
-        <!-- CARD VIEW -->
-        <div class="cards" *ngIf="view==='cards'">
-          <article class="card" *ngFor="let r of view2; let i=index" [style.--accent]="accent(i)"
-                   (click)="open(r)" tabindex="0" (keyup.enter)="open(r)">
-            <div class="c-head">
-              <h3>{{ r['CUSTOMER_NAME'] }}</h3>
-              <span class="key" *ngIf="isYes(r['CUSTOMER_IS_KEY_ACCOUNT_YN'])">★ Key</span>
+    selector: 'app-report-grid',
+    imports: [FormsModule],
+    template: `
+  @if (data; as d) {
+    <div class="app">
+      <!-- ── left nav rail ── -->
+      <aside class="nav">
+        <div class="logo"><div class="mark">M</div><span>Opportunities</span></div>
+        <nav>
+          <a class="item"><i>⌂</i> Home</a>
+          <a class="item"><i>◎</i> Leads <b class="pill-n">16</b></a>
+          <a class="item"><i>◈</i> Opportunities <b class="pill-n">19</b></a>
+          <a class="item"><i>◍</i> Territories <b class="pill-n">12</b></a>
+          <a class="item active"><i>◭</i> Accounts <b class="pill-n">{{ d.rows.length }}</b></a>
+          <a class="item"><i>◑</i> Contacts</a>
+          <a class="item"><i>▤</i> Products <b class="pill-n">12</b></a>
+          <a class="item"><i>▦</i> Reports</a>
+        </nav>
+        <div class="nav-foot">migrated from Oracle APEX<br><b>Angular + .NET</b></div>
+      </aside>
+      <!-- ── main ── -->
+      <div class="main">
+        <header class="top">
+          <h1>{{ d.title }}</h1>
+          <div class="top-r">
+            <div class="views">
+              <button [class.on]="view==='cards'" (click)="view='cards'" title="Cards">▦</button>
+              <button [class.on]="view==='table'" (click)="view='table'" title="Table">☰</button>
             </div>
-            <div class="c-terr">{{ r['TERRITORY_NAME'] || '—' }}</div>
-            <div class="c-metrics">
-              <div class="m"><span class="mv" [class.z]="!r['OPEN_DEALS']">{{ r['OPEN_DEALS'] ?? 0 }}</span><span class="ml">Open</span></div>
-              <div class="m"><span class="mv" [class.z]="!r['PAST_DUE']">{{ r['PAST_DUE'] ?? 0 }}</span><span class="ml">Past Due</span></div>
-              <div class="m"><span class="mv" [class.z]="!r['LEADS']">{{ r['LEADS'] ?? 0 }}</span><span class="ml">Leads</span></div>
+            <button class="create">+ Create Account</button>
+          </div>
+        </header>
+        <div class="body">
+          <!-- filter rail -->
+          <div class="filters">
+            <div class="search">
+              <svg viewBox="0 0 24 24" width="15" height="15"><path fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 4.99L20.49 19zm-6 0A4.5 4.5 0 1 1 14 9.5 4.5 4.5 0 0 1 9.5 14z"/></svg>
+              <input [(ngModel)]="q" (ngModelChange)="apply()" placeholder="Search Accounts" />
             </div>
-            <div class="c-foot">Updated {{ fmtDate(r['UPDATED']) }} <span class="c-open">View →</span></div>
-          </article>
-          <div class="empty" *ngIf="!view2.length">No matching accounts</div>
-        </div>
-
-        <!-- TABLE VIEW -->
-        <div class="card-wrap" *ngIf="view==='table'">
-          <table>
-            <thead><tr>
-              <th *ngFor="let c of cols()" [class.num]="c.type==='number'"
-                  [class.sortable]="c.sortable" [class.active]="sort===c.key"
-                  (click)="c.sortable && sortBy(c.key)">
-                {{ c.label }}<i class="arr" *ngIf="sort===c.key">{{ dir==='asc'?'↑':'↓' }}</i>
-              </th>
-            </tr></thead>
-            <tbody>
-              <tr *ngFor="let r of view2" (click)="open(r)" class="row-click">
-                <td *ngFor="let c of cols()" [class.num]="c.type==='number'">
-                  <ng-container [ngSwitch]="c.type">
-                    <span *ngSwitchCase="'bool'" class="badge" [class.yes]="isYes(r[c.key])">{{ r[c.key] }}</span>
-                    <span *ngSwitchCase="'number'" [class.z]="!r[c.key]">{{ r[c.key] ?? 0 }}</span>
-                    <span *ngSwitchCase="'date'" class="mono">{{ fmtDate(r[c.key]) }}</span>
-                    <span *ngSwitchDefault [class.strong]="c.key==='CUSTOMER_NAME'">{{ r[c.key] }}</span>
-                  </ng-container>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            <label class="fl">Territory
+              <select [(ngModel)]="fTerr" (ngModelChange)="apply()">
+                <option value="">– All –</option>
+                @for (t of territories; track t) {
+                  <option [value]="t">{{ t }}</option>
+                }
+              </select>
+            </label>
+            <label class="fl">Key Accounts
+              <select [(ngModel)]="fKey" (ngModelChange)="apply()">
+                <option value="">– All –</option>
+                <option value="Yes">Yes</option><option value="No">No</option>
+              </select>
+            </label>
+            <label class="fl">Sort
+              <select [(ngModel)]="sortSel" (ngModelChange)="applySort()">
+                <option value="CUSTOMER_NAME">Account</option>
+                <option value="OPEN_DEALS">Open Opportunities</option>
+                <option value="LEADS">Leads</option>
+                <option value="TERRITORY_NAME">Territory</option>
+              </select>
+            </label>
+            <button class="reset" (click)="reset()">↺ Reset</button>
+            <div class="fcount"><b>{{ view2.length }}</b> of {{ d.rows.length }} accounts</div>
+          </div>
+          <!-- CARD VIEW -->
+          @if (view==='cards') {
+            <div class="cards">
+              @for (r of view2; track r; let i = $index) {
+                <article class="card" [style.--accent]="accent(i)"
+                  (click)="open(r)" tabindex="0" (keyup.enter)="open(r)">
+                  <div class="c-head">
+                    <h3>{{ r['CUSTOMER_NAME'] }}</h3>
+                    @if (isYes(r['CUSTOMER_IS_KEY_ACCOUNT_YN'])) {
+                      <span class="key">★ Key</span>
+                    }
+                  </div>
+                  <div class="c-terr">{{ r['TERRITORY_NAME'] || '—' }}</div>
+                  <div class="c-metrics">
+                    <div class="m"><span class="mv" [class.z]="!r['OPEN_DEALS']">{{ r['OPEN_DEALS'] ?? 0 }}</span><span class="ml">Open</span></div>
+                    <div class="m"><span class="mv" [class.z]="!r['PAST_DUE']">{{ r['PAST_DUE'] ?? 0 }}</span><span class="ml">Past Due</span></div>
+                    <div class="m"><span class="mv" [class.z]="!r['LEADS']">{{ r['LEADS'] ?? 0 }}</span><span class="ml">Leads</span></div>
+                  </div>
+                  <div class="c-foot">Updated {{ fmtDate(r['UPDATED']) }} <span class="c-open">View →</span></div>
+                </article>
+              }
+              @if (!view2.length) {
+                <div class="empty">No matching accounts</div>
+              }
+            </div>
+          }
+          <!-- TABLE VIEW -->
+          @if (view==='table') {
+            <div class="card-wrap">
+              <table>
+                <thead><tr>
+                  @for (c of cols(); track c) {
+                    <th [class.num]="c.type==='number'"
+                      [class.sortable]="c.sortable" [class.active]="sort===c.key"
+                      (click)="c.sortable && sortBy(c.key)">
+                      {{ c.label }}@if (sort===c.key) {
+                      <i class="arr">{{ dir==='asc'?'↑':'↓' }}</i>
+                    }
+                  </th>
+                }
+              </tr></thead>
+              <tbody>
+                @for (r of view2; track r) {
+                  <tr (click)="open(r)" class="row-click">
+                    @for (c of cols(); track c) {
+                      <td [class.num]="c.type==='number'">
+                        @switch (c.type) {
+                          @case ('bool') {
+                            <span class="badge" [class.yes]="isYes(r[c.key])">{{ r[c.key] }}</span>
+                          }
+                          @case ('number') {
+                            <span [class.z]="!r[c.key]">{{ r[c.key] ?? 0 }}</span>
+                          }
+                          @case ('date') {
+                            <span class="mono">{{ fmtDate(r[c.key]) }}</span>
+                          }
+                          @default {
+                            <span [class.strong]="c.key==='CUSTOMER_NAME'">{{ r[c.key] }}</span>
+                          }
+                        }
+                      </td>
+                    }
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        }
       </div>
     </div>
-
     <!-- ── detail drawer (opens when an account is clicked, like APEX) ── -->
-    <div class="scrim" *ngIf="sel" (click)="sel=null"></div>
-    <aside class="drawer" *ngIf="sel as s" [class.open]="!!sel">
-      <div class="d-head">
-        <div>
-          <div class="d-crumb">Accounts / Detail</div>
-          <h2>{{ s['CUSTOMER_NAME'] }}</h2>
-          <span class="key" *ngIf="isYes(s['CUSTOMER_IS_KEY_ACCOUNT_YN'])">★ Key Account</span>
+    @if (sel) {
+      <div class="scrim" (click)="sel=null"></div>
+    }
+    @if (sel; as s) {
+      <aside class="drawer" [class.open]="!!sel">
+        <div class="d-head">
+          <div>
+            <div class="d-crumb">Accounts / Detail</div>
+            <h2>{{ s['CUSTOMER_NAME'] }}</h2>
+            @if (isYes(s['CUSTOMER_IS_KEY_ACCOUNT_YN'])) {
+              <span class="key">★ Key Account</span>
+            }
+          </div>
+          <button class="d-close" (click)="sel=null">✕</button>
         </div>
-        <button class="d-close" (click)="sel=null">✕</button>
-      </div>
-      <div class="d-metrics">
-        <div class="dm"><span class="dmv">{{ s['OPEN_DEALS'] ?? 0 }}</span><span class="dml">Open Opportunities</span></div>
-        <div class="dm"><span class="dmv">{{ s['PAST_DUE'] ?? 0 }}</span><span class="dml">Past Due</span></div>
-        <div class="dm"><span class="dmv">{{ s['LEADS'] ?? 0 }}</span><span class="dml">Leads</span></div>
-      </div>
-      <div class="d-fields">
-        <div class="df" *ngFor="let c of detailCols()">
-          <span class="dfl">{{ c.label }}</span>
-          <span class="dfv" [class.strong]="c.key==='CUSTOMER_NAME'">
-            <ng-container [ngSwitch]="c.type">
-              <span *ngSwitchCase="'date'">{{ fmtDate(s[c.key]) }}</span>
-              <span *ngSwitchCase="'bool'" class="badge" [class.yes]="isYes(s[c.key])">{{ s[c.key] }}</span>
-              <span *ngSwitchDefault>{{ s[c.key] === null || s[c.key] === '' ? '—' : s[c.key] }}</span>
-            </ng-container>
-          </span>
+        <div class="d-metrics">
+          <div class="dm"><span class="dmv">{{ s['OPEN_DEALS'] ?? 0 }}</span><span class="dml">Open Opportunities</span></div>
+          <div class="dm"><span class="dmv">{{ s['PAST_DUE'] ?? 0 }}</span><span class="dml">Past Due</span></div>
+          <div class="dm"><span class="dmv">{{ s['LEADS'] ?? 0 }}</span><span class="dml">Leads</span></div>
         </div>
-      </div>
-      <div class="d-foot">Sourced live from Oracle · migrated from APEX Account Details (page 3)</div>
-    </aside>
+        <div class="d-fields">
+          @for (c of detailCols(); track c) {
+            <div class="df">
+              <span class="dfl">{{ c.label }}</span>
+              <span class="dfv" [class.strong]="c.key==='CUSTOMER_NAME'">
+                @switch (c.type) {
+                  @case ('date') {
+                    <span>{{ fmtDate(s[c.key]) }}</span>
+                  }
+                  @case ('bool') {
+                    <span class="badge" [class.yes]="isYes(s[c.key])">{{ s[c.key] }}</span>
+                  }
+                  @default {
+                    <span>{{ s[c.key] === null || s[c.key] === '' ? '—' : s[c.key] }}</span>
+                  }
+                }
+              </span>
+            </div>
+          }
+        </div>
+        <div class="d-foot">Sourced live from Oracle · migrated from APEX Account Details (page 3)</div>
+      </aside>
+    }
   </div>
+  }
   `,
-  styles: [`
+    changeDetection: ChangeDetectionStrategy.Eager,
+    styles: [`
     @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap');
     :host{--ink:#14171a;--muted:#6b7480;--line:#e7e9ec;--bg:#f4f5f7;--card:#fff;--accent:#146eb4;--navy:#0d1b2a;--navy2:#13293d;font-family:'IBM Plex Sans',sans-serif}
     *{box-sizing:border-box}
@@ -253,7 +292,7 @@ interface ReportData { title: string; columns: ReportColumn[]; rows: Record<stri
     .dfl{color:var(--muted);flex-shrink:0}
     .dfv{text-align:right;color:#3a4048}.dfv.strong{font-weight:600;color:var(--ink)}
     .d-foot{padding:16px 26px;border-top:1px solid var(--line);font-size:11.5px;color:#9aa2ab;background:#fafbfc}
-  `],
+  `]
 })
 export class ReportGridComponent implements OnInit {
   private http = inject(HttpClient);

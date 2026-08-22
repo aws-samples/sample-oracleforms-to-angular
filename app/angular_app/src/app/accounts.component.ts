@@ -1,5 +1,5 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
+
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../environments/environment';
@@ -24,10 +24,9 @@ interface Account {
 interface Territory { id: string; name: string; }
 
 @Component({
-  selector: 'app-accounts',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
-  template: `
+    selector: 'app-accounts',
+    imports: [FormsModule],
+    template: `
     <div class="acc-shell">
       <div class="topbar">
         <div class="left">
@@ -36,7 +35,7 @@ interface Territory { id: string; name: string; }
         </div>
         <div class="tag">AI-migrated "after" · Angular + .NET → Oracle</div>
       </div>
-
+    
       <div class="wrap">
         <div class="grid">
           <!-- list -->
@@ -46,24 +45,31 @@ interface Territory { id: string; name: string; }
               <input class="search" [(ngModel)]="search" (input)="load()" placeholder="Search name or tags…" />
             </div>
             <div class="rows">
-              <button class="row" *ngFor="let a of accounts"
-                      [class.sel]="selected?.id === a.id" (click)="edit(a)">
-                <span class="nm">{{ a.customerName }}</span>
-                <span class="tg" *ngIf="a.tags">{{ a.tags }}</span>
-              </button>
+              @for (a of accounts; track a) {
+                <button class="row"
+                  [class.sel]="selected?.id === a.id" (click)="edit(a)">
+                  <span class="nm">{{ a.customerName }}</span>
+                  @if (a.tags) {
+                    <span class="tg">{{ a.tags }}</span>
+                  }
+                </button>
+              }
             </div>
           </div>
-
+    
           <!-- editor -->
-          <div class="panel edit" *ngIf="model">
-            <div class="p-head"><h2>{{ model.id ? 'Edit account #' + model.id : 'New account' }}</h2></div>
-            <label>Customer name
-              <input [(ngModel)]="model.customerName" (blur)="checkName()" />
-            </label>
-            <label>Territory <span class="req">*</span>
+          @if (model) {
+            <div class="panel edit">
+              <div class="p-head"><h2>{{ model.id ? 'Edit account #' + model.id : 'New account' }}</h2></div>
+              <label>Customer name
+                <input [(ngModel)]="model.customerName" (blur)="checkName()" />
+              </label>
+              <label>Territory <span class="req">*</span>
               <select [(ngModel)]="model.customerTerritoryId">
                 <option [ngValue]="undefined">— select a territory —</option>
-                <option *ngFor="let t of territories" [ngValue]="t.id">{{ t.name }}</option>
+                @for (t of territories; track t) {
+                  <option [ngValue]="t.id">{{ t.name }}</option>
+                }
               </select>
             </label>
             <label>Tags
@@ -81,24 +87,30 @@ interface Territory { id: string; name: string; }
             <label>Twitter
               <input [(ngModel)]="model.customerTwitter" placeholder="http://…" />
             </label>
-
-            <div class="errors" *ngIf="errors.length">
-              <div class="err" *ngFor="let e of errors">⚠ {{ e }}</div>
-            </div>
-            <div class="ok" *ngIf="saved">✓ Saved to Oracle</div>
-
+            @if (errors.length) {
+              <div class="errors">
+                @for (e of errors; track e) {
+                  <div class="err">⚠ {{ e }}</div>
+                }
+              </div>
+            }
+            @if (saved) {
+              <div class="ok">✓ Saved to Oracle</div>
+            }
             <div class="actions">
               <button class="save" (click)="save()">Save</button>
               <button class="new" (click)="newAccount()">+ New</button>
             </div>
             <p class="hint">Try tags with a <code>#</code> or <code>/</code>, or a URL without "http" —
-              the same APEX validations (recovered by the pipeline) fire server-side.</p>
-          </div>
+          the same APEX validations (recovered by the pipeline) fire server-side.</p>
         </div>
-      </div>
+      }
     </div>
-  `,
-  styles: [`
+    </div>
+    </div>
+    `,
+    changeDetection: ChangeDetectionStrategy.Eager,
+    styles: [`
     .acc-shell{font-family:-apple-system,Segoe UI,Roboto,sans-serif;color:#1a1a1a;background:#f4f5f7;min-height:100vh}
     .topbar{display:flex;justify-content:space-between;align-items:center;background:#0a1929;color:#fff;padding:14px 24px}
     .left{display:flex;align-items:center;gap:12px}
@@ -125,7 +137,7 @@ interface Territory { id: string; name: string; }
     .save{background:#146eb4;color:#fff;border:0;border-radius:6px;padding:9px 18px;font-weight:600;cursor:pointer}
     .new{background:#eef1f4;border:0;border-radius:6px;padding:9px 14px;cursor:pointer;color:#1a1a1a;font-weight:600}
     .hint{font-size:12px;color:#6a737d;margin-top:14px}.hint code{background:#eef;padding:1px 5px;border-radius:4px}
-  `],
+  `]
 })
 export class AccountsComponent implements OnInit {
   private http = inject(HttpClient);
