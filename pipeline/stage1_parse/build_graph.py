@@ -122,7 +122,7 @@ def build(parsed_dir: str, schema_path: str, out_dir: str):
     json.dump(graph, open(os.path.join(out_dir, "graph.json"), "w"), indent=2)
 
     # ---- Graphviz ----
-    dot = ["digraph RIMS_GPC {", '  rankdir=LR;', '  node [style=filled,fontname="Helvetica"];']
+    dot = ["digraph legacy_forms {", '  rankdir=LR;', '  node [style=filled,fontname="Helvetica"];']
     for n in nodes.values():
         if n["type"] == "form":
             dot.append(f'  "{n["id"]}" [shape=component,fillcolor="#E8A87C",label="{n["id"].split(":")[1]}"];')

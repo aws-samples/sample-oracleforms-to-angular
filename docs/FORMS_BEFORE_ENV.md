@@ -94,7 +94,7 @@ in `forms-setup.sh`, and listed here for when you deviate from it.
 | RCU rejects the password flag | The flag is `-useSamePasswordForAllSchemaUsers` (…Users, not …Schemas). |
 | AdminServer of a **cloned/moved** domain never boots (JPS/OPSS errors) | A JRF domain's OPSS security store lives in its repository DB. If that DB is gone the domain is unrecoverable — build a **fresh** domain (it self-initializes an empty OPSS store on first boot). Never separate a JRF domain from its RCU database. |
 | `frmf2xml`/`frmxml2f` (XML round-trip dev tools) fail to load | Export `FORMS_API_TK_BYPASS=TRUE`; on minimal hosts the JDAPI also needs Motif libraries (`libXm.so.4`, `libXp.so.6`) on the library path. |
-| Pipeline mis-parses a round-tripped `.fmb` | Feed the pipeline **source** fmbs (Forms Builder- or `frmxml2f`-written). An `.fmb` re-saved by `frmcmp_batch compile_all=yes` moves trigger sources into a compiled-unit region and is not a valid pipeline input (BUGLOG BUG-17). |
+| Pipeline mis-parses a round-tripped `.fmb` | Feed the pipeline **source** fmbs (Forms Builder- or `frmxml2f`-written). An `.fmb` re-saved by `frmcmp_batch compile_all=yes` moves trigger sources into a compiled-unit region and is not a valid pipeline input. |
 | Config edits don't take effect | `formsweb.cfg`/`tnsnames.ora` are read per Forms session (no restart needed), but changes under the FORMS component directory need a WLS_FORMS restart. |
 | Logon dialog appears despite `userid=` in the config | Forms deliberately does not auto-forward the password to the client logon — expected behaviour. |
 

@@ -139,10 +139,19 @@ cdk deploy ApiStack --require-approval never "${CTX[@]}"
 API_URL="$(out ApiStack ApiUrl)"
 
 echo "== Wait for API health =="
+HEALTHY=""
 for i in $(seq 1 20); do
-  curl -fsS "$API_URL/health" >/dev/null 2>&1 && { echo "  healthy"; break; }
+  curl -fsS "$API_URL/health" >/dev/null 2>&1 && { echo "  healthy"; HEALTHY=1; break; }
   echo "  waiting ($i/20)..."; sleep 15
 done
+# A for-loop that runs to exhaustion exits 0, so set -e alone would let the
+# script continue and print "Done" over a broken deployment.
+[ -n "$HEALTHY" ] || {
+  echo "ERROR: API did not become healthy at $API_URL/health within 5 minutes." >&2
+  echo "Inspect the ECS service events and the task logs in CloudWatch" >&2
+  echo "(/oracle-modernization/dotnet-api), then re-run this script." >&2
+  exit 1
+}
 
 # --- 3. CloudFront same-origin /api/* proxy ----------------------------------
 ALB_DNS="${API_URL#http://}"; ALB_DNS="${ALB_DNS#https://}"

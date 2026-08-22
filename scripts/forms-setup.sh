@@ -71,10 +71,13 @@ phase_db() {
     docker start formsrepo >/dev/null
   fi
   echo "waiting for the repository DB to accept connections..."
+  # Probe with a distinctive marker: sqlplus prints ORA- errors to stdout, and
+  # common ones (ORA-01017 wrong password, ORA-12541 no listener) contain the
+  # digit 1 — a bare `grep -q 1` would declare the DB "up" on a failed login.
   for _ in $(seq 1 60); do
     docker exec formsrepo bash -c \
-      "echo 'select 1 from dual;' | sqlplus -s system/$REPO_DB_PASSWORD@localhost/XEPDB1" \
-      2>/dev/null | grep -q 1 && { echo "repository DB is up"; return; }
+      "echo \"select 'DB_READY' from dual;\" | sqlplus -s system/$REPO_DB_PASSWORD@localhost/XEPDB1" \
+      2>/dev/null | grep -q DB_READY && { echo "repository DB is up"; return; }
     sleep 5
   done
   echo "repository DB did not come up"; exit 1
