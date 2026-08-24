@@ -16,7 +16,7 @@
 # Usage:
 #   forms-setup.sh all              run every phase in order
 #   forms-setup.sh <phase> [...]    run selected phases:
-#                                   db rcu domain component config compile start
+#                                   db rcu domain component config compile relink start
 #
 # Required environment (no defaults for secrets — export them first):
 #   MW_HOME              Oracle Middleware home (e.g. /u01/app/oracle/product/fmw)
@@ -36,6 +36,8 @@
 #   FORM_SOURCE          .fmb to compile and serve         (default <repo>/pipeline/sample-inputs/forms/ORDERS.fmb)
 #   APP_DB_PORT          application DB listener port      (default 1521)
 #   REPO_DB_IMAGE        repository DB container image     (default gvenzl/oracle-xe:21-slim)
+#   MOTIF_LIB_DIR        directory holding libXm.so.4 / libXp.so.6 on hosts whose
+#                        distro does not package Motif (see docs/FORMS_BEFORE_ENV.md)
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -52,8 +54,42 @@ REPO_DB_IMAGE="${REPO_DB_IMAGE:-gvenzl/oracle-xe:21-slim}"
 
 FMWCONFIG="$DOMAIN_HOME/config/fmwconfig"
 FORMS_INSTANCE_DIR="$FMWCONFIG/components/FORMS/forms1"
+# The Forms servlet does NOT read the component-instance config above: on a
+# template-built domain it reads the per-server application copy below. Config
+# phases must maintain BOTH (the component copy feeds frmcmp_batch/dev tools).
+SERVLET_CONFIG_DIR="$FMWCONFIG/servers/WLS_FORMS/applications/formsapp_12.2.1/config"
 
 log() { echo -e "\n=== forms-setup: $* ==="; }
+
+append_orders_section() {
+  : "${APP_DB_USER:?export APP_DB_USER}"; : "${APP_DB_PASSWORD:?export APP_DB_PASSWORD}"
+  cat >> "$1" <<CFGEOF
+
+[orders]
+form=ORDERS.fmx
+userid=$APP_DB_USER/$APP_DB_PASSWORD@APPDB
+baseHTML=$FORMS_INSTANCE_DIR/server/base.htm
+baseHTMLjpi=$FORMS_INSTANCE_DIR/server/basejpi.htm
+baseSAAfile=$FORMS_INSTANCE_DIR/server/basesaa.txt
+term=$MW_HOME/forms/fmrweb.res
+CFGEOF
+}
+
+# The per-server servlet config (SERVLET_CONFIG_DIR) is MATERIALIZED BY THE
+# DOMAIN'S FIRST BOOT — pre-boot phases cannot fully patch it. Called from
+# phase_config (covers re-runs on a booted domain) and from phase_start after
+# the servers are up; formsweb.cfg/default.env are read per Forms session, so
+# post-boot patching needs no restart.
+patch_servlet_config() {
+  [ -d "$SERVLET_CONFIG_DIR" ] || return 0
+  [ -f "$SERVLET_CONFIG_DIR/default.env" ] && \
+    sed -i "s|components/FORMS/instances/forms1|components/FORMS/forms1|g" \
+      "$SERVLET_CONFIG_DIR/default.env"
+  local cfg="$SERVLET_CONFIG_DIR/formsweb.cfg"
+  if [ -f "$cfg" ] && ! grep -q '^\[orders\]' "$cfg"; then
+    append_orders_section "$cfg"
+  fi
+}
 
 # ----------------------------------------------------------------------------
 # db — local Oracle XE container: the WebLogic repository (RCU/OPSS) database.
@@ -96,8 +132,10 @@ phase_rcu() {
     -databaseType ORACLE -connectString localhost:1521/XEPDB1 \
     -dbUser SYS -dbRole SYSDBA -schemaPrefix "$RCU_PREFIX" \
     -component STB -component OPSS -component IAU -component IAU_APPEND \
-    -component IAU_VIEWER -component WLS -component WLS_RUNTIME -component MDS \
+    -component IAU_VIEWER -component WLS -component MDS \
     -useSamePasswordForAllSchemaUsers true
+  # NOTE: WLS_RUNTIME is NOT an RCU component (RCU-6065 if passed) — the WLS
+  # component creates the <prefix>_WLS_RUNTIME schema itself.
 }
 
 # ----------------------------------------------------------------------------
@@ -146,6 +184,14 @@ PYEOF
     printf 'username=weblogic\npassword=%s\n' "$WLS_ADMIN_PASSWORD" \
       > "$DOMAIN_HOME/servers/$s/security/boot.properties"
   done
+
+  # The formsapp lifecycle listener loads Forms native libraries at server
+  # start (libifopmnwrp -> libopmnperf under oracle_common/lib). A template
+  # domain does not put them on the server library path, so formsapp fails to
+  # activate (BEA-149231 UnsatisfiedLinkError) without this override.
+  cat > "$DOMAIN_HOME/bin/setUserOverrides.sh" <<OVREOF
+export LD_LIBRARY_PATH="$MW_HOME/lib:$MW_HOME/oracle_common/lib:\${LD_LIBRARY_PATH:-}"
+OVREOF
 }
 
 # ----------------------------------------------------------------------------
@@ -160,8 +206,12 @@ phase_component() {
   local env_file="$FORMS_INSTANCE_DIR/server/default.env"
   [ -f "$env_file" ] || { echo "default.env not found under $FORMS_INSTANCE_DIR/server"; exit 1; }
   # The template writes components/FORMS/instances/forms1 — the real path has
-  # no "instances" segment.
-  sed -i "s|components/FORMS/instances/forms1|components/FORMS/forms1|g" "$env_file"
+  # no "instances" segment. The servlet's own default.env (SERVLET_CONFIG_DIR)
+  # ships with the same broken path; fix both.
+  local f
+  for f in "$env_file" "$SERVLET_CONFIG_DIR/default.env"; do
+    [ -f "$f" ] && sed -i "s|components/FORMS/instances/forms1|components/FORMS/forms1|g" "$f"
+  done
   grep -q '^FORMS_INSTANCE=' "$env_file" || echo "FORMS_INSTANCE=$FORMS_INSTANCE_DIR" >> "$env_file"
   grep -q "^FORMS_PATH=.*$MW_HOME/forms" "$env_file" || echo "FORMS_PATH=$MW_HOME/forms" >> "$env_file"
 }
@@ -188,19 +238,15 @@ APPDB =
 TNSEOF
   fi
 
-  local cfg="$FORMS_INSTANCE_DIR/server/formsweb.cfg"
-  if ! grep -q '^\[orders\]' "$cfg"; then
-    cat >> "$cfg" <<CFGEOF
-
-[orders]
-form=ORDERS.fmx
-userid=$APP_DB_USER/$APP_DB_PASSWORD@APPDB
-baseHTML=$FORMS_INSTANCE_DIR/server/base.htm
-baseHTMLjpi=$FORMS_INSTANCE_DIR/server/basejpi.htm
-baseSAAfile=$FORMS_INSTANCE_DIR/server/basesaa.txt
-term=$MW_HOME/forms/fmrweb.res
-CFGEOF
-  fi
+  # The servlet serves SERVLET_CONFIG_DIR/formsweb.cfg, NOT the component copy
+  # — an [orders] section only in the component file yields FRM-93131 with the
+  # default (relative) base HTML names. The servlet copy is only materialized
+  # by the domain's FIRST boot, so phase_start patches it again post-boot.
+  local cfg
+  for cfg in "$FORMS_INSTANCE_DIR/server/formsweb.cfg" "$SERVLET_CONFIG_DIR/formsweb.cfg"; do
+    [ -f "$cfg" ] || continue
+    grep -q '^\[orders\]' "$cfg" || append_orders_section "$cfg"
+  done
   echo "NOTE: formsweb.cfg now embeds the application DB credential — keep the"
   echo "      host locked down; the Forms runtime prompts for logon regardless."
 }
@@ -223,6 +269,9 @@ phase_compile() {
     export FORMS_INSTANCE="$FORMS_INSTANCE_DIR"
     export TNS_ADMIN="$FMWCONFIG"
     export TERM=vt220 ORACLE_TERM=vt220
+    # frmcmp_batch resolves libig/libclntsh from $MW_HOME/lib — without this
+    # it dies on "libig.so.0: cannot open shared object file".
+    export LD_LIBRARY_PATH="$MW_HOME/lib:${LD_LIBRARY_PATH:-}"
     "$MW_HOME/bin/frmcmp_batch" module=ORDERS.fmb \
       userid="$APP_DB_USER/$APP_DB_PASSWORD@APPDB" \
       module_type=form compile_all=yes output_file=ORDERS.fmx </dev/null
@@ -230,6 +279,60 @@ phase_compile() {
   cp "$build_dir/ORDERS.fmx" "$MW_HOME/forms/ORDERS.fmx"
   rm -rf "$build_dir"
   echo "deployed $MW_HOME/forms/ORDERS.fmx"
+}
+
+# ----------------------------------------------------------------------------
+# relink — a fresh 12.2.1.4 Forms & Reports install ships a frmweb that
+# references shared libraries (libiffw.so.0 ...) that exist NOWHERE on disk;
+# the binary must be relinked once (make -f ins_forms.mk frmweb_install).
+# libclntshcore is also absent from $MW_HOME/lib (the only copy hides under
+# OPatch's .patch_storage). At runtime the servlet spawns frmweb with
+# default.env's LD_LIBRARY_PATH — which lists ONLY $MW_HOME/lib — so every
+# non-system dependency must resolve from that one directory.
+# ----------------------------------------------------------------------------
+phase_relink() {
+  log "frmweb native libraries / relink"
+  if [ ! -e "$MW_HOME/lib/libclntshcore.so.12.1" ]; then
+    local core
+    core="$(find "$MW_HOME/.patch_storage" -name libclntshcore.so.12.1 2>/dev/null | head -1)"
+    [ -n "$core" ] || { echo "libclntshcore.so.12.1 not found anywhere under $MW_HOME"; exit 1; }
+    cp "$core" "$MW_HOME/lib/"
+  fi
+  ln -sf libclntshcore.so.12.1 "$MW_HOME/lib/libclntshcore.so"
+  ln -sf ../oracle_common/lib/libopmnperf.so "$MW_HOME/lib/libopmnperf.so"
+  ln -sf ../oracle_common/lib/libons.so "$MW_HOME/lib/libons.so"
+  # Motif: link libXm/libXp into $MW_HOME/lib when the distro doesn't package
+  # them (Amazon Linux 2023 doesn't — see docs/FORMS_BEFORE_ENV.md).
+  if [ -n "${MOTIF_LIB_DIR:-}" ]; then
+    ln -sf "$MOTIF_LIB_DIR"/libXm.so.4* "$MW_HOME/lib/"
+    ln -sf "$MOTIF_LIB_DIR"/libXp.so.6* "$MW_HOME/lib/"
+  fi
+  # DO NOT register these directories in ld.so.conf: Oracle's own libexpat.so.1
+  # would shadow the system one and break python/pyexpat consumers (aws CLI).
+  export LD_LIBRARY_PATH="$MW_HOME/lib:$MW_HOME/oracle_common/lib:${MOTIF_LIB_DIR:+$MOTIF_LIB_DIR:}${LD_LIBRARY_PATH:-}"
+  if ldd "$MW_HOME/bin/frmweb" 2>/dev/null | grep -q 'not found'; then
+    command -v gcc >/dev/null || { echo "gcc is required to relink frmweb"; exit 1; }
+    echo 'int main(){return 0;}' | gcc -x c - -o /dev/null \
+      ${MOTIF_LIB_DIR:+-L"$MOTIF_LIB_DIR"} -lXm -lXp -lX11 2>/dev/null \
+      || { echo "linkable Motif/X11 libraries required (libXm.so, libXp.so, libX11.so)"; exit 1; }
+    # Old link lines may reference glibc's retired libpthread_nonshared.a.
+    [ -e /usr/lib64/libpthread_nonshared.a ] || ar cr /usr/lib64/libpthread_nonshared.a 2>/dev/null || true
+    ( cd "$MW_HOME/forms/lib" && \
+      ORACLE_HOME="$MW_HOME" ${MOTIF_LIB_DIR:+LIBRARY_PATH="$MOTIF_LIB_DIR:${LIBRARY_PATH:-}"} \
+      make -f ins_forms.mk frmweb_install )
+  fi
+  ldd "$MW_HOME/bin/frmweb" | grep -q 'not found' \
+    && { echo "frmweb still has unresolved libraries:"; ldd "$MW_HOME/bin/frmweb" | grep 'not found'; exit 1; }
+  # Simulate the servlet's spawn environment ($MW_HOME/lib only). A healthy
+  # client-less frmweb prints FRM-91299 ("unable to create a connection to the
+  # Java client") — anything else means the runtime cannot start.
+  local out
+  out="$( (ORACLE_HOME="$MW_HOME" LD_LIBRARY_PATH="$MW_HOME/lib" \
+           FORMS_INSTANCE="$FORMS_INSTANCE_DIR" \
+           TERM=vt220 ORACLE_TERM=vt220 timeout 10 "$MW_HOME/bin/frmweb" 2>&1 || true) | head -2 )"
+  echo "$out" | grep -q 'FRM-91299' \
+    || { echo "frmweb failed under the servlet's runtime library path: $out"; exit 1; }
+  echo "frmweb runtime OK (resolves fully from $MW_HOME/lib)"
 }
 
 # ----------------------------------------------------------------------------
@@ -254,20 +357,33 @@ phase_start() {
       sleep 5
     done
   fi
-  curl -s -o /dev/null -w 'frmservlet?config=orders -> HTTP %{http_code}\n' \
-    'http://localhost:9001/forms/frmservlet?config=orders'
+  # The first boot materializes the per-server servlet config — patch it now
+  # (idempotent; per-session reads mean no restart is needed).
+  patch_servlet_config
+
+  # Forms error pages come back as HTTP 200 with an FRM-xxxxx body — a status
+  # code alone proves nothing. Fail loudly unless the bootstrap page is clean.
+  local body code
+  body="$(mktemp)"
+  code="$(curl -s -o "$body" -w '%{http_code}' 'http://localhost:9001/forms/frmservlet?config=orders')"
+  if [ "$code" != "200" ] || grep -q 'FRM-' "$body"; then
+    echo "frmservlet?config=orders is NOT healthy (HTTP $code):"
+    head -5 "$body"; rm -f "$body"; exit 1
+  fi
+  rm -f "$body"
+  echo "frmservlet?config=orders -> HTTP 200, no FRM errors"
 }
 
 # ----------------------------------------------------------------------------
 main() {
   [ $# -ge 1 ] || { grep '^#' "$0" | head -40; exit 1; }
   local phases=("$@")
-  [ "${phases[0]}" = "all" ] && phases=(db rcu domain component config compile start)
+  [ "${phases[0]}" = "all" ] && phases=(db rcu domain component config compile relink start)
   local p
   for p in "${phases[@]}"; do
     case "$p" in
-      db|rcu|domain|component|config|compile|start) "phase_$p" ;;
-      *) echo "unknown phase: $p (valid: db rcu domain component config compile start)"; exit 1 ;;
+      db|rcu|domain|component|config|compile|relink|start) "phase_$p" ;;
+      *) echo "unknown phase: $p (valid: db rcu domain component config compile relink start)"; exit 1 ;;
     esac
   done
   log "done"
